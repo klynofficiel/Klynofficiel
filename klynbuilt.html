@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KlynBuilt — Musculation 28 Jours · Bientôt disponible</title>
+  <meta name="description" content="KlynBuilt arrive bientôt. Deux programmes de musculation périodisée — Start et Strong — conçus par Coach Atlas. Rejoins la liste d'attente." />
+  <link rel="canonical" href="https://klynofficiel.org/klynbuilt.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+
+  <style>
+    /* ── KlynBuilt Coming Soon ── */
+    .built-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 2rem 6rem;
+      position: relative;
+      overflow: hidden;
+      background: #080808;
+    }
+    .built-hero-bg {
+      position: absolute; inset: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .built-hero-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: brightness(0.18) saturate(0.6);
+    }
+    .built-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(8,8,8,0.4) 0%, rgba(8,8,8,0.7) 60%, #080808 100%);
+    }
+    .built-hero-content { position: relative; z-index: 2; max-width: 700px; }
+    .built-soon-badge {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.4rem;
+      margin-bottom: 2rem;
+    }
+    .built-hero-h1 {
+      font-family: var(--font-title);
+      font-size: clamp(4rem, 10vw, 8rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+    .built-hero-sub {
+      font-size: 1rem;
+      color: var(--gray);
+      line-height: 1.9;
+      max-width: 500px;
+      margin: 0 auto 3rem;
+    }
+    .built-waitlist {
+      display: flex;
+      gap: 0;
+      max-width: 440px;
+      margin: 0 auto 1.2rem;
+    }
+    .built-waitlist input {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-right: none;
+      color: var(--white);
+      padding: 0.9rem 1.2rem;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      outline: none;
+    }
+    .built-waitlist input::placeholder { color: rgba(255,255,255,0.3); }
+    .built-waitlist button {
+      background: var(--gold);
+      color: #000;
+      border: none;
+      padding: 0.9rem 1.6rem;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .built-waitlist button:hover { opacity: 0.85; }
+    .built-waitlist-note {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.05em;
+    }
+
+    /* Programs preview */
+    .built-programs {
+      padding: 7rem 0;
+      background: var(--black2);
+    }
+    .built-programs-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 5rem;
+      padding: 0 2rem;
+    }
+    .built-programs-grid {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+    @media (max-width: 640px) { .built-programs-grid { grid-template-columns: 1fr; } }
+
+    .built-prog-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .built-prog-cover {
+      aspect-ratio: 2/3;
+      overflow: hidden;
+    }
+    .built-prog-cover img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.7s ease;
+      filter: brightness(0.85);
+    }
+    .built-prog-card:hover .built-prog-cover img { transform: scale(1.04); }
+    .built-prog-info {
+      padding: 2.5rem 2rem;
+      background: #0d0d0d;
+      border-top: 2px solid var(--gold);
+    }
+    .built-prog-level {
+      display: inline-block;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+    .built-prog-name {
+      font-family: var(--font-title);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+    .built-prog-sub {
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .built-prog-desc {
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    .built-prog-pillars {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+    .built-prog-pillar {
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(212,175,55,0.3);
+      padding: 0.25rem 0.7rem;
+    }
+
+    /* Coach section */
+    .built-coach {
+      padding: 7rem 0;
+      background: #080808;
+    }
+    .built-coach-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .built-coach-inner { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    .built-coach-photo {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      border-top: 2px solid var(--gold);
+    }
+    .built-coach-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* Features */
+    .built-features {
+      padding: 7rem 0;
+      background: var(--black2);
+    }
+    .built-features-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .built-features-header {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 4rem;
+    }
+    .built-features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    @media (max-width: 768px) { .built-features-grid { grid-template-columns: 1fr; } }
+    .built-feature {
+      padding: 2.5rem 2rem;
+      background: #0d0d0d;
+    }
+    .built-feature-icon {
+      font-size: 1.4rem;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .built-feature h3 {
+      font-family: var(--font-title);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.7rem;
+    }
+    .built-feature p {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.8;
+    }
+
+    /* Final CTA */
+    .built-cta {
+      padding: 8rem 2rem;
+      text-align: center;
+      background: #080808;
+    }
+    .built-cta h2 {
+      font-family: var(--font-title);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .built-cta p {
+      color: var(--gray);
+      font-size: 0.95rem;
+      margin-bottom: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img src="assets/logo.png" alt="KLYN" /></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="klynshape.html">KlynShape</a></li>
+        <li><a href="klynmind.html">KlynMind</a></li>
+        <li><a href="klynbuilt.html" class="active">KlynBuilt</a></li>
+        <li><a href="boutique.html">Boutique</a></li>
+        <li><a href="vetements.html">Vêtements</a></li>
+      </ul>
+      <a href="boutique.html" class="nav-cta-btn">Commencer — 29€</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- HERO COMING SOON -->
+  <section class="built-hero">
+    <div class="built-hero-bg">
+      <img src="assets/hero_built_start.png" alt="KlynBuilt Start" />
+      <img src="assets/hero_built_strong.png" alt="KlynBuilt Strong" />
+    </div>
+    <div class="built-hero-overlay"></div>
+    <div class="built-hero-content fade-in">
+      <span class="built-soon-badge">Bientôt disponible</span>
+      <h1 class="built-hero-h1">KlynBuilt</h1>
+      <p class="built-hero-sub">
+        Deux programmes de musculation périodisée.<br />
+        <strong style="color:var(--white)">Start</strong> — débuter la musculation avec méthode.<br />
+        <strong style="color:var(--white)">Strong</strong> — prise de muscle avancée. 28 jours chacun.
+      </p>
+      <div class="built-waitlist">
+        <input type="email" id="builtEmail" placeholder="ton@email.com" />
+        <button onclick="handleBuiltWaitlist()">Être notifié →</button>
+      </div>
+      <p class="built-waitlist-note">Aucun spam · Notification à la sortie uniquement</p>
+    </div>
+  </section>
+
+  <!-- LES 2 PROGRAMMES -->
+  <section class="built-programs">
+    <div class="built-programs-header fade-in">
+      <span class="eyebrow gold">Deux niveaux</span>
+      <h2 class="h2">Quel que soit ton point de départ</h2>
+      <p class="subtitle">KlynBuilt est conçu pour accompagner ta progression — du début jusqu'à la maîtrise.</p>
+    </div>
+    <div class="built-programs-grid">
+
+      <div class="built-prog-card fade-in">
+        <div class="built-prog-cover">
+          <img src="assets/hero_built_start.png" alt="KlynBuilt Start" />
+        </div>
+        <div class="built-prog-info">
+          <span class="built-prog-level">Niveau 1 · Débutant</span>
+          <h3 class="built-prog-name">KlynBuilt Start</h3>
+          <p class="built-prog-sub">Commencer la musculation</p>
+          <p class="built-prog-desc">Le point de départ idéal. Apprends les fondamentaux, maîtrise les postures, construis une base musculaire solide. Chaque séance est guidée, chaque progression est calculée.</p>
+          <div class="built-prog-pillars">
+            <span class="built-prog-pillar">Confiance</span>
+            <span class="built-prog-pillar">Énergie</span>
+            <span class="built-prog-pillar">Progrès</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="built-prog-card fade-in">
+        <div class="built-prog-cover">
+          <img src="assets/hero_built_strong.png" alt="KlynBuilt Strong" />
+        </div>
+        <div class="built-prog-info">
+          <span class="built-prog-level">Niveau 2 · Intermédiaire</span>
+          <h3 class="built-prog-name">KlynBuilt Strong</h3>
+          <p class="built-prog-sub">Prise de muscle</p>
+          <p class="built-prog-desc">Pour ceux qui maîtrisent déjà les bases. Périodisation avancée, surcharge progressive, protocoles d'hypertrophie ciblée. 28 jours pour un physique qui change réellement.</p>
+          <div class="built-prog-pillars">
+            <span class="built-prog-pillar">Discipline</span>
+            <span class="built-prog-pillar">Force</span>
+            <span class="built-prog-pillar">Structure</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COACH ATLAS -->
+  <section class="built-coach">
+    <div class="built-coach-inner">
+      <div class="built-coach-photo fade-in">
+        <img src="assets/coach_atlas.png" alt="Coach Atlas — KlynBuilt" />
+      </div>
+      <div class="fade-in">
+        <span class="eyebrow gold">Ton coach</span>
+        <h2 class="h2" style="margin-bottom:1.5rem">Coach Atlas</h2>
+        <p style="color:var(--gray);font-size:0.9rem;line-height:2;margin-bottom:1.5rem">
+          Spécialiste de la musculation et de l'hypertrophie, Atlas a construit KlynBuilt autour d'une conviction : progresser vite, c'est progresser intelligemment. Sa méthode périodisée en 4 phases — activation neuromusculaire, accumulation volumique, intensification, réalisation — garantit une progression constante sur 28 jours.
+        </p>
+        <blockquote class="coach-quote" style="border-left:2px solid var(--gold);padding-left:1.2rem;font-family:var(--font-title);font-size:1.1rem;font-style:italic;color:var(--gold)">
+          « Confiance · Énergie · Progrès. »
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- CE QUI T'ATTEND -->
+  <section class="built-features">
+    <div class="built-features-inner">
+      <div class="built-features-header fade-in">
+        <span class="eyebrow gold">Au programme</span>
+        <h2 class="h2">Ce que KlynBuilt va t'apporter</h2>
+      </div>
+      <div class="built-features-grid">
+        <div class="built-feature fade-in">
+          <span class="built-feature-icon">◆</span>
+          <h3>Périodisation en 4 phases</h3>
+          <p>Activation → Accumulation → Intensification → Réalisation. Chaque semaine a un objectif précis. Volume, intensité et fréquence évoluent de manière planifiée.</p>
+        </div>
+        <div class="built-feature fade-in">
+          <span class="built-feature-icon">◆</span>
+          <h3>Séances musculaires structurées</h3>
+          <p>Poitrine/Épaules · Dos/Biceps · Jambes · Bras &amp; Abdos. Chaque groupe musculaire est travaillé à la bonne fréquence pour maximiser la récupération et la croissance.</p>
+        </div>
+        <div class="built-feature fade-in">
+          <span class="built-feature-icon">◆</span>
+          <h3>Lexique des exercices</h3>
+          <p>Chaque exercice : exécution précise, respiration, conseil de coach, erreur à éviter, séries, répétitions, temps de repos. Rien n'est laissé au hasard.</p>
+        </div>
+        <div class="built-feature fade-in">
+          <span class="built-feature-icon">◆</span>
+          <h3>Protocole nutrition</h3>
+          <p>Apports protéiques, timing des glucides, window post-entraînement — des stratégies concrètes pour optimiser la synthèse musculaire au quotidien.</p>
+        </div>
+        <div class="built-feature fade-in">
+          <span class="built-feature-icon">◆</span>
+          <h3>Progression mesurable</h3>
+          <p>Des tests de force hebdomadaires pour évaluer objectivement tes progrès. Tu sauras exactement où tu en es et ce qu'il faut ajuster.</p>
+        </div>
+        <div class="built-feature fade-in">
+          <span class="built-feature-icon">◆</span>
+          <h3>Adapté à la salle</h3>
+          <p>Barres libres, machines, câbles, haltères — chaque outil est utilisé à sa juste valeur dans une progression calculée pour maximiser l'hypertrophie.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA LISTE D'ATTENTE -->
+  <section class="built-cta">
+    <h2 class="fade-in">Prêt(e) à rejoindre<br /><em style="font-family:var(--font-title);font-style:italic;color:var(--gold)">KlynBuilt ?</em></h2>
+    <p class="fade-in">Sois le premier informé dès la mise en ligne. Aucun engagement.</p>
+    <div class="built-waitlist fade-in" style="max-width:440px;margin:0 auto 1.2rem;">
+      <input type="email" id="builtEmail2" placeholder="ton@email.com" />
+      <button onclick="handleBuiltWaitlist2()">M'avertir →</button>
+    </div>
+    <p class="built-waitlist-note">En attendant — <a href="boutique.html" style="color:var(--gold)">découvre les programmes disponibles →</a></p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html"><img src="assets/logo.png" alt="KLYN" class="footer-logo" /></a>
+          <p class="footer-tagline">Ton corps. Ton règne.<br />Transformation physique &amp; mentale de luxe.</p>
+        </div>
+        <nav class="footer-nav">
+          <div class="footer-col">
+            <h4 class="footer-col-title">Programmes</h4>
+            <ul><li><a href="klynshape.html">KlynShape</a></li><li><a href="klynmind.html">KlynMind</a></li><li><a href="klynbuilt.html">KlynBuilt</a></li><li><a href="boutique.html">Boutique</a></li></ul>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-title">Informations</h4>
+            <ul><li><a href="mentions-legales.html">Mentions légales</a></li><li><a href="cgv.html">CGV</a></li><li><a href="confidentialite.html">Confidentialité</a></li><li><a href="contact.html">Contact</a></li></ul>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 KLYN. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function handleBuiltWaitlist() {
+      const input = document.getElementById('builtEmail');
+      handleWaitlistInput(input);
+    }
+    function handleBuiltWaitlist2() {
+      const input = document.getElementById('builtEmail2');
+      handleWaitlistInput(input);
+    }
+    function handleWaitlistInput(input) {
+      if (!input || !input.value.includes('@')) { input?.focus(); return; }
+      const btn = input.nextElementSibling;
+      btn.textContent = '✓ Inscrit(e) !';
+      btn.style.background = '#4caf50';
+      btn.style.color = '#fff';
+      input.value = '';
+      setTimeout(() => {
+        btn.textContent = btn.id === 'builtEmail2' ? 'M\'avertir →' : 'Être notifié →';
+        btn.style.background = '';
+        btn.style.color = '';
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
