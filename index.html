@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script>window.location.replace("quiz.html");</script>
   <title>KLYN — Perte de Poids & Transformation · Programmes 28 Jours</title>
   <meta name="description" content="KLYN — Programmes de transformation physique premium. Perte de poids en 28 jours, yoga, calisthenics. Encadrés par des coachs d'élite. Bientôt disponible en app." />
   <meta property="og:title" content="KLYN — Perte de Poids en 28 Jours" />
@@ -537,5 +536,68 @@
   </footer>
 
   <script src="js/main.js"></script>
+
+  <!-- ══════ POPUP QUIZ ══════ -->
+  <div id="quiz-popup" style="
+    display:none;
+    position:fixed;top:0;left:0;right:0;bottom:0;
+    background:rgba(0,0,0,0.85);
+    z-index:9999;
+    align-items:center;
+    justify-content:center;
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+  ">
+    <div style="
+      background:#111;
+      border:1px solid rgba(212,175,55,0.2);
+      max-width:480px;
+      width:90%;
+      padding:3rem 2.5rem;
+      text-align:center;
+      position:relative;
+    ">
+      <button onclick="document.getElementById('quiz-popup').style.display='none'" style="
+        position:absolute;top:1rem;right:1.2rem;
+        background:none;border:none;color:rgba(255,255,255,0.4);
+        font-size:1.4rem;cursor:pointer;line-height:1;
+      ">✕</button>
+
+      <p style="font-family:'Montserrat',sans-serif;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#D4AF37;margin-bottom:1rem;">Quiz personnalisé · 2 min</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:#fff;margin-bottom:1rem;line-height:1.2;">Quel programme<br/>est fait pour toi ?</h2>
+      <p style="font-family:'Montserrat',sans-serif;font-size:0.85rem;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:2rem;">Réponds à 5 questions rapides et découvre le programme KLYN adapté à ton objectif, ton niveau et ton mode de vie.</p>
+
+      <a href="quiz.html" style="
+        display:block;
+        background:linear-gradient(135deg,#D4AF37,#b89610);
+        color:#0A0A0A;
+        font-family:'Montserrat',sans-serif;
+        font-size:0.8rem;
+        font-weight:700;
+        letter-spacing:0.12em;
+        text-transform:uppercase;
+        text-decoration:none;
+        padding:1.1rem 2rem;
+        margin-bottom:1rem;
+      ">Trouver mon programme →</a>
+
+      <button onclick="document.getElementById('quiz-popup').style.display='none'" style="
+        background:none;border:none;
+        color:rgba(255,255,255,0.3);
+        font-family:'Montserrat',sans-serif;
+        font-size:0.72rem;
+        cursor:pointer;
+        text-decoration:underline;
+      ">Je veux voir le site d'abord</button>
+    </div>
+  </div>
+
+  <script>
+    // Afficher le popup 1.2s après l'arrivée sur la page
+    setTimeout(function() {
+      const popup = document.getElementById('quiz-popup');
+      popup.style.display = 'flex';
+    }, 1200);
+  </script>
 </body>
 </html>
