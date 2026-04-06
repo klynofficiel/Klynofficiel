@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ton Plan KLYN Personnalisé — Résultat</title>
+  <meta name="description" content="Ton programme KLYN personnalisé est prêt. Découvre le plan adapté à ton profil." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* ── Result-specific styles ──────────────────────── */
+    :root {
+      --shape-c: #C9956A;
+      --mind-c:  #8B6BAE;
+      --mil-c:   #D4AF37;
+      --built-c: #D4AF37;
+    }
+
+    /* ── Result Hero ────────────────────────────────── */
+    .result-hero {
+      padding: 120px 0 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .result-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center top, rgba(212,175,55,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .result-eyebrow {
+      display: inline-block;
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .result-hero-title {
+      font-family: var(--font-title);
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 300; line-height: 1.1; margin-bottom: 1.2rem;
+    }
+    .result-hero-sub {
+      color: var(--gray); font-size: 0.92rem; line-height: 1.8;
+      max-width: 520px; margin: 0 auto 2rem;
+    }
+
+    /* ── Match card ──────────────────────────────────── */
+    .match-card {
+      max-width: 680px; margin: 0 auto 4rem;
+      padding: 2.5rem; border: 1px solid rgba(212,175,55,0.2);
+      background: rgba(212,175,55,0.04);
+      position: relative;
+    }
+    .match-card-label {
+      font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 0.5rem; opacity: 0.8;
+    }
+    .match-program-name {
+      font-family: var(--font-title); font-size: 2.2rem; font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+    .match-desc {
+      color: var(--gray); font-size: 0.88rem; line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    .match-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .match-tag {
+      font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.3rem 0.8rem; background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1); color: var(--gray);
+    }
+    .match-coach {
+      display: flex; align-items: center; gap: 0.7rem;
+      font-size: 0.8rem; color: var(--gray);
+    }
+    .match-coach-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+    }
+
+    /* ── Timer bar ───────────────────────────────────── */
+    .timer-bar {
+      background: #0e0e0e; border-top: 1px solid rgba(212,175,55,0.15);
+      border-bottom: 1px solid rgba(212,175,55,0.15);
+      padding: 0.9rem 0; text-align: center;
+      font-size: 0.78rem; letter-spacing: 0.05em;
+    }
+    .timer-bar .timer-label { color: var(--gray); margin-right: 0.5rem; }
+    .timer-bar .timer-count { color: var(--gold); font-weight: 700; font-size: 0.9rem; }
+
+    /* ── Checkout Section ────────────────────────────── */
+    .checkout-section {
+      padding: 5rem 0 6rem;
+    }
+    .checkout-header {
+      text-align: center; margin-bottom: 3rem;
+    }
+    .checkout-title {
+      font-family: var(--font-title);
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 300; margin-bottom: 0.8rem;
+    }
+    .checkout-sub { color: var(--gray); font-size: 0.9rem; }
+
+    /* ── Offers Grid ─────────────────────────────────── */
+    .offers-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    @media (max-width: 680px) {
+      .offers-grid { grid-template-columns: 1fr; }
+    }
+
+    .offer-card {
+      padding: 2.5rem 2rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: #111;
+      position: relative;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .offer-card:hover { transform: translateY(-4px); }
+
+    /* Popular offer */
+    .offer-card.popular {
+      border-color: var(--gold);
+      background: rgba(212,175,55,0.04);
+    }
+    .offer-card.popular::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--gold);
+    }
+    .popular-badge {
+      position: absolute; top: -1px; right: 2rem;
+      background: var(--gold); color: var(--black);
+      font-size: 0.62rem; font-weight: 800; letter-spacing: 0.15em;
+      text-transform: uppercase; padding: 0.35rem 0.9rem;
+    }
+
+    .offer-label {
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gray); margin-bottom: 0.8rem; display: block;
+    }
+    .offer-name {
+      font-family: var(--font-title); font-size: 1.6rem; font-weight: 400;
+      margin-bottom: 1rem; line-height: 1.2;
+    }
+    .offer-desc { color: var(--gray); font-size: 0.84rem; line-height: 1.7; margin-bottom: 1.5rem; }
+    .offer-includes { margin-bottom: 1.8rem; }
+    .offer-include-item {
+      display: flex; align-items: flex-start; gap: 0.7rem;
+      font-size: 0.83rem; color: var(--gray); margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+    .offer-include-item::before {
+      content: '✦'; color: var(--gold); font-size: 0.6rem; margin-top: 0.25rem;
+      flex-shrink: 0;
+    }
+    .offer-include-item.highlight { color: var(--white); }
+
+    .offer-price-row {
+      display: flex; align-items: baseline; gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+    .offer-price {
+      font-family: var(--font-title); font-size: 3rem; font-weight: 300;
+      color: var(--white); line-height: 1;
+    }
+    .offer-price-note { font-size: 0.78rem; color: var(--gray); }
+    .offer-old-price {
+      font-size: 1rem; color: var(--gray); text-decoration: line-through; opacity: 0.5;
+    }
+    .offer-economy { font-size: 0.72rem; color: #4caf50; font-weight: 600; }
+
+    .offer-cta {
+      display: block; width: 100%; padding: 1.1rem 1.5rem;
+      font-family: var(--font-body); font-size: 0.78rem;
+      font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      cursor: pointer; text-align: center; text-decoration: none;
+      transition: all 0.25s; border: none;
+    }
+    .offer-cta-primary {
+      background: var(--gold); color: var(--black);
+    }
+    .offer-cta-primary:hover { background: var(--gold2); transform: translateY(-2px); }
+    .offer-cta-secondary {
+      background: transparent; color: var(--white);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .offer-cta-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    .offer-guarantee {
+      text-align: center; margin-top: 0.8rem;
+      font-size: 0.7rem; color: var(--gray2);
+    }
+
+    /* ── Nutrition Preview ───────────────────────────── */
+    .nutrition-preview {
+      background: rgba(212,175,55,0.06); border: 1px solid rgba(212,175,55,0.2);
+      padding: 1.5rem; margin-top: 1.5rem; margin-bottom: 0;
+    }
+    .nutrition-preview-label {
+      font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.8rem; display: block;
+    }
+    .nutrition-preview-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .nutrition-preview-sub { font-size: 0.8rem; color: var(--gray); line-height: 1.6; }
+
+    /* ── Testimonials ────────────────────────────────── */
+    .result-temos {
+      padding: 4rem 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .result-temos-title {
+      font-family: var(--font-title); font-size: 2rem; font-weight: 300;
+      text-align: center; margin-bottom: 2.5rem;
+    }
+    .temos-row {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem; max-width: 900px; margin: 0 auto;
+    }
+    .temo-mini {
+      padding: 1.8rem; background: #111;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .temo-mini-stars { color: var(--gold); font-size: 0.8rem; margin-bottom: 0.8rem; }
+    .temo-mini-text {
+      font-size: 0.84rem; color: var(--gray); line-height: 1.75;
+      margin-bottom: 1rem; font-style: italic;
+    }
+    .temo-mini-author { font-size: 0.75rem; font-weight: 600; }
+    .temo-mini-prog { font-size: 0.7rem; color: var(--gray); }
+
+    /* ── Guarantee Section ───────────────────────────── */
+    .guarantee-strip {
+      background: rgba(76,175,80,0.06); border: 1px solid rgba(76,175,80,0.2);
+      padding: 2rem; max-width: 680px; margin: 0 auto 4rem;
+      text-align: center;
+    }
+    .guarantee-strip h3 { font-family: var(--font-title); font-size: 1.4rem; font-weight: 400; margin-bottom: 0.5rem; }
+    .guarantee-strip p { font-size: 0.84rem; color: var(--gray); line-height: 1.7; }
+
+    /* ── Utility ─────────────────────────────────────── */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    @media (max-width: 540px) { .wrap { padding: 0 1.2rem; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img src="assets/logo.png" alt="KLYN" /></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="klynshape.html">KlynShape</a></li>
+        <li><a href="klynmind.html">KlynMind</a></li>
+        <li><a href="klynbuilt.html">KlynBuilt</a></li>
+        <li><a href="boutique.html">Boutique</a></li>
+      </ul>
+      <a href="boutique.html" class="nav-cta-btn">Boutique</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- RESULT HERO -->
+  <div class="result-hero">
+    <div class="wrap">
+      <span class="result-eyebrow">✦ Analyse complète · Résultat personnalisé</span>
+      <h1 class="result-hero-title" id="heroTitle">Ton plan KLYN<br />est prêt.</h1>
+      <p class="result-hero-sub">Basé sur tes réponses, voici le programme KLYN qui correspond exactement à ton profil et tes objectifs.</p>
+
+      <!-- Match Card -->
+      <div class="match-card fade-in" id="matchCard">
+        <span class="match-card-label" id="matchLabel" style="color:var(--gold)">Ton programme recommandé</span>
+        <h2 class="match-program-name" id="matchName">—</h2>
+        <p class="match-desc" id="matchDesc">—</p>
+        <div class="match-tags" id="matchTags"></div>
+        <div class="match-coach">
+          <div class="match-coach-dot" id="coachDot"></div>
+          <span id="coachName">—</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- URGENCY TIMER -->
+  <div class="timer-bar">
+    <span class="timer-label">⚡ Offre personnalisée réservée pour</span>
+    <span class="timer-count" id="timerDisplay">15:00</span>
+    <span class="timer-label"> — après expiration, retour au prix standard</span>
+  </div>
+
+  <!-- CHECKOUT -->
+  <section class="checkout-section">
+    <div class="wrap">
+      <div class="checkout-header">
+        <span class="result-eyebrow">Choisis ton offre</span>
+        <h2 class="checkout-title" id="checkoutTitle">Lance-toi dans les 28 jours</h2>
+        <p class="checkout-sub">Accès immédiat · PDF premium · Accès à vie</p>
+      </div>
+
+      <div class="offers-grid">
+
+        <!-- OFFER 1: Programme seul -->
+        <div class="offer-card fade-in">
+          <span class="offer-label">Offre 1</span>
+          <h3 class="offer-name" id="offer1Name">Programme<br />28 jours</h3>
+          <p class="offer-desc" id="offer1Desc">Ton programme complet sur 28 jours. Progression structurée en 4 phases, lexique illustré, guides nutrition et récupération.</p>
+          <div class="offer-includes" id="offer1Includes">
+            <!-- Filled by JS -->
+          </div>
+          <div class="offer-price-row">
+            <span class="offer-price">29<span style="font-size:1.5rem">€</span></span>
+            <span class="offer-price-note">accès à vie</span>
+          </div>
+          <a href="#" class="offer-cta offer-cta-secondary" id="offer1Cta" target="_blank" rel="noopener">
+            Obtenir le programme →
+          </a>
+          <p class="offer-guarantee">🔒 Remboursé si insatisfait — 7 jours</p>
+        </div>
+
+        <!-- OFFER 2: Transformation Complète (Popular) -->
+        <div class="offer-card popular fade-in">
+          <div class="popular-badge">🔥 Le plus populaire</div>
+          <span class="offer-label">Offre 2 · Recommandée</span>
+          <h3 class="offer-name" id="offer2Name">Transformation<br />Complète</h3>
+          <p class="offer-desc" id="offer2Desc">Le combo gagnant : ton programme + un plan nutrition entièrement adapté à ton objectif. Résultats maximisés en 28 jours.</p>
+          <div class="offer-includes" id="offer2Includes">
+            <!-- Filled by JS -->
+          </div>
+          <div class="nutrition-preview" id="nutritionPreview">
+            <span class="nutrition-preview-label">✦ Inclus : Plan Nutrition Personnalisé</span>
+            <p class="nutrition-preview-title" id="nutritionTitle">—</p>
+            <p class="nutrition-preview-sub" id="nutritionDesc">—</p>
+          </div>
+          <div class="offer-price-row" style="margin-top:1.5rem">
+            <span class="offer-price" style="color:var(--gold)">49<span style="font-size:1.5rem">€</span></span>
+            <div>
+              <div class="offer-old-price">58€</div>
+              <div class="offer-economy">tu économises 9€</div>
+            </div>
+          </div>
+          <a href="#" class="offer-cta offer-cta-primary" id="offer2Cta" target="_blank" rel="noopener">
+            Obtenir la Transformation Complète →
+          </a>
+          <p class="offer-guarantee">🔒 Remboursé si insatisfait — 7 jours</p>
+        </div>
+
+      </div>
+
+      <!-- Guarantee strip -->
+      <div class="guarantee-strip" style="margin-top:3rem">
+        <h3>🔒 Satisfait(e) ou remboursé(e) — 7 jours</h3>
+        <p>Si dans les 7 jours suivant ton achat tu n'es pas satisfait(e), on te rembourse intégralement. Sans question. Paiement 100% sécurisé.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="result-temos">
+    <div class="wrap">
+      <h2 class="result-temos-title">Elles ont suivi leur plan. Elles témoignent.</h2>
+      <div class="temos-row" id="temosRow">
+        <!-- Filled by JS based on program -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="KLYN" class="footer-logo" />
+        <p class="footer-tagline">Transformation physique &amp; mentale premium.<br />Corps. Esprit. Style.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Programmes</h4>
+          <ul>
+            <li><a href="klynshape.html">KlynShape</a></li>
+            <li><a href="klynmind.html">KlynMind</a></li>
+            <li><a href="klynbuilt.html">KlynBuilt</a></li>
+            <li><a href="boutique.html">Boutique</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Infos</h4>
+          <ul>
+            <li><a href="mentions-legales.html">Mentions légales</a></li>
+            <li><a href="cgv.html">CGV</a></li>
+            <li><a href="confidentialite.html">Confidentialité</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 KLYN. Tous droits réservés. · Paiement sécurisé</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    /* ═══════════════════════════════════════════════════
+       KLYN Result — Personalization Logic
+    ═══════════════════════════════════════════════════ */
+
+    // ── 1. Read quiz data ─────────────────────────────
+    const params = new URLSearchParams(location.search);
+    const quiz = {
+      obj:  params.get('obj')  || '',
+      niv:  params.get('niv')  || '',
+      lieu: params.get('lieu') || '',
+      freq: params.get('freq') || '',
+      prio: params.get('prio') || ''
+    };
+
+    // Fallback: try localStorage
+    if (!quiz.obj) {
+      try {
+        const stored = JSON.parse(localStorage.getItem('klyn_quiz') || '{}');
+        if (stored.answers) {
+          quiz.obj  = stored.answers[1] || '';
+          quiz.niv  = stored.answers[2] || '';
+          quiz.lieu = stored.answers[3] || '';
+          quiz.freq = stored.answers[4] || '';
+          quiz.prio = stored.answers[5] || '';
+        }
+      } catch(e) {}
+    }
+
+    // ── 2. Program Mapping ────────────────────────────
+    const PROGRAMS = {
+      poids: {
+        shape_maison: {
+          name: 'KlynShape — Poids du Corps',
+          label: 'Programme · Perte de poids · À domicile',
+          desc: 'Programme complet sans équipement. 4 semaines progressives pour brûler les graisses, sculpter la silhouette et retrouver ton énergie — depuis chez toi.',
+          tags: ['28 jours', 'Zéro équipement', 'Coach Maya', 'Tous niveaux', 'PDF premium'],
+          coach: 'Encadré par Coach Maya · Spécialiste transformation physique',
+          color: '#C9956A',
+          link29: 'https://buy.stripe.com/fZucN60uX2DWbTU9jL5Rm04',
+          link49: 'https://buy.stripe.com/9B6bJ2b9B3I0f66anP5Rm0a',
+          includes1: ['Programme 28 jours complet', 'Lexique illustré 20 mouvements', 'Guide récupération & mobilité', 'Protocole nutrition inclus'],
+          includes2: ['Programme 28 jours complet', 'Lexique illustré 20 mouvements', 'Guide récupération & mobilité', 'Protocole nutrition inclus', 'Plan nutrition personnalisé perte de poids', 'Suivi macros & timing des repas'],
+          nutritionTitle: 'Plan Nutrition · Perte de Poids',
+          nutritionDesc: 'Macros calculées pour toi, timing des repas optimisé, hydratation, suppléments. Adapté à ton objectif brûle-graisse.',
+          temos: [
+            { stars: '★★★★★', text: '« J\'ai perdu 4,5 kg en 28 jours sans me priver. Le programme est incroyablement bien structuré — chaque semaine tu sens la progression. »', name: 'Sofia M.', prog: 'KlynShape Sans Matériel · Paris' },
+            { stars: '★★★★★', text: '« Ce qui m\'a le plus surprise c\'est la qualité du contenu — pas juste des exercices, mais la nutrition, la récupération, tout est pensé. »', name: 'Camille D.', prog: 'KlynShape · Lyon' },
+            { stars: '★★★★★', text: '« Enfin un programme qui me correspond. Le lexique est une vraie mine d\'or. Je ne savais pas faire 80% des exercices au départ. Maintenant je les maîtrise. »', name: 'Julie K.', prog: 'KlynShape · Strasbourg' }
+          ]
+        },
+        shape_salle: {
+          name: 'KlynShape — Haltères & Bandes',
+          label: 'Programme · Perte de poids · Avec équipement',
+          desc: 'Même objectif, intensité supérieure. Haltères légers et bandes élastiques pour brûler davantage et sculpter avec précision en 28 jours.',
+          tags: ['28 jours', 'Haltères + bandes', 'Coach Léna', 'Intermédiaire', 'PDF premium'],
+          coach: 'Encadré par Coach Léna · Force & Tonicité',
+          color: '#C9956A',
+          link29: 'https://buy.stripe.com/eVqeVe91t6Uc6zA0Nf5Rm06',
+          link49: 'https://buy.stripe.com/3cI6oIdhJ5Q8cXY7bD5Rm0b',
+          includes1: ['Programme 28 jours haute intensité', 'Lexique illustré 20 mouvements', 'Force, tonicité & récupération', 'Protocole nutrition inclus'],
+          includes2: ['Programme 28 jours haute intensité', 'Lexique illustré 20 mouvements', 'Force, tonicité & récupération', 'Protocole nutrition inclus', 'Plan nutrition personnalisé sculpture', 'Protocole macros & récupération'],
+          nutritionTitle: 'Plan Nutrition · Sculpture & Tonicité',
+          nutritionDesc: 'Apports protéiques optimisés, timing glucides post-entraînement, plan hydratation. Pensé pour accompagner l\'intensité du programme.',
+          temos: [
+            { stars: '★★★★★', text: '« Enfin un programme qui utilise mes haltères qui dormaient. Résultat incroyable en 4 semaines, Coach Léna est au top. »', name: 'Manon L.', prog: 'KlynShape Équipement · Paris' },
+            { stars: '★★★★★', text: '« −5 kg en 28 jours. Je n\'aurais jamais cru pouvoir transformer mon corps aussi vite. »', name: 'Camille R.', prog: 'KlynShape · Nantes' },
+            { stars: '★★★★★', text: '« Le plan nutrition en plus du programme, c\'est ce qui fait vraiment la différence. »', name: 'Élisa T.', prog: 'KlynShape · Bordeaux' }
+          ]
+        }
+      },
+      muscle: {
+        default: {
+          name: 'KlynBuilt',
+          label: 'Programme · Prise de muscle · Bientôt disponible',
+          desc: 'Méthode périodisée en 4 phases : Activation → Accumulation → Intensification → Réalisation. Conçu par Coach Atlas pour des résultats mesurables.',
+          tags: ['28 jours', 'Salle de sport', 'Coach Atlas', 'Périodisé', 'Bientôt'],
+          coach: 'Encadré par Coach Atlas · Spécialiste hypertrophie',
+          color: '#D4AF37',
+          link29: 'klynbuilt.html',
+          link49: 'klynbuilt.html',
+          includes1: ['Programme 28 jours périodisé', 'Lexique des exercices complet', 'Protocole nutrition prise de masse', 'Tests de force hebdomadaires'],
+          includes2: ['Programme 28 jours périodisé', 'Lexique des exercices complet', 'Protocole nutrition prise de masse', 'Tests de force hebdomadaires', 'Plan nutrition personnalisé masse musculaire', 'Timing glucides & apports protéiques'],
+          nutritionTitle: 'Plan Nutrition · Prise de Masse',
+          nutritionDesc: 'Apports caloriques ciblés, fenêtre anabolique post-entraînement, stratégie protéines. Pensé pour la prise de muscle propre.',
+          temos: [
+            { stars: '★★★★★', text: '« J\'attendais un programme structuré comme ça depuis longtemps. La périodisation fait vraiment la différence. »', name: 'Thomas R.', prog: 'KlynBuilt · Paris' },
+            { stars: '★★★★★', text: '« Coach Atlas explique chaque exercice avec une précision chirurgicale. J\'ai progressé plus en 4 semaines qu\'en 6 mois seul. »', name: 'Marc V.', prog: 'KlynBuilt · Lyon' },
+            { stars: '★★★★★', text: '« Le plan nutrition inclus est parfaitement calibré pour la prise de muscle. Vraiment complet. »', name: 'Julien K.', prog: 'KlynBuilt · Nice' }
+          ]
+        }
+      },
+      transformation: {
+        default: {
+          name: 'KlynMilitary',
+          label: 'Programme · Transformation · Calisthenics',
+          desc: 'Programme calisthénique intensif de 28 jours. Discipline, force et mental froid — sans matériel, sans compromis. Pour forger un physique d\'athlète.',
+          tags: ['28 jours', 'Sans matériel', 'Coach Onyx', 'Intermédiaire', 'PDF premium'],
+          coach: 'Encadré par Coach Onyx · Préparatrice physique, 8 ans de calisthenics',
+          color: '#D4AF37',
+          link29: 'https://buy.stripe.com/14A00k5Ph1zSaPQ9jL5Rm08',
+          link49: 'https://buy.stripe.com/5kQ7sM6TlemEaPQdA15Rm0c',
+          includes1: ['Programme calisthénique 28 jours', 'Lexique illustré techniques & postures', 'Protocole récupération athlète', 'Plan nutrition performance'],
+          includes2: ['Programme calisthénique 28 jours', 'Lexique illustré techniques & postures', 'Protocole récupération athlète', 'Plan nutrition performance', 'Plan nutrition personnalisé performance', 'Stratégie énergie & récupération'],
+          nutritionTitle: 'Plan Nutrition · Performance & Athlète',
+          nutritionDesc: 'Carburant adapté à l\'effort calisthénique : glucides fonctionnels, protéines de récupération, hydratation optimisée.',
+          temos: [
+            { stars: '★★★★★', text: '« KlynMilitary m\'a redonné une discipline que j\'avais perdue. Coach Onyx ne fait pas semblant — c\'est du sérieux. »', name: 'Alexandre M.', prog: 'KlynMilitary · Paris' },
+            { stars: '★★★★★', text: '« La progression est parfaitement dosée. Jamais trop facile, jamais décourageant. 28 jours de transformation réelle. »', name: 'Noa P.', prog: 'KlynMilitary · Marseille' },
+            { stars: '★★★★★', text: '« J\'ai essayé d\'autres programmes calisthenics. KlynMilitary est dans une autre catégorie. »', name: 'Kevin B.', prog: 'KlynMilitary · Toulouse' }
+          ]
+        }
+      }
+    };
+
+    // ── 3. Resolve program ────────────────────────────
+    function resolveProgram() {
+      let prog;
+      if (quiz.obj === 'muscle') {
+        prog = PROGRAMS.muscle.default;
+      } else if (quiz.obj === 'transformation') {
+        prog = PROGRAMS.transformation.default;
+      } else {
+        // Default: poids
+        prog = (quiz.lieu === 'salle')
+          ? PROGRAMS.poids.shape_salle
+          : PROGRAMS.poids.shape_maison;
+      }
+      return prog;
+    }
+
+    // ── 4. Render ─────────────────────────────────────
+    function render(prog) {
+      // Match card
+      document.getElementById('matchName').textContent  = prog.name;
+      document.getElementById('matchDesc').textContent  = prog.desc;
+      document.getElementById('matchLabel').textContent = prog.label;
+      document.getElementById('coachName').textContent  = prog.coach;
+      document.getElementById('coachDot').style.background = prog.color;
+
+      const tagsEl = document.getElementById('matchTags');
+      tagsEl.innerHTML = '';
+      prog.tags.forEach(t => {
+        const span = document.createElement('span');
+        span.className = 'match-tag';
+        span.textContent = t;
+        tagsEl.appendChild(span);
+      });
+
+      // Offer 1 includes
+      const inc1 = document.getElementById('offer1Includes');
+      inc1.innerHTML = '';
+      prog.includes1.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'offer-include-item';
+        div.textContent = item;
+        inc1.appendChild(div);
+      });
+
+      // Offer 2 includes
+      const inc2 = document.getElementById('offer2Includes');
+      inc2.innerHTML = '';
+      prog.includes2.forEach((item, i) => {
+        const div = document.createElement('div');
+        div.className = 'offer-include-item' + (i >= prog.includes1.length ? ' highlight' : '');
+        div.textContent = item;
+        inc2.appendChild(div);
+      });
+
+      // Nutrition preview
+      document.getElementById('nutritionTitle').textContent = prog.nutritionTitle;
+      document.getElementById('nutritionDesc').textContent  = prog.nutritionDesc;
+
+      // CTAs
+      const cta1 = document.getElementById('offer1Cta');
+      const cta2 = document.getElementById('offer2Cta');
+
+      // KlynBuilt is coming soon — adapt CTAs
+      if (quiz.obj === 'muscle') {
+        cta1.href = 'klynbuilt.html';
+        cta1.textContent = 'Être notifié dès la sortie →';
+        cta2.href = 'klynbuilt.html';
+        cta2.textContent = 'Rejoindre la liste d\'attente →';
+        document.getElementById('offer2Name').innerHTML = 'Transformation<br />Complète — Bientôt';
+        document.querySelector('.timer-bar').style.display = 'none';
+      } else {
+        cta1.href = prog.link29;
+        cta2.href = prog.link49;
+      }
+
+      // Offer names
+      document.getElementById('offer1Name').innerHTML =
+        prog.name + '<br /><span style="font-size:1rem;color:var(--gray)">Programme seul</span>';
+
+      // Checkout title
+      document.getElementById('checkoutTitle').textContent =
+        'Lance-toi dans les 28 jours — ' + prog.name;
+
+      // Testimonials
+      const temosEl = document.getElementById('temosRow');
+      temosEl.innerHTML = '';
+      (prog.temos || []).forEach(t => {
+        temosEl.innerHTML += `
+          <div class="temo-mini fade-in">
+            <div class="temo-mini-stars">${t.stars}</div>
+            <p class="temo-mini-text">${t.text}</p>
+            <div class="temo-mini-author">${t.name}</div>
+            <div class="temo-mini-prog">${t.prog}</div>
+          </div>`;
+      });
+    }
+
+    // ── 5. Urgency Timer ──────────────────────────────
+    function startTimer() {
+      const KEY = 'klyn_result_timer';
+      const DURATION = 15 * 60; // 15 minutes in seconds
+
+      let endTime = parseInt(localStorage.getItem(KEY) || '0');
+      const now = Math.floor(Date.now() / 1000);
+      if (!endTime || endTime <= now) {
+        endTime = now + DURATION;
+        localStorage.setItem(KEY, endTime);
+      }
+
+      const display = document.getElementById('timerDisplay');
+
+      function tick() {
+        const remaining = endTime - Math.floor(Date.now() / 1000);
+        if (remaining <= 0) {
+          display.textContent = '00:00';
+          display.style.color = '#cc4444';
+          return;
+        }
+        const m = Math.floor(remaining / 60).toString().padStart(2, '0');
+        const s = (remaining % 60).toString().padStart(2, '0');
+        display.textContent = m + ':' + s;
+        // Pulse red when < 2 min
+        if (remaining < 120) display.style.color = '#cc4444';
+        setTimeout(tick, 1000);
+      }
+      tick();
+    }
+
+    // ── 6. Init ───────────────────────────────────────
+    const prog = resolveProgram();
+    render(prog);
+    startTimer();
+
+    // Fade-in observer (reuse from main.js)
+    document.addEventListener('DOMContentLoaded', () => {
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+    });
+  </script>
+</body>
+</html>

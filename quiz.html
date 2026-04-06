@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz KLYN — Trouve ton programme personnalisé</title>
+  <meta name="description" content="5 questions pour découvrir le programme KLYN parfaitement adapté à ton profil et tes objectifs." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black:  #0A0A0A;
+      --black2: #111111;
+      --black3: #181818;
+      --gold:   #D4AF37;
+      --gold2:  #E8C84A;
+      --white:  #FFFFFF;
+      --gray:   #888888;
+      --gray2:  #555555;
+      --font-title: 'Cormorant Garamond', Georgia, serif;
+      --font-body:  'Montserrat', Arial, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Progress Bar ───────────────────────────────── */
+    .quiz-progress-wrap {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 3px; background: rgba(255,255,255,0.08); z-index: 200;
+    }
+    .quiz-progress-bar {
+      height: 100%; background: var(--gold);
+      transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+      width: 0%;
+    }
+
+    /* ── Top Bar ────────────────────────────────────── */
+    .quiz-topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 64px; display: flex; align-items: center;
+      justify-content: center; z-index: 100;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+      padding-top: 3px;
+    }
+    .quiz-topbar img { height: 28px; width: auto; }
+    .quiz-back-btn {
+      position: fixed; top: 20px; left: 1.5rem;
+      font-size: 0.72rem; letter-spacing: 0.1em; color: var(--gray);
+      cursor: pointer; display: none; align-items: center; gap: 0.4rem;
+      z-index: 101; border: none; background: none; font-family: var(--font-body);
+      transition: color 0.2s;
+    }
+    .quiz-back-btn:hover { color: var(--white); }
+
+    /* ── Wrapper ────────────────────────────────────── */
+    .quiz-wrapper {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 5rem 1.5rem 3rem;
+    }
+    .quiz-inner { max-width: 600px; width: 100%; }
+
+    /* ── Screens ────────────────────────────────────── */
+    .quiz-screen {
+      display: none;
+      animation: qFadeIn 0.45s cubic-bezier(0.4,0,0.2,1);
+    }
+    .quiz-screen.active { display: block; }
+    @keyframes qFadeIn {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Step dots ─────────────────────────────────── */
+    .step-dots { display: flex; gap: 0.5rem; margin-bottom: 2.5rem; }
+    .step-dot {
+      height: 3px; width: 28px; background: rgba(255,255,255,0.12);
+      border-radius: 2px; transition: all 0.3s;
+    }
+    .step-dot.done    { background: var(--gold); }
+    .step-dot.current { background: var(--white); }
+
+    /* ── Labels ─────────────────────────────────────── */
+    .quiz-eyebrow {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    /* ── Question ───────────────────────────────────── */
+    .quiz-q {
+      font-family: var(--font-title);
+      font-size: clamp(2rem, 5.5vw, 3rem);
+      font-weight: 300; line-height: 1.15;
+      margin-bottom: 2.5rem;
+    }
+    .quiz-q em { font-style: italic; color: var(--gold); }
+
+    /* ── Options ────────────────────────────────────── */
+    .quiz-options { display: flex; flex-direction: column; gap: 0.75rem; }
+    .quiz-opt {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.1rem 1.4rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--white); font-family: var(--font-body);
+      font-size: 0.88rem; font-weight: 400;
+      cursor: pointer; transition: all 0.25s; text-align: left;
+    }
+    .quiz-opt:hover {
+      border-color: var(--gold); background: rgba(212,175,55,0.07);
+      transform: translateX(5px);
+    }
+    .quiz-opt.selected {
+      border-color: var(--gold); background: rgba(212,175,55,0.12);
+      color: var(--gold);
+    }
+    .opt-icon { font-size: 1.3rem; min-width: 1.8rem; text-align: center; }
+
+    /* ── Welcome Screen ─────────────────────────────── */
+    .quiz-welcome-sub {
+      color: var(--gray); font-size: 0.9rem; line-height: 1.8;
+      margin-bottom: 2.5rem; max-width: 480px;
+    }
+    .btn-quiz-start {
+      display: block; width: 100%; padding: 1.1rem 2rem;
+      background: var(--gold); color: var(--black);
+      font-family: var(--font-body); font-size: 0.78rem;
+      font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+      border: none; cursor: pointer; transition: all 0.25s;
+      text-align: center;
+    }
+    .btn-quiz-start:hover { background: var(--gold2); transform: translateY(-2px); }
+    .quiz-trust {
+      display: flex; gap: 1.5rem; flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .quiz-trust-item {
+      font-size: 0.72rem; color: var(--gray); letter-spacing: 0.05em;
+      display: flex; align-items: center; gap: 0.3rem;
+    }
+
+    /* ── Loading Screen ─────────────────────────────── */
+    .loading-center { text-align: center; padding: 2rem 0; }
+    .loading-ring {
+      width: 52px; height: 52px; border-radius: 50%;
+      border: 2px solid rgba(212,175,55,0.2);
+      border-top-color: var(--gold);
+      animation: spin 0.9s linear infinite;
+      margin: 0 auto 2rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-title {
+      font-family: var(--font-title); font-size: 2rem;
+      font-weight: 300; margin-bottom: 0.8rem;
+    }
+    .loading-sub { color: var(--gray); font-size: 0.8rem; letter-spacing: 0.05em; }
+    .loading-bar-wrap {
+      max-width: 280px; margin: 2rem auto 0;
+      height: 2px; background: rgba(255,255,255,0.1);
+    }
+    .loading-bar-fill {
+      height: 100%; background: var(--gold); width: 0%;
+      transition: width 0.1s linear;
+    }
+
+    /* ── Email Screen ───────────────────────────────── */
+    .email-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.3);
+      color: var(--gold); font-size: 0.7rem; letter-spacing: 0.15em;
+      text-transform: uppercase; padding: 0.4rem 1rem;
+      margin-bottom: 2rem;
+    }
+    .email-title {
+      font-family: var(--font-title); font-size: clamp(2.2rem, 6vw, 3.2rem);
+      font-weight: 300; line-height: 1.1; margin-bottom: 1rem;
+    }
+    .email-sub { color: var(--gray); font-size: 0.9rem; line-height: 1.8; margin-bottom: 2rem; }
+    .email-form { display: flex; flex-direction: column; gap: 0.9rem; }
+    .email-input {
+      width: 100%; padding: 1rem 1.2rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--white); font-family: var(--font-body); font-size: 0.9rem;
+      outline: none; transition: border-color 0.25s; border-radius: 1px;
+    }
+    .email-input:focus { border-color: var(--gold); }
+    .email-input::placeholder { color: var(--gray2); }
+    .email-input.error { border-color: #cc4444; }
+    .btn-email-submit {
+      width: 100%; padding: 1.1rem 2rem;
+      background: var(--gold); color: var(--black);
+      font-family: var(--font-body); font-size: 0.78rem;
+      font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+      border: none; cursor: pointer; transition: all 0.25s;
+    }
+    .btn-email-submit:hover:not(:disabled) { background: var(--gold2); transform: translateY(-2px); }
+    .btn-email-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+    .rgpd { font-size: 0.7rem; color: var(--gray2); line-height: 1.6; }
+    .rgpd a { color: var(--gray); text-decoration: underline; }
+
+    /* ── Responsive ─────────────────────────────────── */
+    @media (max-width: 480px) {
+      .quiz-q { font-size: 1.8rem; }
+      .quiz-opt { padding: 1rem 1.1rem; font-size: 0.84rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Progress Bar -->
+  <div class="quiz-progress-wrap">
+    <div class="quiz-progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="quiz-topbar">
+    <a href="index.html"><img src="assets/logo.png" alt="KLYN" /></a>
+  </div>
+
+  <!-- Back Button -->
+  <button class="quiz-back-btn" id="backBtn" onclick="goBack()">← Retour</button>
+
+  <div class="quiz-wrapper">
+    <div class="quiz-inner">
+
+      <!-- ── Screen 0 : Welcome ───────────────────────── -->
+      <div class="quiz-screen active" id="screen-0">
+        <span class="quiz-eyebrow">✦ Programme personnalisé · 2 minutes</span>
+        <h1 class="quiz-q">Quel programme<br /><em>est fait pour toi ?</em></h1>
+        <p class="quiz-welcome-sub">Réponds à 5 questions. Reçois ton programme KLYN sur-mesure. 28 jours pour transformer ton corps.</p>
+        <button class="btn-quiz-start" onclick="goToScreen(1)">Commencer le quiz →</button>
+        <div class="quiz-trust">
+          <span class="quiz-trust-item">⭐ 4.9/5</span>
+          <span class="quiz-trust-item">✓ 100% personnalisé</span>
+          <span class="quiz-trust-item">✓ Résultats en 28 jours</span>
+        </div>
+      </div>
+
+      <!-- ── Screen 1 : Objectif ─────────────────────── -->
+      <div class="quiz-screen" id="screen-1">
+        <div class="step-dots" id="dots-1"></div>
+        <span class="quiz-eyebrow">Question 1 / 5</span>
+        <h2 class="quiz-q">Quel est ton<br /><em>objectif principal ?</em></h2>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="pick(1,'poids',this)">
+            <span class="opt-icon">🔥</span>
+            <span>Perte de poids</span>
+          </button>
+          <button class="quiz-opt" onclick="pick(1,'muscle',this)">
+            <span class="opt-icon">💪</span>
+            <span>Prise de muscle</span>
+          </button>
+          <button class="quiz-opt" onclick="pick(1,'transformation',this)">
+            <span class="opt-icon">⚡</span>
+            <span>Transformation complète</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Screen 2 : Niveau ───────────────────────── -->
+      <div class="quiz-screen" id="screen-2">
+        <div class="step-dots" id="dots-2"></div>
+        <span class="quiz-eyebrow">Question 2 / 5</span>
+        <h2 class="quiz-q">Quel est ton<br /><em>niveau actuel ?</em></h2>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="pick(2,'debutant',this)">
+            <span class="opt-icon">🌱</span>
+            <span>Débutant(e) — Je commence</span>
+          </button>
+          <button class="quiz-opt" onclick="pick(2,'intermediaire',this)">
+            <span class="opt-icon">🎯</span>
+            <span>Intermédiaire — J'ai déjà une base</span>
+          </button>
+          <button class="quiz-opt" onclick="pick(2,'avance',this)">
+            <span class="opt-icon">🏆</span>
+            <span>Avancé(e) — Je m'entraîne régulièrement</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Screen 3 : Lieu ─────────────────────────── -->
+      <div class="quiz-screen" id="screen-3">
+        <div class="step-dots" id="dots-3"></div>
+        <span class="quiz-eyebrow">Question 3 / 5</span>
+        <h2 class="quiz-q">Où tu t'entraînes<br /><em>le plus souvent ?</em></h2>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="pick(3,'maison',this)">
+            <span class="opt-icon">🏠</span>
+            <span>À la maison — Sans équipement</span>
+          </button>
+          <button class="quiz-opt" onclick="pick(3,'salle',this)">
+            <span class="opt-icon">🏋️</span>
+            <span>En salle — Avec équipement</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Screen 4 : Fréquence ────────────────────── -->
+      <div class="quiz-screen" id="screen-4">
+        <div class="step-dots" id="dots-4"></div>
+        <span class="quiz-eyebrow">Question 4 / 5</span>
+        <h2 class="quiz-q">Combien de fois<br /><em>par semaine ?</em></h2>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="pick(4,'2-3',this)">
+            <span class="opt-icon">📅</span>
+            <span>2-3 fois par semaine</span>
+          </button>
+          <button class="quiz-opt" onclick="pick(4,'3-4',this)">
+            <span class="opt-icon">📆</span>
+            <span>3-4 fois par semaine</span>
+          </button>
+          <button class="quiz-opt" onclick="pick(4,'5+',this)">
+            <span class="opt-icon">🔥</span>
+            <span>5 fois ou plus</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Screen 5 : Priorité ─────────────────────── -->
+      <div class="quiz-screen" id="screen-5">
+        <div class="step-dots" id="dots-5"></div>
+        <span class="quiz-eyebrow">Question 5 / 5</span>
+        <h2 class="quiz-q">Ce qui compte<br /><em>le plus pour toi ?</em></h2>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="pick(5,'esthetique',this)">
+            <span class="opt-icon">✨</span>
+            <span>Esthétique — Sculpter mon corps</span>
+          </button>
+          <button class="quiz-opt" onclick="pick(5,'performance',this)">
+            <span class="opt-icon">⚡</span>
+            <span>Performance — Aller plus loin</span>
+          </button>
+          <button class="quiz-opt" onclick="pick(5,'discipline',this)">
+            <span class="opt-icon">🎯</span>
+            <span>Discipline — Construire des habitudes</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Screen Loading ──────────────────────────── -->
+      <div class="quiz-screen" id="screen-loading">
+        <div class="loading-center">
+          <div class="loading-ring"></div>
+          <p class="loading-title">Analyse de ton profil en cours…</p>
+          <p class="loading-sub">Calcul de ton programme KLYN personnalisé</p>
+          <div class="loading-bar-wrap">
+            <div class="loading-bar-fill" id="loadingBar"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Screen Email ────────────────────────────── -->
+      <div class="quiz-screen" id="screen-email">
+        <div class="email-badge">✦ Ton plan est prêt</div>
+        <h2 class="email-title">Ton plan KLYN<br /><em style="color:var(--gold)">personnalisé est prêt.</em></h2>
+        <p class="email-sub">Entre ton email pour accéder à ton programme KLYN adapté exactement à ton profil et tes objectifs.</p>
+        <form class="email-form" id="emailForm" onsubmit="submitEmail(event)" novalidate>
+          <input
+            type="email"
+            id="quizEmail"
+            class="email-input"
+            placeholder="ton@email.com"
+            autocomplete="email"
+          />
+          <button type="submit" class="btn-email-submit" id="emailBtn">
+            Voir mon plan →
+          </button>
+          <p class="rgpd">En continuant, tu acceptes de recevoir nos emails. Désinscription à tout moment. <a href="confidentialite.html">Politique de confidentialité</a>.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    /* ═══════════════════════════════════════════
+       KLYN Quiz — Logic
+    ═══════════════════════════════════════════ */
+
+    const answers = {};
+    const TOTAL = 5;
+    const ORDER = ['screen-0','screen-1','screen-2','screen-3','screen-4','screen-5','screen-loading','screen-email'];
+
+    function renderDots(step) {
+      for (let i = 1; i <= 5; i++) {
+        const el = document.getElementById('dots-' + i);
+        if (!el) continue;
+        el.innerHTML = '';
+        for (let j = 1; j <= 5; j++) {
+          const d = document.createElement('div');
+          d.className = 'step-dot';
+          if (j < i)  d.classList.add('done');
+          if (j === i) d.classList.add('current');
+          if (answers[j] && j !== i) d.classList.add('done');
+          el.appendChild(d);
+        }
+      }
+    }
+
+    function updateProgress() {
+      const done = Object.keys(answers).length;
+      const pct = Math.round((done / TOTAL) * 100);
+      document.getElementById('progressBar').style.width = pct + '%';
+    }
+
+    function goToScreen(id) {
+      const idStr = (typeof id === 'number') ? 'screen-' + id : id;
+      document.querySelectorAll('.quiz-screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(idStr).classList.add('active');
+      renderDots(parseInt(idStr.replace('screen-', '')) || 0);
+      updateProgress();
+      // Back button
+      const num = parseInt(idStr.replace('screen-', ''));
+      document.getElementById('backBtn').style.display =
+        (num >= 1 && num <= 5) ? 'flex' : 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goBack() {
+      const cur = document.querySelector('.quiz-screen.active')?.id;
+      const idx = ORDER.indexOf(cur);
+      if (idx > 1) goToScreen(ORDER[idx - 1]);
+    }
+
+    function pick(question, value, btn) {
+      answers[question] = value;
+      // Visual
+      btn.closest('.quiz-options').querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      // Auto-advance
+      setTimeout(() => {
+        if (question < 5) {
+          goToScreen(question + 1);
+        } else {
+          goToScreen('screen-loading');
+          runLoading();
+        }
+      }, 360);
+    }
+
+    function runLoading() {
+      updateProgress();
+      document.getElementById('progressBar').style.width = '95%';
+      const bar = document.getElementById('loadingBar');
+      let pct = 0;
+      const tick = setInterval(() => {
+        pct = Math.min(pct + 2, 92);
+        bar.style.width = pct + '%';
+      }, 45);
+      setTimeout(() => {
+        clearInterval(tick);
+        bar.style.width = '100%';
+        document.getElementById('progressBar').style.width = '100%';
+        setTimeout(() => goToScreen('screen-email'), 300);
+      }, 2200);
+    }
+
+    function submitEmail(e) {
+      e.preventDefault();
+      const emailEl = document.getElementById('quizEmail');
+      const email = emailEl.value.trim();
+      const btn = document.getElementById('emailBtn');
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        emailEl.classList.add('error');
+        emailEl.focus();
+        setTimeout(() => emailEl.classList.remove('error'), 1500);
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Chargement…';
+
+      // 1. Store locally
+      const quizData = {
+        email,
+        answers: { ...answers },
+        timestamp: new Date().toISOString(),
+        source: 'quiz_klyn'
+      };
+      localStorage.setItem('klyn_quiz', JSON.stringify(quizData));
+
+      // 2. API-ready structure (uncomment & replace endpoint when available)
+      // fetch('/api/quiz-lead', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(quizData)
+      // }).catch(console.error);
+
+      // 3. Redirect to result
+      setTimeout(() => {
+        const p = new URLSearchParams({
+          obj:  answers[1] || '',
+          niv:  answers[2] || '',
+          lieu: answers[3] || '',
+          freq: answers[4] || '',
+          prio: answers[5] || ''
+        });
+        window.location.href = 'result.html?' + p.toString();
+      }, 700);
+    }
+
+    // Init
+    renderDots(0);
+    updateProgress();
+  </script>
+</body>
+</html>
