@@ -80,6 +80,18 @@
     .dual-buy-header { text-align: center; margin-bottom: 3rem; }
     .dual-buy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
     @media (max-width: 768px) { .dual-buy-grid { grid-template-columns: 1fr; } }
+
+    /* ─── Bundle preview ─── */
+    .bundle-section { padding: 5rem 0; background: linear-gradient(to bottom, transparent, rgba(201,149,106,0.04), transparent); }
+    .bundle-section .container { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
+    .bundle-header { text-align: center; margin-bottom: 3rem; }
+    .bundle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    @media (max-width: 768px) { .bundle-grid { grid-template-columns: 1fr; } }
+    .bundle-card { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+    .bundle-img-wrap { width: 100%; border: 1px solid rgba(201,149,106,0.2); border-radius: 4px; overflow: hidden; transition: border-color 0.3s, transform 0.3s; }
+    .bundle-img-wrap:hover { border-color: var(--or-shape); transform: translateY(-4px); }
+    .bundle-img-wrap img { width: 100%; height: auto; display: block; }
+    .bundle-label { font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--or-shape); text-align: center; }
   </style>
 </head>
 <body>
@@ -285,6 +297,31 @@
     </div>
   </section>
 
+  <!-- BUNDLE PREVIEW -->
+  <section class="bundle-section">
+    <div class="container">
+      <div class="bundle-header fade-up">
+        <p class="section-eyebrow" style="color:var(--or-shape)">Le bundle complet</p>
+        <h2 class="section-title">Ce que tu reçois</h2>
+        <p style="color:var(--gray);font-family:var(--font-body);font-size:0.9rem;max-width:520px;margin:0.8rem auto 0;line-height:1.7;">Chaque programme est livré sous forme de PDF premium, structuré semaine par semaine, prêt à être suivi depuis n'importe quel appareil.</p>
+      </div>
+      <div class="bundle-grid">
+        <div class="bundle-card fade-up">
+          <div class="bundle-img-wrap">
+            <img src="assets/bundle_bw.png" alt="Bundle KlynShape Bodyweight" />
+          </div>
+          <span class="bundle-label">KlynShape · Sans matériel</span>
+        </div>
+        <div class="bundle-card fade-up">
+          <div class="bundle-img-wrap">
+            <img src="assets/bundle_eq.png" alt="Bundle KlynShape Équipement" />
+          </div>
+          <span class="bundle-label">KlynShape · Avec matériel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA ACHAT DUAL -->
   <section class="dual-buy" id="acheter">
     <div class="container">
@@ -309,7 +346,7 @@
             <li>✦ Zéro équipement requis</li>
             <li>✦ Accès immédiat après paiement</li>
           </ul>
-          <a href="https://buy.stripe.com/fZucN60uX2DWbTU9jL5Rm04" class="btn btn-shape btn-full prog-buy-btn" target="_blank" rel="noopener">
+          <a href="https://klyn.lemonsqueezy.com/checkout/buy/cac20624-c317-49e9-a9ab-10d26ffbe627" class="btn btn-shape btn-full prog-buy-btn" target="_blank" rel="noopener">
             Obtenir KlynShape BW →
           </a>
           <p class="buy-guarantee">🔒 Paiement sécurisé · Satisfait(e) ou remboursé(e) 7 jours</p>
@@ -330,7 +367,7 @@
             <li>✦ Adapté haltères + bandes élastiques</li>
             <li>✦ Accès immédiat après paiement</li>
           </ul>
-          <a href="https://buy.stripe.com/eVqeVe91t6Uc6zA0Nf5Rm06" class="btn btn-shape btn-full prog-buy-btn" target="_blank" rel="noopener">
+          <a href="https://klyn.lemonsqueezy.com/checkout/buy/0d7b1e73-b3b0-4a8a-8aff-a5ca74e752bc" class="btn btn-shape btn-full prog-buy-btn" target="_blank" rel="noopener">
             Obtenir KlynShape Équipement →
           </a>
           <p class="buy-guarantee">🔒 Paiement sécurisé · Satisfait(e) ou remboursé(e) 7 jours</p>
