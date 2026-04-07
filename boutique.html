@@ -40,8 +40,8 @@
     .tag-mind { background: rgba(139,107,174,0.1); color: var(--or-mind); }
     .tag-built, .tag-bundle { background: rgba(212,175,55,0.1); color: var(--or); }
 
-    /* Bundle image dans la carte */
-    .boutique-card-img { margin: -2.5rem -2rem 1.5rem; overflow: hidden; border-bottom: 1px solid rgba(212,175,55,0.15); }
+    /* Image bundle dans les cartes */
+    .boutique-card-img { margin: -2.5rem -2rem 1.5rem; overflow: hidden; border-bottom: 1px solid rgba(212,175,55,0.15); background: #0a0a0a; min-height: 0; }
     .boutique-card-img img { width: 100%; height: auto; display: block; transition: transform 0.5s; }
     .boutique-card:hover .boutique-card-img img { transform: scale(1.03); }
 
@@ -103,7 +103,7 @@
   </nav>
 
   <!-- SHOP HERO -->
-  <div class="shop-hero fade-up">
+  <div class="shop-hero">
     <p class="section-eyebrow">Boutique Klyn</p>
     <h1>Choisis ta transformation</h1>
     <p class="shop-intro">Programmes digitaux premium. Accès immédiat après paiement. Conçus pour produire des résultats réels en 28 jours.</p>
@@ -224,7 +224,7 @@
            style="border:1px solid rgba(212,175,55,0.25);background:rgba(212,175,55,0.03);position:relative;">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(135deg,var(--or),var(--or-shape));"></div>
         <div class="boutique-card-img">
-          <img src="assets/bundle_bw.png" alt="Bundle KlynShape Bodyweight" />
+          <img src="assets/bundle_bw.png" alt="Bundle KlynShape Bodyweight" loading="lazy" />
         </div>
         <div style="display:inline-block;background:var(--or);color:#000;font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0.3rem 0.8rem;margin-bottom:1rem;">🔥 Le plus populaire</div>
         <span class="boutique-tag tag-bundle">Bundle · KlynShape Sans Matériel</span>
@@ -251,7 +251,7 @@
            style="border:1px solid rgba(212,175,55,0.25);background:rgba(212,175,55,0.03);position:relative;">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(135deg,var(--or),var(--or-shape));"></div>
         <div class="boutique-card-img">
-          <img src="assets/bundle_eq.png" alt="Bundle KlynShape Équipement" />
+          <img src="assets/bundle_eq.png" alt="Bundle KlynShape Équipement" loading="lazy" />
         </div>
         <span class="boutique-tag tag-bundle">Bundle · KlynShape Avec Matériel</span>
         <h3>Bundle Haltères &amp; Bandes<br /><span style="font-size:1rem;color:var(--gray);font-family:var(--font-body);font-weight:400">Programme + Plan Nutrition</span></h3>
@@ -345,6 +345,13 @@
 
   <script src="js/main.js"></script>
   <script>
+    // Fallback : s'assure que toutes les cartes deviennent visibles rapidement
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelectorAll('.fade-up, .fade-in').forEach(el => el.classList.add('visible'));
+      }, 200);
+    });
+
     // Boutique filter
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
