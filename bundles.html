@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bundles KLYN — Programmes complets à prix exclusif</title>
+  <meta name="description" content="Découvrez les bundles KLYN : programmes fitness premium regroupés pour une transformation complète. Corps, esprit, nutrition — tout en un." />
+  <meta name="keywords" content="bundle klyn, programme fitness complet, klynshape bundle, programme perte de poids pdf" />
+  <meta property="og:title" content="Bundles KLYN — Programmes complets" />
+  <meta property="og:description" content="Tous les bundles KLYN. Programme + nutrition + guides — accès immédiat." />
+  <meta property="og:type" content="product" />
+  <link rel="canonical" href="https://klynofficiel.org/bundles.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+
+  <style>
+    /* ── Page hero ── */
+    .bundles-hero {
+      padding: 130px 0 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .bundles-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center top, rgba(212,175,55,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .bundles-hero-eyebrow {
+      display: inline-block;
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+    .bundles-hero-title {
+      font-family: var(--font-title);
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 300; line-height: 1.1; margin-bottom: 1.2rem;
+    }
+    .bundles-hero-sub {
+      color: var(--gray); font-size: 0.92rem; line-height: 1.8;
+      max-width: 520px; margin: 0 auto;
+    }
+
+    /* ── Grid bundles ── */
+    .bundles-section {
+      padding: 4rem 0 6rem;
+    }
+    .bundles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {
+      .bundles-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Bundle card ── */
+    .bundle-card {
+      border: 1px solid rgba(212,175,55,0.18);
+      background: #0d0d0d;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+      position: relative;
+    }
+    .bundle-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-5px);
+    }
+
+    /* Badge "Disponible" / "Bientôt" */
+    .bundle-status {
+      position: absolute; top: 1rem; right: 1rem;
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; padding: 0.3rem 0.8rem;
+      z-index: 2;
+    }
+    .bundle-status.available {
+      background: var(--gold); color: #000;
+    }
+    .bundle-status.soon {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--gray);
+    }
+
+    /* Image */
+    .bundle-img {
+      width: 100%; aspect-ratio: 4/3;
+      overflow: hidden; background: #111;
+    }
+    .bundle-img img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+      transition: transform 0.5s;
+    }
+    .bundle-card:hover .bundle-img img { transform: scale(1.03); }
+
+    /* Placeholder pour les bundles sans image */
+    .bundle-img-placeholder {
+      width: 100%; aspect-ratio: 4/3;
+      background: #111;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 0.8rem;
+    }
+    .bundle-img-placeholder span {
+      font-family: var(--font-title); font-size: 2rem;
+      color: rgba(212,175,55,0.2);
+    }
+    .bundle-img-placeholder p {
+      font-size: 0.7rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gray2);
+    }
+
+    /* Body */
+    .bundle-body { padding: 1.8rem; }
+    .bundle-universe {
+      font-size: 0.65rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 0.5rem; display: block;
+    }
+    .bundle-name {
+      font-family: var(--font-title);
+      font-size: 1.7rem; font-weight: 500;
+      color: #fff; margin-bottom: 0.6rem; line-height: 1.2;
+    }
+    .bundle-desc {
+      font-size: 0.84rem; color: var(--gray);
+      line-height: 1.75; margin-bottom: 1.3rem;
+    }
+    .bundle-includes {
+      margin-bottom: 1.5rem;
+      display: flex; flex-direction: column; gap: 0.4rem;
+    }
+    .bundle-include-item {
+      font-size: 0.8rem; color: var(--gray);
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .bundle-include-item::before {
+      content: '✦'; color: var(--gold);
+      font-size: 0.55rem; flex-shrink: 0;
+    }
+    .bundle-include-item.highlight { color: #fff; }
+
+    .bundle-price-row {
+      display: flex; align-items: baseline; gap: 1rem;
+      margin-bottom: 1.3rem;
+    }
+    .bundle-price {
+      font-family: var(--font-title);
+      font-size: 2.8rem; font-weight: 300; color: var(--gold);
+      line-height: 1;
+    }
+    .bundle-price-note { font-size: 0.78rem; color: var(--gray); }
+    .bundle-old-price {
+      font-size: 1rem; color: var(--gray);
+      text-decoration: line-through; opacity: 0.5;
+    }
+    .bundle-economy {
+      font-size: 0.72rem; color: #4caf50; font-weight: 600;
+    }
+
+    .bundle-cta {
+      display: block; width: 100%;
+      padding: 1rem 1.5rem; text-align: center;
+      font-family: var(--font-body); font-size: 0.75rem;
+      font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      transition: all 0.25s; text-decoration: none;
+    }
+    .bundle-cta.primary {
+      background: var(--gold); color: #000;
+    }
+    .bundle-cta.primary:hover { background: var(--gold2); transform: translateY(-2px); }
+    .bundle-cta.secondary {
+      background: transparent; color: var(--white);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .bundle-cta.secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    .bundle-guarantee {
+      text-align: center; margin-top: 0.8rem;
+      font-size: 0.7rem; color: var(--gray2);
+    }
+
+    /* ── Separator ── */
+    .bundles-separator {
+      text-align: center; padding: 1.5rem 0 3rem;
+    }
+    .bundles-separator span {
+      font-family: var(--font-title);
+      font-size: 0.8rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gray2);
+    }
+
+    /* ── Guarantee strip ── */
+    .guarantee-strip {
+      max-width: 680px; margin: 0 auto 2rem;
+      padding: 2rem; text-align: center;
+      background: rgba(76,175,80,0.05);
+      border: 1px solid rgba(76,175,80,0.2);
+    }
+    .guarantee-strip h3 {
+      font-family: var(--font-title);
+      font-size: 1.3rem; font-weight: 400; margin-bottom: 0.5rem;
+    }
+    .guarantee-strip p { font-size: 0.84rem; color: var(--gray); line-height: 1.7; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img src="assets/logo.png" alt="KLYN" /></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="klynshape.html">KlynShape</a></li>
+        <li><a href="klynmind.html">KlynMind</a></li>
+        <li><a href="klynbuilt.html">KlynBuilt</a></li>
+        <li><a href="boutique.html">Boutique</a></li>
+        <li><a href="vetements.html">Vêtements</a></li>
+      </ul>
+      <a href="bundles.html" class="nav-cta-btn active">Bundles</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="bundles-hero">
+    <div class="wrap">
+      <span class="bundles-hero-eyebrow">✦ Offres complètes · Prix exclusifs</span>
+      <h1 class="bundles-hero-title">Les Bundles<br /><em>KLYN</em></h1>
+      <p class="bundles-hero-sub">Chaque bundle regroupe le programme d'entraînement, le guide nutrition et les ressources complémentaires — pour une transformation sans compromis.</p>
+    </div>
+  </section>
+
+  <!-- BUNDLES -->
+  <section class="bundles-section">
+    <div class="wrap">
+      <div class="bundles-grid">
+
+        <!-- Bundle KlynShape BW -->
+        <div class="bundle-card fade-up">
+          <span class="bundle-status available">Disponible</span>
+          <div class="bundle-img">
+            <img src="assets/bundle_bw.png" alt="Bundle KlynShape Bodyweight" />
+          </div>
+          <div class="bundle-body">
+            <span class="bundle-universe">KlynShape · Sans matériel</span>
+            <h2 class="bundle-name">Bundle<br />Poids du Corps</h2>
+            <p class="bundle-desc">Le programme complet pour sculpter ta silhouette en 28 jours sans aucun équipement. Avec Coach Maya — 100% poids du corps, résultats garantis.</p>
+            <div class="bundle-includes">
+              <div class="bundle-include-item highlight">Programme 28 jours complet</div>
+              <div class="bundle-include-item highlight">Plan nutrition personnalisé</div>
+              <div class="bundle-include-item">Lexique illustré 20 mouvements</div>
+              <div class="bundle-include-item">Guide récupération & mobilité</div>
+              <div class="bundle-include-item">Protocole macros & timing</div>
+            </div>
+            <div class="bundle-price-row">
+              <span class="bundle-price">49<span style="font-size:1.5rem">€</span></span>
+              <div>
+                <div class="bundle-old-price">58€</div>
+                <div class="bundle-economy">tu économises 9€</div>
+              </div>
+            </div>
+            <a href="https://klyn.lemonsqueezy.com/checkout/buy/9B6bJ2b9B3I0f66anP5Rm0a" class="bundle-cta primary" target="_blank" rel="noopener">
+              Obtenir le Bundle BW →
+            </a>
+            <p class="bundle-guarantee">🔒 Paiement sécurisé · Satisfait(e) ou remboursé(e) 7 jours</p>
+          </div>
+        </div>
+
+        <!-- Bundle KlynShape Équipement -->
+        <div class="bundle-card fade-up">
+          <span class="bundle-status available">Disponible</span>
+          <div class="bundle-img">
+            <img src="assets/bundle_eq.png" alt="Bundle KlynShape Équipement" />
+          </div>
+          <div class="bundle-body">
+            <span class="bundle-universe">KlynShape · Avec matériel</span>
+            <h2 class="bundle-name">Bundle<br />Haltères & Bandes</h2>
+            <p class="bundle-desc">Intensité supérieure, résultats accélérés. Haltères légers et bandes élastiques avec Coach Léna — le combo parfait pour brûler et sculpter.</p>
+            <div class="bundle-includes">
+              <div class="bundle-include-item highlight">Programme 28 jours haute intensité</div>
+              <div class="bundle-include-item highlight">Plan nutrition sculpture & tonicité</div>
+              <div class="bundle-include-item">Lexique illustré 20 mouvements</div>
+              <div class="bundle-include-item">Guide récupération & force</div>
+              <div class="bundle-include-item">Protocole macros & récupération</div>
+            </div>
+            <div class="bundle-price-row">
+              <span class="bundle-price">49<span style="font-size:1.5rem">€</span></span>
+              <div>
+                <div class="bundle-old-price">58€</div>
+                <div class="bundle-economy">tu économises 9€</div>
+              </div>
+            </div>
+            <a href="https://klyn.lemonsqueezy.com/checkout/buy/3cI6oIdhJ5Q8cXY7bD5Rm0b" class="bundle-cta primary" target="_blank" rel="noopener">
+              Obtenir le Bundle Équipement →
+            </a>
+            <p class="bundle-guarantee">🔒 Paiement sécurisé · Satisfait(e) ou remboursé(e) 7 jours</p>
+          </div>
+        </div>
+
+        <!-- Bundle KlynMind — Bientôt -->
+        <div class="bundle-card fade-up">
+          <span class="bundle-status soon">Bientôt</span>
+          <div class="bundle-img-placeholder">
+            <span>◆</span>
+            <p>À venir</p>
+          </div>
+          <div class="bundle-body">
+            <span class="bundle-universe">KlynMind · Bien-être mental</span>
+            <h2 class="bundle-name">Bundle<br />KlynMind</h2>
+            <p class="bundle-desc">Méditation, routines matinales et gestion du stress — le programme mental pour une transformation de l'intérieur vers l'extérieur. Bientôt disponible.</p>
+            <div class="bundle-includes">
+              <div class="bundle-include-item">Programme KlynMind complet</div>
+              <div class="bundle-include-item">Routines bien-être quotidiennes</div>
+              <div class="bundle-include-item">Guide sommeil & récupération mentale</div>
+              <div class="bundle-include-item">Protocole anti-stress</div>
+            </div>
+            <div class="bundle-price-row">
+              <span class="bundle-price" style="color:var(--gray2)">—</span>
+              <span class="bundle-price-note">prix à venir</span>
+            </div>
+            <a href="klynmind.html" class="bundle-cta secondary">
+              Découvrir KlynMind →
+            </a>
+          </div>
+        </div>
+
+        <!-- Bundle KlynBuilt — Bientôt -->
+        <div class="bundle-card fade-up">
+          <span class="bundle-status soon">Bientôt</span>
+          <div class="bundle-img-placeholder">
+            <span>◆</span>
+            <p>À venir</p>
+          </div>
+          <div class="bundle-body">
+            <span class="bundle-universe">KlynBuilt · Prise de muscle</span>
+            <h2 class="bundle-name">Bundle<br />KlynBuilt</h2>
+            <p class="bundle-desc">Méthode périodisée Coach Atlas pour la prise de muscle propre. Programme, plan nutrition masse et protocoles de force — tout en un. Bientôt.</p>
+            <div class="bundle-includes">
+              <div class="bundle-include-item">Programme 28 jours périodisé</div>
+              <div class="bundle-include-item">Plan nutrition prise de masse</div>
+              <div class="bundle-include-item">Lexique des exercices complet</div>
+              <div class="bundle-include-item">Tests de force hebdomadaires</div>
+            </div>
+            <div class="bundle-price-row">
+              <span class="bundle-price" style="color:var(--gray2)">—</span>
+              <span class="bundle-price-note">prix à venir</span>
+            </div>
+            <a href="klynbuilt.html" class="bundle-cta secondary">
+              Découvrir KlynBuilt →
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Guarantee -->
+      <div style="margin-top:4rem">
+        <div class="guarantee-strip">
+          <h3>🔒 Satisfait(e) ou remboursé(e) — 7 jours</h3>
+          <p>Si dans les 7 jours suivant ton achat tu n'es pas satisfait(e), on te rembourse intégralement. Sans question. Paiement 100% sécurisé via Lemon Squeezy.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html"><img src="assets/logo.png" alt="KLYN" class="footer-logo" /></a>
+          <p class="footer-tagline">Ton corps. Ton règne.<br />Transformation physique &amp; mentale de luxe.</p>
+          <div class="footer-social">
+            <a href="https://instagram.com/klyn_official" target="_blank" rel="noopener" aria-label="Instagram" class="social-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+            </a>
+          </div>
+        </div>
+        <nav class="footer-nav">
+          <div class="footer-col">
+            <h4 class="footer-col-title">Programmes</h4>
+            <ul>
+              <li><a href="klynshape.html">KlynShape</a></li>
+              <li><a href="klynmind.html">KlynMind</a></li>
+              <li><a href="klynbuilt.html">KlynBuilt</a></li>
+              <li><a href="bundles.html">Bundles</a></li>
+              <li><a href="boutique.html">Boutique</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-title">Informations</h4>
+            <ul>
+              <li><a href="mentions-legales.html">Mentions légales</a></li>
+              <li><a href="cgv.html">CGV</a></li>
+              <li><a href="confidentialite.html">Confidentialité</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 KLYN. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
