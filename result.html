@@ -247,6 +247,18 @@
     .guarantee-strip h3 { font-family: var(--font-title); font-size: 1.4rem; font-weight: 400; margin-bottom: 0.5rem; }
     .guarantee-strip p { font-size: 0.84rem; color: var(--gray); line-height: 1.7; }
 
+    /* ── Bundle img in offer cards ───────────────────── */
+    .offer-bundle-img {
+      margin: -2.5rem -2rem 1.5rem;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(212,175,55,0.15);
+    }
+    .offer-bundle-img img {
+      width: 100%; height: auto; display: block;
+      transition: transform 0.4s;
+    }
+    .offer-card:hover .offer-bundle-img img { transform: scale(1.02); }
+
     /* ── Bundle Preview ──────────────────────────────── */
     .bundle-preview {
       padding: 3.5rem 0 2rem;
@@ -302,6 +314,7 @@
         <li><a href="klynshape.html">KlynShape</a></li>
         <li><a href="klynmind.html">KlynMind</a></li>
         <li><a href="klynbuilt.html">KlynBuilt</a></li>
+        <li><a href="bundles.html">Bundles</a></li>
         <li><a href="boutique.html">Boutique</a></li>
       </ul>
       <a href="boutique.html" class="nav-cta-btn">Boutique</a>
@@ -365,6 +378,9 @@
 
         <!-- OFFER 1: Programme seul -->
         <div class="offer-card fade-in">
+          <div class="offer-bundle-img" id="offer1BundleWrap" style="display:none">
+            <img src="" alt="Bundle" id="offer1BundleImg" />
+          </div>
           <span class="offer-label">Offre 1</span>
           <h3 class="offer-name" id="offer1Name">Programme<br />28 jours</h3>
           <p class="offer-desc" id="offer1Desc">Ton programme complet sur 28 jours. Progression structurée en 4 phases, lexique illustré, guides nutrition et récupération.</p>
@@ -384,6 +400,9 @@
         <!-- OFFER 2: Transformation Complète (Popular) -->
         <div class="offer-card popular fade-in">
           <div class="popular-badge">🔥 Le plus populaire</div>
+          <div class="offer-bundle-img" id="offer2BundleWrap" style="display:none">
+            <img src="" alt="Bundle" id="offer2BundleImg" />
+          </div>
           <span class="offer-label">Offre 2 · Recommandée</span>
           <h3 class="offer-name" id="offer2Name">Transformation<br />Complète</h3>
           <p class="offer-desc" id="offer2Desc">Le combo gagnant : ton programme + un plan nutrition entièrement adapté à ton objectif. Résultats maximisés en 28 jours.</p>
@@ -661,26 +680,37 @@
       document.getElementById('checkoutTitle').textContent =
         'Lance-toi dans les 28 jours — ' + prog.name;
 
-      // Bundle preview (KlynShape uniquement)
-      const bundleSection = document.getElementById('bundlePreview');
-      const bundleImg     = document.getElementById('bundleImg');
-      const bundleLabel   = document.getElementById('bundleLabel');
-      const bundleTitle   = document.getElementById('bundleTitle');
+      // Bundle images dans les cartes + section preview
+      const bundleSection  = document.getElementById('bundlePreview');
+      const bundleImg      = document.getElementById('bundleImg');
+      const bundleLabel    = document.getElementById('bundleLabel');
+      const bundleTitle    = document.getElementById('bundleTitle');
+      const offer1Wrap     = document.getElementById('offer1BundleWrap');
+      const offer1Img      = document.getElementById('offer1BundleImg');
+      const offer2Wrap     = document.getElementById('offer2BundleWrap');
+      const offer2Img      = document.getElementById('offer2BundleImg');
+
       if (quiz.obj === 'poids') {
+        const src = quiz.lieu === 'salle' ? 'assets/bundle_eq.png' : 'assets/bundle_bw.png';
+        const alt = quiz.lieu === 'salle' ? 'Bundle KlynShape Équipement' : 'Bundle KlynShape Bodyweight';
+        const lbl = quiz.lieu === 'salle' ? 'KlynShape · Haltères & Bandes — Coach Léna' : 'KlynShape · Sans matériel — Coach Maya';
+        const ttl = quiz.lieu === 'salle' ? 'Ton bundle KlynShape Équipement' : 'Ton bundle KlynShape Poids du Corps';
+
+        // Section preview au-dessus du checkout
         bundleSection.classList.add('visible');
-        if (quiz.lieu === 'salle') {
-          bundleImg.src = 'assets/bundle_eq.png';
-          bundleImg.alt = 'Bundle KlynShape Équipement';
-          bundleLabel.textContent = 'KlynShape · Haltères & Bandes — Coach Léna';
-          bundleTitle.textContent = 'Ton bundle KlynShape Équipement';
-        } else {
-          bundleImg.src = 'assets/bundle_bw.png';
-          bundleImg.alt = 'Bundle KlynShape Bodyweight';
-          bundleLabel.textContent = 'KlynShape · Sans matériel — Coach Maya';
-          bundleTitle.textContent = 'Ton bundle KlynShape Poids du Corps';
-        }
+        bundleImg.src = src; bundleImg.alt = alt;
+        bundleLabel.textContent = lbl;
+        bundleTitle.textContent = ttl;
+
+        // Dans les cartes d'offre
+        offer1Img.src = src; offer1Img.alt = alt;
+        offer1Wrap.style.display = 'block';
+        offer2Img.src = src; offer2Img.alt = alt;
+        offer2Wrap.style.display = 'block';
       } else {
         bundleSection.classList.remove('visible');
+        offer1Wrap.style.display = 'none';
+        offer2Wrap.style.display = 'none';
       }
 
       // Testimonials
