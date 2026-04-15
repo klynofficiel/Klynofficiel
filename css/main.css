@@ -822,3 +822,149 @@ button { cursor: pointer; font-family: var(--font-body); border: none; }
 .filter-btn { padding: 0.6rem 1.8rem; border: 1px solid rgba(255,255,255,0.15); background: transparent; color: var(--gray); font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.3s; }
 .filter-btn:hover, .filter-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(212,175,55,0.05); }
 .prog-badge { display: inline-block; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; background: var(--gold); color: #0A0A0A; padding: 0.25rem 0.7rem; margin-bottom: 0.8rem; }
+
+/* ══════════════════════════════════════════════
+   KLYN — Ajouts refonte app
+══════════════════════════════════════════════ */
+
+/* Programmes — note coach */
+.prog-coach-note {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.35);
+  margin: 6px 0 12px;
+  line-height: 1.5;
+  font-family: var(--font-body);
+}
+
+/* Programmes — CTA bas de section */
+.programmes-cta {
+  text-align: center;
+  margin-top: 56px;
+}
+.programmes-cta-note {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.2);
+  margin-top: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* PDF section */
+.pdf-section {
+  background: #050505;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  padding: 80px 0;
+}
+.pdf-section-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.pdf-section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.pdf-note {
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.2);
+  margin-top: 24px;
+  letter-spacing: 0.06em;
+}
+
+/* Streetwear section */
+.streetwear-section {
+  background: var(--black);
+  padding: 100px 2rem;
+  text-align: center;
+}
+.streetwear-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.streetwear-card {
+  margin-top: 48px;
+  background: var(--black2);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 2px;
+  padding: 56px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.streetwear-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.streetwear-soon {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(212,175,55,0.25);
+  padding: 5px 18px;
+  margin-bottom: 24px;
+}
+.streetwear-card h3 {
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.streetwear-card p {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.8;
+}
+.streetwear-tags {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+.streetwear-tag {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 8px 18px;
+}
+
+/* Section header générique */
+.section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.section-header .eyebrow {
+  display: block;
+  margin-bottom: 12px;
+}
+.section-header h2 {
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 12px;
+  line-height: 1.15;
+}
+.section-header p {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--gray);
+  line-height: 1.7;
+}
