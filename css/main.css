@@ -1283,3 +1283,20 @@ button { cursor: pointer; font-family: var(--font-body); border: none; }
   .hero-live-badge { margin: 0 auto 2rem; }
   .iphone-frame { width: 240px; height: 490px; }
 }
+
+/* iPhone mockup image */
+.iphone-mockup-img {
+  width: 420px;
+  max-width: 100%;
+  filter: drop-shadow(0 40px 80px rgba(0,0,0,0.8)) drop-shadow(0 0 40px rgba(212,175,55,0.12));
+  animation: float-phone 5s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+@keyframes float-phone {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-14px) rotate(-1deg); }
+}
+@media (max-width: 900px) {
+  .iphone-mockup-img { width: 280px; }
+}
