@@ -290,32 +290,73 @@
     </div>
   </nav>
 
-  <!-- ══ HERO ══ -->
-  <section class="hero">
-    <div class="hero-img-wrap">
-      <img src="assets/hero_shape_bw_cover.jpg" alt="KLYN App" class="hero-img" />
-      <div class="hero-gradient"></div>
-    </div>
-    <div class="hero-body">
-      <div class="hero-text">
-        <span class="eyebrow gold">L'application est disponible</span>
-        <h1 class="hero-h1">KLYN<br /><em>Ta transformation,<br />guidée.</em></h1>
-        <p class="hero-sub">5 programmes. 5 coachs d'élite. 28 jours.<br />Sport, nutrition, mental — tout dans une seule app.</p>
-        <div class="hero-actions">
-          <a href="https://klyn-app.org" class="btn-gold" target="_blank" rel="noopener">Accéder à l'app — 14,99€/mois</a>
-          <a href="#programmes" class="btn-outline">Découvrir les programmes ↓</a>
+  <!-- ══ HERO APP ══ -->
+  <section class="hero-app">
+    <div class="hero-app-bg"></div>
+
+    <div class="hero-app-inner">
+      <!-- Texte gauche -->
+      <div class="hero-app-text">
+        <div class="hero-live-badge">&#9679; L’application est live</div>
+        <h1 class="hero-app-h1">La transformation<br /><em>que tu attends.</em></h1>
+        <p class="hero-app-sub">
+          5 programmes. 5 coachs d'élite. 28 jours.<br />
+          Sport, nutrition, mental &mdash; tout dans une seule app.
+        </p>
+        <div class="hero-app-actions">
+          <a href="https://klyn-app.org" class="btn-gold" target="_blank" rel="noopener">Commencer maintenant &rarr;</a>
+          <a href="#programmes" class="btn-outline">Les programmes &darr;</a>
         </div>
-        <div class="hero-trust">
+        <div class="hero-app-trust">
           <span>⭐ 4.9/5</span>
-          <span>·</span>
+          <span>&middot;</span>
           <span>Accès immédiat</span>
-          <span>·</span>
-          <span>5 coachs certifiés</span>
-          <span>·</span>
+          <span>&middot;</span>
+          <span>14,99&euro;/mois</span>
+          <span>&middot;</span>
           <span>Remboursé si insatisfait</span>
         </div>
       </div>
+
+      <!-- Mockup iPhone -->
+      <div class="hero-app-mockup">
+        <div class="iphone-frame">
+          <div class="iphone-notch"></div>
+          <div class="iphone-screen">
+            <!-- App UI inside screen -->
+            <div class="app-ui">
+              <div class="app-ui-topbar">
+                <span class="app-ui-logo">KLYN</span>
+                <span class="app-ui-streak">🔥 7</span>
+              </div>
+              <div class="app-ui-cover">
+                <img src="assets/hero_maya_cover.png" alt="" class="app-ui-img" />
+                <div class="app-ui-cover-overlay">
+                  <p class="app-ui-day">JOUR 8 / 28</p>
+                  <p class="app-ui-prog-name">KLYN Shape</p>
+                  <div class="app-ui-bar-wrap">
+                    <div class="app-ui-bar" style="width:29%"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="app-ui-card">
+                <p class="app-ui-label">Séance du jour</p>
+                <p class="app-ui-session">HIIT Corps Entier</p>
+                <div class="app-ui-exercises">
+                  <div class="app-ui-ex active"><span class="ex-dot"></span>Burpees &middot; 45 sec</div>
+                  <div class="app-ui-ex"><span class="ex-dot"></span>Squat sauté &middot; 30 sec</div>
+                  <div class="app-ui-ex"><span class="ex-dot"></span>Mountain climbers</div>
+                </div>
+                <div class="app-ui-start-btn">&#9654; Démarrer la séance</div>
+              </div>
+            </div>
+          </div>
+          <div class="iphone-home-bar"></div>
+        </div>
+        <div class="iphone-glow"></div>
+      </div>
     </div>
+
     <div class="hero-scroll-hint" onclick="document.querySelector('#programmes').scrollIntoView({behavior:'smooth'})">
       <span class="scroll-line"></span>
     </div>
