@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/main.css" />
   <style>
-    /* ── APP HERO ── */
+    /* ── APP HERO (unused, kept for safety) ── */
     .app-hero {
       min-height: 100dvh;
       background: #000;
@@ -290,76 +290,61 @@
     </div>
   </nav>
 
-  <!-- ══ HERO APP ══ -->
-  <section class="app-hero">
-    <div class="app-hero-badge">L'app est live</div>
-    <h1>KLYN<br /><em>L'app qui transforme</em></h1>
-    <p class="app-hero-sub">5 programmes. 5 coachs. 28 jours.<br />Ton coach de poche — sport, nutrition, mental.</p>
-    <div class="app-hero-ctas">
-      <a href="https://klyn-app.org" class="btn-app-main" target="_blank" rel="noopener">
-        🔥 Commencer ma transformation →
-      </a>
-      <a href="#programmes" class="btn-app-secondary">Découvrir les programmes ↓</a>
+  <!-- ══ HERO ══ -->
+  <section class="hero">
+    <div class="hero-img-wrap">
+      <img src="assets/hero_shape_bw_cover.jpg" alt="KLYN App" class="hero-img" />
+      <div class="hero-gradient"></div>
     </div>
-    <div class="app-hero-stats">
-      <div class="app-hero-stat"><strong>5</strong><span>Programmes</span></div>
-      <div class="app-hero-stat"><strong>5</strong><span>Coachs</span></div>
-      <div class="app-hero-stat"><strong>28</strong><span>Jours</span></div>
-      <div class="app-hero-stat"><strong>14,99€</strong><span>/ mois</span></div>
+    <div class="hero-body">
+      <div class="hero-text">
+        <span class="eyebrow gold">L'application est disponible</span>
+        <h1 class="hero-h1">KLYN<br /><em>Ta transformation,<br />guidée.</em></h1>
+        <p class="hero-sub">5 programmes. 5 coachs d'élite. 28 jours.<br />Sport, nutrition, mental — tout dans une seule app.</p>
+        <div class="hero-actions">
+          <a href="https://klyn-app.org" class="btn-gold" target="_blank" rel="noopener">Accéder à l'app — 14,99€/mois</a>
+          <a href="#programmes" class="btn-outline">Découvrir les programmes ↓</a>
+        </div>
+        <div class="hero-trust">
+          <span>⭐ 4.9/5</span>
+          <span>·</span>
+          <span>Accès immédiat</span>
+          <span>·</span>
+          <span>5 coachs certifiés</span>
+          <span>·</span>
+          <span>Remboursé si insatisfait</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint" onclick="document.querySelector('#programmes').scrollIntoView({behavior:'smooth'})">
+      <span class="scroll-line"></span>
     </div>
   </section>
 
-  <!-- ══ APP FEATURES ══ -->
-  <div style="background:#000;padding:0 24px 80px;">
-    <div class="app-features-section" style="padding:0;">
-      <div class="section-header">
-        <span class="eyebrow">Pourquoi KLYN</span>
-        <h2>Tout ce dont tu as besoin.<br />Dans une seule app.</h2>
-      </div>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🏋️</div>
-          <h4>Séances guidées</h4>
-          <p>Chaque jour, ta séance est prête. Exercices, répétitions, instructions — rien à chercher.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🥗</div>
-          <h4>Plan nutrition</h4>
-          <p>28 jours de repas adaptés à ton objectif. Petit-déj, déjeuner, dîner — tout inclus.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📈</div>
-          <h4>Suivi progression</h4>
-          <p>Streak, jours complétés, pourcentage d'avancement. L'effet dopamine qui pousse à continuer.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🧘</div>
-          <h4>KLYN Mind</h4>
-          <p>Yoga, méditation, respiration. Le mental fait partie de la transformation.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🤖</div>
-          <h4>Coach IA</h4>
-          <p>Questions sur ton programme, ta nutrition ? Le coach répond instantanément.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔒</div>
-          <h4>Accès immédiat</h4>
-          <p>Paiement → accès en 30 secondes. Pas d'attente. Commence aujourd'hui.</p>
-        </div>
-      </div>
+  <!-- ══ PROOF BAR ══ -->
+  <div class="proof-bar">
+    <div class="proof-inner">
+      <div class="proof-item"><strong>5</strong><span>Programmes</span></div>
+      <div class="proof-sep"></div>
+      <div class="proof-item"><strong>5</strong><span>Coachs certifiés</span></div>
+      <div class="proof-sep"></div>
+      <div class="proof-item"><strong>28</strong><span>Jours pour transformer</span></div>
+      <div class="proof-sep"></div>
+      <div class="proof-item"><strong>400+</strong><span>Exercices guidés</span></div>
+      <div class="proof-sep"></div>
+      <div class="proof-item"><strong class="gold">Live</strong><span>App disponible</span></div>
     </div>
   </div>
 
   <!-- ══ PROGRAMMES ══ -->
-  <section class="programmes" id="programmes" style="background:#050505;border-top:1px solid rgba(255,255,255,0.04);">
-    <div class="programmes-header fade-in" style="max-width:1000px;margin:0 auto 40px;text-align:center;">
+  <section class="programmes" id="programmes">
+    <div class="programmes-header fade-in">
       <span class="eyebrow gold">Collection 2026</span>
       <h2 class="h2">5 programmes. Un objectif : te transformer.</h2>
       <p class="subtitle">Chaque programme est complet : sport 28 jours + nutrition + coaching.</p>
     </div>
 
-    <div class="progs-grid" style="max-width:1000px;margin:0 auto;">
+    <div class="progs-grid">
 
       <div class="prog-card fade-in">
         <div class="prog-cover-wrap">
@@ -371,7 +356,7 @@
         <div class="prog-card-body">
           <span class="prog-tag tag-shape">KlynShape</span>
           <h4>Perte de poids · Sans matériel</h4>
-          <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:6px 0 12px;line-height:1.5;">Coach Maya · 28 jours · Bodyweight</p>
+          <p class="prog-coach-note">Coach Maya · 28 jours · Bodyweight</p>
           <a href="https://klyn-app.org" class="btn-gold btn-sm" target="_blank" rel="noopener">Démarrer →</a>
         </div>
       </div>
@@ -384,7 +369,7 @@
         <div class="prog-card-body">
           <span class="prog-tag tag-shape">KlynShape</span>
           <h4>Perte de poids · Haltères & bandes</h4>
-          <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:6px 0 12px;line-height:1.5;">Coach Lena · 28 jours · Équipement léger</p>
+          <p class="prog-coach-note">Coach Lena · 28 jours · Équipement léger</p>
           <a href="https://klyn-app.org" class="btn-gold btn-sm" target="_blank" rel="noopener">Démarrer →</a>
         </div>
       </div>
@@ -397,7 +382,7 @@
         <div class="prog-card-body">
           <span class="prog-tag tag-military">KlynMilitary</span>
           <h4>Performance · Calisthenics</h4>
-          <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:6px 0 12px;line-height:1.5;">Coach Onyx · 28 jours · Style militaire</p>
+          <p class="prog-coach-note">Coach Onyx · 28 jours · Style militaire</p>
           <a href="https://klyn-app.org" class="btn-gold btn-sm" target="_blank" rel="noopener">Démarrer →</a>
         </div>
       </div>
@@ -410,7 +395,7 @@
         <div class="prog-card-body">
           <span class="prog-tag" style="background:rgba(96,165,250,0.12);color:#60A5FA;">KlynBuild</span>
           <h4>Prise de muscle · Salle</h4>
-          <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:6px 0 12px;line-height:1.5;">Coach Atlas · 28 jours · Start & Strong</p>
+          <p class="prog-coach-note">Coach Atlas · 28 jours · Start & Strong</p>
           <a href="https://klyn-app.org" class="btn-gold btn-sm" target="_blank" rel="noopener">Démarrer →</a>
         </div>
       </div>
@@ -423,19 +408,18 @@
         <div class="prog-card-body">
           <span class="prog-tag tag-mind">KlynMind</span>
           <h4>Yoga · Méditation · Mental</h4>
-          <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:6px 0 12px;line-height:1.5;">Coach Kaia · 28 jours · Corps & esprit</p>
+          <p class="prog-coach-note">Coach Kaia · 28 jours · Corps & esprit</p>
           <a href="https://klyn-app.org" class="btn-gold btn-sm" target="_blank" rel="noopener">Démarrer →</a>
         </div>
       </div>
 
     </div>
 
-    <!-- CTA app -->
-    <div style="text-align:center;margin-top:48px;">
-      <a href="https://klyn-app.org" class="btn-gold" target="_blank" rel="noopener" style="font-size:15px;padding:16px 40px;">
-        Faire le quiz et trouver mon programme →
+    <div class="programmes-cta">
+      <a href="https://klyn-app.org" class="btn-gold btn-lg" target="_blank" rel="noopener">
+        Faire le quiz — Trouver mon programme →
       </a>
-      <p style="font-family:'Montserrat',sans-serif;font-size:11px;color:rgba(255,255,255,0.25);margin-top:12px;">2 minutes · Accès immédiat · 14,99€/mois</p>
+      <p class="programmes-cta-note">2 minutes · Accès immédiat · 14,99€/mois</p>
     </div>
   </section>
 
@@ -533,13 +517,13 @@
   <!-- ══ PDF ══ -->
   <section class="pdf-section" id="pdf">
     <div class="pdf-section-inner">
-      <div class="section-header" style="margin-bottom:40px;">
-        <span class="eyebrow">Option imprimable</span>
-        <h2>Les programmes en PDF</h2>
-        <p>Tu préfères une version papier ? Télécharge et imprime ton programme. Accès à vie, une seule fois.</p>
+      <div class="pdf-section-header">
+        <span class="eyebrow gold">Option imprimable</span>
+        <h2 class="h2">Les programmes en PDF</h2>
+        <p class="subtitle">Tu préfères une version papier ? Télécharge et imprime ton programme. Accès à vie, une seule fois.</p>
       </div>
 
-      <div class="progs-grid" style="max-width:1000px;margin:0 auto;">
+      <div class="progs-grid">
         <div class="prog-card fade-in">
           <div class="prog-cover-wrap">
             <img src="assets/hero_maya_cover.png" alt="KlynShape PDF" />
@@ -595,19 +579,21 @@
 
   <!-- ══ STREETWEAR ══ -->
   <section class="streetwear-section" id="streetwear">
-    <div class="section-header">
-      <span class="eyebrow">Bientôt disponible</span>
-      <h2>KLYN Wear</h2>
-      <p>La marque arrive. Streetwear premium, en print-on-demand.</p>
-    </div>
-    <div class="streetwear-card">
-      <div class="streetwear-soon">Bientôt sur Shopify</div>
-      <h3>Porter la discipline.<br />Afficher l'état d'esprit.</h3>
-      <p>Hoodies, tees, accessories — la collection KLYN arrive. Produits premium, fabrication à la demande, livraison mondiale.</p>
-      <div style="margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:10px 20px;font-family:'Montserrat',sans-serif;font-size:12px;color:rgba(255,255,255,0.4);">Hoodies</div>
-        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:10px 20px;font-family:'Montserrat',sans-serif;font-size:12px;color:rgba(255,255,255,0.4);">T-shirts</div>
-        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:10px 20px;font-family:'Montserrat',sans-serif;font-size:12px;color:rgba(255,255,255,0.4);">Accessories</div>
+    <div class="streetwear-inner">
+      <div class="section-header">
+        <span class="eyebrow gold">Bientôt disponible</span>
+        <h2 class="h2">KLYN Wear</h2>
+        <p class="subtitle">La marque arrive. Streetwear premium, en print-on-demand.</p>
+      </div>
+      <div class="streetwear-card fade-in">
+        <div class="streetwear-soon">Bientôt sur Shopify</div>
+        <h3>Porter la discipline.<br />Afficher l'état d'esprit.</h3>
+        <p>Hoodies, tees, accessories — la collection KLYN arrive. Produits premium, fabrication à la demande, livraison mondiale.</p>
+        <div class="streetwear-tags">
+          <span class="streetwear-tag">Hoodies</span>
+          <span class="streetwear-tag">T-shirts</span>
+          <span class="streetwear-tag">Accessories</span>
+        </div>
       </div>
     </div>
   </section>
