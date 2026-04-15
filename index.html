@@ -3,23 +3,274 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KLYN — Perte de Poids & Transformation · Programmes 28 Jours</title>
-  <meta name="description" content="KLYN — Programmes de transformation physique premium. Perte de poids en 28 jours, yoga, calisthenics. Encadrés par des coachs d'élite. Bientôt disponible en app." />
-  <meta property="og:title" content="KLYN — Perte de Poids en 28 Jours" />
-  <meta property="og:description" content="Programmes de transformation physique premium. Résultats garantis en 28 jours." />
+  <title>KLYN — L'app fitness premium · Transformation 28 Jours</title>
+  <meta name="description" content="KLYN — L'application fitness premium. 5 programmes, 5 coachs, 28 jours de transformation. Disponible maintenant sur klyn-app.org" />
+  <meta property="og:title" content="KLYN — L'app fitness premium" />
+  <meta property="og:description" content="5 programmes, 5 coachs, 28 jours. Transformation guidée. Disponible maintenant." />
   <meta property="og:image" content="assets/hero_shape_bw_cover.jpg" />
   <link rel="canonical" href="https://klynofficiel.org" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* ── APP HERO ── */
+    .app-hero {
+      min-height: 100dvh;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .app-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,175,55,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .app-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(74,222,128,0.1);
+      border: 1px solid rgba(74,222,128,0.25);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4ADE80;
+      margin-bottom: 28px;
+    }
+    .app-hero-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #4ADE80;
+      box-shadow: 0 0 8px #4ADE80;
+      animation: pulse-green 2s infinite;
+    }
+    @keyframes pulse-green {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .app-hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(42px, 10vw, 80px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .app-hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, #E5C76B, #D4AF37, #C9A227);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .app-hero-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto 36px;
+    }
+    .app-hero-ctas {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      max-width: 360px;
+    }
+    .btn-app-main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 18px 32px;
+      background: linear-gradient(135deg, #E5C76B, #D4AF37, #C9A227);
+      border: none;
+      border-radius: 14px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      color: #000;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      box-shadow: 0 8px 32px rgba(212,175,55,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-app-main:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(212,175,55,0.4);
+    }
+    .btn-app-secondary {
+      display: block;
+      width: 100%;
+      padding: 15px 32px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      text-align: center;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-app-secondary:hover { border-color: rgba(212,175,55,0.3); color: #D4AF37; }
+    .app-hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 48px;
+      justify-content: center;
+    }
+    .app-hero-stat { text-align: center; }
+    .app-hero-stat strong {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: #D4AF37;
+      line-height: 1;
+    }
+    .app-hero-stat span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      color: rgba(255,255,255,0.3);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 6px;
+      display: block;
+    }
+
+    /* ── APP FEATURES ── */
+    .app-features-section {
+      background: #000;
+      padding: 80px 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 48px;
+    }
+    .feature-card {
+      background: #0A0A0A;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 24px 20px;
+    }
+    .feature-icon { font-size: 24px; margin-bottom: 12px; }
+    .feature-card h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .feature-card p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.6;
+    }
+
+    /* ── PDF SECTION ── */
+    .pdf-section {
+      background: #050505;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      padding: 80px 24px;
+    }
+    .pdf-section-inner { max-width: 1000px; margin: 0 auto; }
+    .pdf-note {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    /* ── STREETWEAR ── */
+    .streetwear-section {
+      background: #000;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .streetwear-card {
+      max-width: 600px;
+      margin: 48px auto 0;
+      background: #0A0A0A;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px;
+      padding: 48px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .streetwear-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent);
+    }
+    .streetwear-soon {
+      display: inline-block;
+      background: rgba(212,175,55,0.08);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 100px;
+      padding: 6px 18px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #D4AF37;
+      margin-bottom: 20px;
+    }
+    .streetwear-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .streetwear-card p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.8;
+    }
+
+    /* Overrides */
+    .section-header { max-width: 1000px; margin: 0 auto 0; text-align: center; }
+    .section-header .eyebrow { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: #D4AF37; display: block; margin-bottom: 12px; }
+    .section-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 5vw, 42px); font-weight: 300; color: #fff; margin-bottom: 12px; line-height: 1.2; }
+    .section-header p { font-family: 'Montserrat', sans-serif; font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.7; }
+  </style>
 </head>
 <body>
 
-  <!-- ══════════════════════════════════════════════
-       NAVBAR
-  ══════════════════════════════════════════════ -->
+  <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
@@ -27,231 +278,92 @@
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html" class="active">Accueil</a></li>
-        <li><a href="klynshape.html">KlynShape</a></li>
-        <li><a href="klynmind.html">KlynMind</a></li>
-        <li><a href="klynbuilt.html">KlynBuilt</a></li>
-        <li><a href="boutique.html">Boutique</a></li>
-        <li><a href="vetements.html">Vêtements</a></li>
+        <li><a href="#programmes">Programmes</a></li>
+        <li><a href="#coaches">Coachs</a></li>
+        <li><a href="#pdf">PDF</a></li>
+        <li><a href="#streetwear">Wear</a></li>
       </ul>
-      <a href="boutique.html" class="nav-cta-btn">Commencer — 29€</a>
+      <a href="https://klyn-app.org" class="nav-cta-btn" target="_blank" rel="noopener">Accéder à l'app →</a>
       <button class="burger" id="burger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <!-- ══════════════════════════════════════════════
-       HERO — FLAGSHIP PERTE DE POIDS
-  ══════════════════════════════════════════════ -->
-  <section class="hero">
-    <div class="hero-img-wrap">
-      <img src="assets/hero_shape_bw_cover.jpg" alt="Perte de poids 28 jours KLYN" class="hero-img" />
-      <div class="hero-gradient"></div>
+  <!-- ══ HERO APP ══ -->
+  <section class="app-hero">
+    <div class="app-hero-badge">L'app est live</div>
+    <h1>KLYN<br /><em>L'app qui transforme</em></h1>
+    <p class="app-hero-sub">5 programmes. 5 coachs. 28 jours.<br />Ton coach de poche — sport, nutrition, mental.</p>
+    <div class="app-hero-ctas">
+      <a href="https://klyn-app.org" class="btn-app-main" target="_blank" rel="noopener">
+        🔥 Commencer ma transformation →
+      </a>
+      <a href="#programmes" class="btn-app-secondary">Découvrir les programmes ↓</a>
     </div>
-    <div class="hero-body">
-      <div class="hero-text">
-        <span class="eyebrow">Programme N°1 · 2026</span>
-        <h1 class="hero-h1">PERTE DE POIDS<br /><em>EN 28 JOURS</em></h1>
-        <p class="hero-sub">Sans salle. Sans matériel. Des résultats réels.<br />Guidée par Coach Maya, spécialiste transformation.</p>
-        <div class="hero-actions">
-          <a href="https://buy.stripe.com/fZucN60uX2DWbTU9jL5Rm04" class="btn-gold" target="_blank" rel="noopener">Obtenir le programme — 29€</a>
-          <a href="#programmes" class="btn-outline">Voir tous les programmes ↓</a>
-        </div>
-        <div class="hero-trust">
-          <span>⭐ 4.9/5</span>
-          <span>·</span>
-          <span>Accès immédiat</span>
-          <span>·</span>
-          <span>100% digital</span>
-          <span>·</span>
-          <span>Remboursé si insatisfait</span>
-        </div>
-      </div>
-    </div>
-    <div class="hero-scroll-hint" onclick="document.querySelector('#proof').scrollIntoView({behavior:'smooth'})">
-      <span class="scroll-line"></span>
+    <div class="app-hero-stats">
+      <div class="app-hero-stat"><strong>5</strong><span>Programmes</span></div>
+      <div class="app-hero-stat"><strong>5</strong><span>Coachs</span></div>
+      <div class="app-hero-stat"><strong>28</strong><span>Jours</span></div>
+      <div class="app-hero-stat"><strong>14,99€</strong><span>/ mois</span></div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       PROOF BAR
-  ══════════════════════════════════════════════ -->
-  <div class="proof-bar" id="proof">
-    <div class="proof-inner">
-      <div class="proof-item">
-        <strong>4</strong>
-        <span>Programmes premium</span>
+  <!-- ══ APP FEATURES ══ -->
+  <div style="background:#000;padding:0 24px 80px;">
+    <div class="app-features-section" style="padding:0;">
+      <div class="section-header">
+        <span class="eyebrow">Pourquoi KLYN</span>
+        <h2>Tout ce dont tu as besoin.<br />Dans une seule app.</h2>
       </div>
-      <div class="proof-sep"></div>
-      <div class="proof-item">
-        <strong>28</strong>
-        <span>Jours pour transformer</span>
-      </div>
-      <div class="proof-sep"></div>
-      <div class="proof-item">
-        <strong>5</strong>
-        <span>Coachs certifiés</span>
-      </div>
-      <div class="proof-sep"></div>
-      <div class="proof-item">
-        <strong class="gold">App</strong>
-        <span>Bientôt sur iOS &amp; Android</span>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🏋️</div>
+          <h4>Séances guidées</h4>
+          <p>Chaque jour, ta séance est prête. Exercices, répétitions, instructions — rien à chercher.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🥗</div>
+          <h4>Plan nutrition</h4>
+          <p>28 jours de repas adaptés à ton objectif. Petit-déj, déjeuner, dîner — tout inclus.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📈</div>
+          <h4>Suivi progression</h4>
+          <p>Streak, jours complétés, pourcentage d'avancement. L'effet dopamine qui pousse à continuer.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧘</div>
+          <h4>KLYN Mind</h4>
+          <p>Yoga, méditation, respiration. Le mental fait partie de la transformation.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <h4>Coach IA</h4>
+          <p>Questions sur ton programme, ta nutrition ? Le coach répond instantanément.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h4>Accès immédiat</h4>
+          <p>Paiement → accès en 30 secondes. Pas d'attente. Commence aujourd'hui.</p>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════════
-       FLAGSHIP — LES 2 SHAPE (perte de poids)
-  ══════════════════════════════════════════════ -->
-  <section class="flagship" id="flagship">
-    <div class="flagship-header fade-in">
-      <span class="eyebrow gold">Nos produits phares</span>
-      <h2 class="h2">Perte de poids — choisie ta méthode</h2>
-      <p class="subtitle">Même objectif. Deux approches. Résultats identiques en 28 jours.</p>
-    </div>
-
-    <div class="flagship-grid">
-
-      <!-- Shape Bodyweight -->
-      <article class="flagship-card fade-in">
-        <div class="flagship-cover">
-          <img src="assets/hero_maya_cover.png" alt="KlynShape Sans Matériel" />
-          <div class="flagship-cover-overlay">
-            <span class="cover-badge">BESTSELLER</span>
-          </div>
-        </div>
-        <div class="flagship-info">
-          <span class="prog-tag tag-shape">KlynShape · Sans matériel</span>
-          <h3>Perte de Poids<br />28 Jours — À Domicile</h3>
-          <p>Programme complet sans équipement. Brûle les graisses, sculpte la silhouette, retrouve ton énergie — depuis chez toi.</p>
-          <ul class="prog-points">
-            <li>✦ 28 jours progressifs</li>
-            <li>✦ Zéro équipement requis</li>
-            <li>✦ Nutrition incluse</li>
-            <li>✦ Guide lexique illustré</li>
-          </ul>
-          <div class="prog-buy-row">
-            <div class="prog-price">29<span>€</span></div>
-            <a href="https://buy.stripe.com/fZucN60uX2DWbTU9jL5Rm04" class="btn-gold" target="_blank" rel="noopener">Obtenir →</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Shape Équipement -->
-      <article class="flagship-card fade-in">
-        <div class="flagship-cover">
-          <img src="assets/hero_lena_cover.png" alt="KlynShape Avec Matériel" />
-          <div class="flagship-cover-overlay"></div>
-        </div>
-        <div class="flagship-info">
-          <span class="prog-tag tag-shape">KlynShape · Avec matériel</span>
-          <h3>Perte de Poids<br />28 Jours — Haltères &amp; Bandes</h3>
-          <p>Même objectif, intensité supérieure. Haltères, bandes élastiques — pour brûler encore plus vite avec les bons outils.</p>
-          <ul class="prog-points">
-            <li>✦ 28 jours haute intensité</li>
-            <li>✦ Haltères légers + bandes</li>
-            <li>✦ Force &amp; tonicité</li>
-            <li>✦ Protocole nutrition</li>
-          </ul>
-          <div class="prog-buy-row">
-            <div class="prog-price">29<span>€</span></div>
-            <a href="https://buy.stripe.com/eVqeVe91t6Uc6zA0Nf5Rm06" class="btn-gold" target="_blank" rel="noopener">Obtenir →</a>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════
-       COACHES — Portraits pleine largeur
-  ══════════════════════════════════════════════ -->
-  <section class="coaches-section" id="coaches">
-    <div class="coaches-header fade-in">
-      <span class="eyebrow gold">Nos experts</span>
-      <h2 class="h2">Coachés par des professionnels</h2>
-      <p class="subtitle">Pas d'algorithme. De vrais coachs, de vrais protocoles, de vraies transformations.</p>
-    </div>
-
-    <div class="coaches-grid">
-
-      <article class="coach-card fade-in">
-        <div class="coach-photo-wrap">
-          <img src="assets/coach_maya_hq.png" alt="Coach Maya — KlynShape" class="coach-photo" />
-        </div>
-        <div class="coach-info">
-          <h3 class="coach-name">Coach Maya</h3>
-          <span class="coach-prog tag-shape">KlynShape · Perte de poids</span>
-          <p class="coach-bio">Spécialiste transformation physique. Son approche combine rigueur, intelligence du mouvement et progression maîtrisée sur 28 jours.</p>
-          <blockquote class="coach-quote">« Discipline · Esthétique · Énergie · Esprit. »</blockquote>
-        </div>
-      </article>
-
-      <article class="coach-card fade-in">
-        <div class="coach-photo-wrap">
-          <img src="assets/coach_lena_hq.png" alt="Coach Léna — KlynShape" class="coach-photo" />
-        </div>
-        <div class="coach-info">
-          <h3 class="coach-name">Coach Léna</h3>
-          <span class="coach-prog tag-shape">KlynShape · Avec matériel</span>
-          <p class="coach-bio">Coach sportive passionnée. Son approche progressive et structurée aide chacun à développer sa force, améliorer sa tonicité et retrouver confiance en soi.</p>
-          <blockquote class="coach-quote">« Force · Tonicité · Confiance. »</blockquote>
-        </div>
-      </article>
-
-      <article class="coach-card fade-in">
-        <div class="coach-photo-wrap">
-          <img src="assets/coach_onyx_hq.png" alt="Coach Onyx — KlynMilitary" class="coach-photo" />
-        </div>
-        <div class="coach-info">
-          <h3 class="coach-name">Coach Onyx</h3>
-          <span class="coach-prog tag-military">KlynMilitary · Calisthenics</span>
-          <p class="coach-bio">Préparatrice physique, coach de performance. 8 ans d'entraînement calisthénique intensif. Discipline, force, mental froid.</p>
-          <blockquote class="coach-quote">« L'excellence n'est pas un talent. C'est une habitude. »</blockquote>
-        </div>
-      </article>
-
-      <article class="coach-card fade-in">
-        <div class="coach-photo-wrap">
-          <img src="assets/coach_kaia_warrior.png" alt="Coach Kaia — KlynMind" class="coach-photo" />
-        </div>
-        <div class="coach-info">
-          <h3 class="coach-name">Coach Kaia</h3>
-          <span class="coach-prog tag-mind">KlynMind · Yoga &amp; Méditation</span>
-          <p class="coach-bio">Professeure de yoga certifiée, spécialiste pleine conscience. 28 jours pour reconnecter corps, souffle et équilibre intérieur.</p>
-          <blockquote class="coach-quote">« Le calme est la base de toute puissance. »</blockquote>
-        </div>
-      </article>
-
-      <article class="coach-card fade-in">
-        <div class="coach-photo-wrap">
-          <img src="assets/coach_atlas.png" alt="Coach Atlas — KlynBuilt" class="coach-photo" />
-        </div>
-        <div class="coach-info">
-          <h3 class="coach-name">Coach Atlas</h3>
-          <span class="coach-prog tag-built" style="background:rgba(212,175,55,0.12);color:var(--gold)">KlynBuilt · Bientôt</span>
-          <p class="coach-bio">Coach musculation & hypertrophie. Méthode périodisée en 4 phases : activation, accumulation, intensification, réalisation.</p>
-          <blockquote class="coach-quote">« Confiance · Énergie · Progrès. »</blockquote>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════
-       TOUS LES PROGRAMMES
-  ══════════════════════════════════════════════ -->
-  <section class="programmes" id="programmes">
-    <div class="programmes-header fade-in">
+  <!-- ══ PROGRAMMES ══ -->
+  <section class="programmes" id="programmes" style="background:#050505;border-top:1px solid rgba(255,255,255,0.04);">
+    <div class="programmes-header fade-in" style="max-width:1000px;margin:0 auto 40px;text-align:center;">
       <span class="eyebrow gold">Collection 2026</span>
-      <h2 class="h2">Tous nos programmes</h2>
+      <h2 class="h2">5 programmes. Un objectif : te transformer.</h2>
+      <p class="subtitle">Chaque programme est complet : sport 28 jours + nutrition + coaching.</p>
     </div>
 
-    <div class="progs-grid">
+    <div class="progs-grid" style="max-width:1000px;margin:0 auto;">
 
-      <div class="prog-card fade-in" data-cat="shape">
+      <div class="prog-card fade-in">
         <div class="prog-cover-wrap">
-          <img src="assets/hero_shape_bw_cover.jpg" alt="KlynShape Sans Matériel" />
+          <img src="assets/hero_maya_cover.png" alt="KlynShape Bodyweight" />
           <div class="prog-cover-overlay">
             <span class="prog-cover-badge bestseller">N°1</span>
           </div>
@@ -259,236 +371,270 @@
         <div class="prog-card-body">
           <span class="prog-tag tag-shape">KlynShape</span>
           <h4>Perte de poids · Sans matériel</h4>
-          <div class="prog-card-price"><span class="price">29€</span> <span class="price-note">accès à vie</span></div>
-          <a href="https://buy.stripe.com/fZucN60uX2DWbTU9jL5Rm04" class="btn-gold btn-sm" target="_blank" rel="noopener">Obtenir →</a>
+          <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:6px 0 12px;line-height:1.5;">Coach Maya · 28 jours · Bodyweight</p>
+          <a href="https://klyn-app.org" class="btn-gold btn-sm" target="_blank" rel="noopener">Démarrer →</a>
         </div>
       </div>
 
-      <div class="prog-card fade-in" data-cat="shape">
+      <div class="prog-card fade-in">
         <div class="prog-cover-wrap">
-          <img src="assets/hero_lena_cover.png" alt="KlynShape Avec Matériel" />
+          <img src="assets/hero_lena_cover.png" alt="KlynShape Équipement" />
           <div class="prog-cover-overlay"></div>
         </div>
         <div class="prog-card-body">
           <span class="prog-tag tag-shape">KlynShape</span>
-          <h4>Perte de poids · Avec matériel</h4>
-          <div class="prog-card-price"><span class="price">29€</span> <span class="price-note">accès à vie</span></div>
-          <a href="https://buy.stripe.com/eVqeVe91t6Uc6zA0Nf5Rm06" class="btn-gold btn-sm" target="_blank" rel="noopener">Obtenir →</a>
+          <h4>Perte de poids · Haltères & bandes</h4>
+          <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:6px 0 12px;line-height:1.5;">Coach Lena · 28 jours · Équipement léger</p>
+          <a href="https://klyn-app.org" class="btn-gold btn-sm" target="_blank" rel="noopener">Démarrer →</a>
         </div>
       </div>
 
-      <div class="prog-card fade-in" data-cat="mind">
+      <div class="prog-card fade-in">
         <div class="prog-cover-wrap">
-          <img src="assets/hero_mind_cover.jpg" alt="KlynMind Yoga" />
-          <div class="prog-cover-overlay"></div>
-        </div>
-        <div class="prog-card-body">
-          <span class="prog-tag tag-mind">KlynMind</span>
-          <h4>Yoga &amp; Méditation 28J</h4>
-          <div class="prog-card-price"><span class="price">29€</span> <span class="price-note">accès à vie</span></div>
-          <a href="https://buy.stripe.com/eVq14o0uX5Q87DEcvX5Rm07" class="btn-mind btn-sm" target="_blank" rel="noopener">Obtenir →</a>
-        </div>
-      </div>
-
-      <div class="prog-card fade-in" data-cat="military">
-        <div class="prog-cover-wrap">
-          <img src="assets/hero_military_hq.png" alt="KlynMilitary Calisthenics" />
+          <img src="assets/hero_military_hq.png" alt="KlynMilitary" />
           <div class="prog-cover-overlay"></div>
         </div>
         <div class="prog-card-body">
           <span class="prog-tag tag-military">KlynMilitary</span>
-          <h4>Calisthenics 28J</h4>
-          <div class="prog-card-price"><span class="price">29€</span> <span class="price-note">accès à vie</span></div>
-          <a href="https://buy.stripe.com/14A00k5Ph1zSaPQ9jL5Rm08" class="btn-gold btn-sm" target="_blank" rel="noopener">Obtenir →</a>
+          <h4>Performance · Calisthenics</h4>
+          <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:6px 0 12px;line-height:1.5;">Coach Onyx · 28 jours · Style militaire</p>
+          <a href="https://klyn-app.org" class="btn-gold btn-sm" target="_blank" rel="noopener">Démarrer →</a>
         </div>
       </div>
 
-      <div class="prog-card fade-in" data-cat="built" style="opacity:0.75;position:relative;">
+      <div class="prog-card fade-in">
         <div class="prog-cover-wrap">
-          <img src="assets/hero_built_start.png" alt="KlynBuilt Musculation" />
-          <div class="prog-cover-overlay">
-            <span class="prog-cover-badge" style="background:rgba(0,0,0,0.7);color:var(--gold);border:1px solid var(--gold)">BIENTÔT</span>
-          </div>
+          <img src="assets/hero_built_start.png" alt="KlynBuilt" />
+          <div class="prog-cover-overlay"></div>
         </div>
         <div class="prog-card-body">
-          <span class="prog-tag" style="background:rgba(212,175,55,0.1);color:var(--gold)">KlynBuilt</span>
-          <h4>Musculation 28J</h4>
-          <div class="prog-card-price"><span class="price" style="color:var(--gray)">À venir</span></div>
-          <a href="klynbuilt.html" class="btn-outline btn-sm" style="opacity:0.7">Être notifié →</a>
+          <span class="prog-tag" style="background:rgba(96,165,250,0.12);color:#60A5FA;">KlynBuild</span>
+          <h4>Prise de muscle · Salle</h4>
+          <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:6px 0 12px;line-height:1.5;">Coach Atlas · 28 jours · Start & Strong</p>
+          <a href="https://klyn-app.org" class="btn-gold btn-sm" target="_blank" rel="noopener">Démarrer →</a>
+        </div>
+      </div>
+
+      <div class="prog-card fade-in">
+        <div class="prog-cover-wrap">
+          <img src="assets/hero_mind_cover.jpg" alt="KlynMind" />
+          <div class="prog-cover-overlay"></div>
+        </div>
+        <div class="prog-card-body">
+          <span class="prog-tag tag-mind">KlynMind</span>
+          <h4>Yoga · Méditation · Mental</h4>
+          <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:6px 0 12px;line-height:1.5;">Coach Kaia · 28 jours · Corps & esprit</p>
+          <a href="https://klyn-app.org" class="btn-gold btn-sm" target="_blank" rel="noopener">Démarrer →</a>
         </div>
       </div>
 
     </div>
 
-    <!-- BUNDLE INTELLIGENT — Quiz CTA -->
-    <div class="bundle-row fade-in">
-      <div class="bundle-card" style="background:rgba(212,175,55,0.04);border:1px solid rgba(212,175,55,0.2);overflow:hidden;position:relative;">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#C9956A,#D4AF37,#8B6BAE);"></div>
-        <div class="bundle-covers">
-          <img src="assets/hero_maya_cover.png" alt="" />
-          <img src="assets/hero_military_hq.png" alt="" />
-          <img src="assets/hero_lena_cover.png" alt="" />
-          <img src="assets/hero_mind_cover.jpg" alt="" />
-        </div>
-        <div class="bundle-info">
-          <span class="bundle-badge" style="background:rgba(212,175,55,0.15);color:var(--gold);border:1px solid rgba(212,175,55,0.3);">🔥 Transformation Complète</span>
-          <h3>Programme + Plan Nutrition<br /><em style="font-style:italic;font-size:0.85em;color:var(--gray)">Adapté à ton objectif</em></h3>
-          <p>Réponds à 5 questions et reçois le bundle parfait pour toi — ton programme 28 jours + un plan nutrition personnalisé selon tes objectifs.</p>
-          <div class="bundle-price">
-            <span class="old-price" style="opacity:0.5;font-size:1rem;">58€</span>
-            <span class="new-price" style="color:var(--gold);">49€</span>
-            <span class="economy">tu économises 9€</span>
-          </div>
-          <a href="quiz.html" class="btn-gold">Trouver mon programme →</a>
-          <p style="font-size:0.72rem;color:var(--gray);margin-top:0.8rem;opacity:0.8;">Quiz personnalisé · 2 min · Résultat immédiat</p>
-        </div>
-      </div>
+    <!-- CTA app -->
+    <div style="text-align:center;margin-top:48px;">
+      <a href="https://klyn-app.org" class="btn-gold" target="_blank" rel="noopener" style="font-size:15px;padding:16px 40px;">
+        Faire le quiz et trouver mon programme →
+      </a>
+      <p style="font-family:'Montserrat',sans-serif;font-size:11px;color:rgba(255,255,255,0.25);margin-top:12px;">2 minutes · Accès immédiat · 14,99€/mois</p>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       APP TEASER
-  ══════════════════════════════════════════════ -->
-  <section class="app-section" id="app">
-    <div class="app-inner">
-      <div class="app-text fade-in">
-        <span class="eyebrow">Bientôt disponible</span>
-        <h2 class="h2">L'app Klyn arrive.</h2>
-        <p class="app-desc">
-          Tes programmes en poche. Séances guidées, suivi de progression, nutrition personnalisée.
-          La transformation Klyn — partout, tout le temps.
-        </p>
-        <ul class="app-features">
-          <li>📱 iOS &amp; Android</li>
-          <li>🎥 Vidéos de coaching en direct</li>
-          <li>📊 Suivi de progression hebdomadaire</li>
-          <li>🥗 Plan nutrition personnalisé</li>
-          <li>🔔 Rappels &amp; motivation quotidienne</li>
-        </ul>
-        <div class="app-waitlist">
-          <input type="email" placeholder="Ton e-mail pour être notifié(e)" id="appEmail" />
-          <button class="btn-gold" onclick="handleAppWaitlist()">Rejoindre la liste →</button>
+  <!-- ══ COACHS ══ -->
+  <section class="coaches-section" id="coaches">
+    <div class="coaches-header fade-in">
+      <span class="eyebrow gold">L'équipe KLYN</span>
+      <h2 class="h2">5 coachs. 5 expertises.</h2>
+      <p class="subtitle">Pas d'algorithme. De vrais coachs, de vrais protocoles, de vraies transformations.</p>
+    </div>
+    <div class="coaches-grid">
+      <article class="coach-card fade-in">
+        <div class="coach-photo-wrap"><img src="assets/coach_maya_hq.png" alt="Coach Maya" class="coach-photo" /></div>
+        <div class="coach-info">
+          <h3 class="coach-name">Coach Maya</h3>
+          <span class="coach-prog tag-shape">KlynShape · Perte de poids</span>
+          <p class="coach-bio">Spécialiste transformation physique. Son approche combine rigueur, intelligence du mouvement et progression maîtrisée sur 28 jours.</p>
+          <blockquote class="coach-quote">« Discipline · Esthétique · Énergie · Esprit. »</blockquote>
         </div>
-        <p class="app-note">Accès bêta prioritaire pour les inscrits.</p>
-      </div>
-      <div class="app-mockup fade-in">
-        <div class="phone-frame">
-          <div class="phone-screen">
-            <div class="app-ui-header">
-              <img src="assets/logo.png" alt="KLYN" class="app-logo" />
-            </div>
-            <div class="app-ui-hero">
-              <img src="assets/hero_shape_bw_cover.jpg" alt="" class="app-ui-bg" />
-              <div class="app-ui-overlay">
-                <p class="app-ui-day">JOUR 12 / 28</p>
-                <p class="app-ui-title">HIIT Corps Entier</p>
-                <div class="app-ui-progress">
-                  <div class="progress-bar" style="width:43%"></div>
-                </div>
-              </div>
-            </div>
-            <div class="app-ui-session">
-              <div class="session-item active-session">
-                <span class="session-icon">▶</span>
-                <span>Burpees · 45 sec</span>
-              </div>
-              <div class="session-item">
-                <span class="session-icon">○</span>
-                <span>Squat sauté · 30 sec</span>
-              </div>
-              <div class="session-item">
-                <span class="session-icon">○</span>
-                <span>Mountain climbers · 40 sec</span>
-              </div>
-            </div>
-            <div class="app-ui-bottom">
-              <button class="app-start-btn">▶ Démarrer la séance</button>
-            </div>
-          </div>
+      </article>
+      <article class="coach-card fade-in">
+        <div class="coach-photo-wrap"><img src="assets/coach_lena_hq.png" alt="Coach Lena" class="coach-photo" /></div>
+        <div class="coach-info">
+          <h3 class="coach-name">Coach Lena</h3>
+          <span class="coach-prog tag-shape">KlynShape · Avec matériel</span>
+          <p class="coach-bio">Coach sportive passionnée. Son approche progressive et structurée aide chacun à développer sa force, améliorer sa tonicité et retrouver confiance en soi.</p>
+          <blockquote class="coach-quote">« Force · Tonicité · Confiance. »</blockquote>
         </div>
-        <div class="phone-glow"></div>
-      </div>
+      </article>
+      <article class="coach-card fade-in">
+        <div class="coach-photo-wrap"><img src="assets/coach_onyx_hq.png" alt="Coach Onyx" class="coach-photo" /></div>
+        <div class="coach-info">
+          <h3 class="coach-name">Coach Onyx</h3>
+          <span class="coach-prog tag-military">KlynMilitary · Calisthenics</span>
+          <p class="coach-bio">Préparatrice physique, coach de performance. 8 ans d'entraînement calisthénique intensif. Discipline, force, mental froid.</p>
+          <blockquote class="coach-quote">« L'excellence n'est pas un talent. C'est une habitude. »</blockquote>
+        </div>
+      </article>
+      <article class="coach-card fade-in">
+        <div class="coach-photo-wrap"><img src="assets/coach_atlas.png" alt="Coach Atlas" class="coach-photo" /></div>
+        <div class="coach-info">
+          <h3 class="coach-name">Coach Atlas</h3>
+          <span class="coach-prog" style="background:rgba(96,165,250,0.1);color:#60A5FA;">KlynBuild · Musculation</span>
+          <p class="coach-bio">Coach musculation & hypertrophie. Méthode périodisée en 4 phases : activation, accumulation, intensification, réalisation.</p>
+          <blockquote class="coach-quote">« Confiance · Énergie · Progrès. »</blockquote>
+        </div>
+      </article>
+      <article class="coach-card fade-in">
+        <div class="coach-photo-wrap"><img src="assets/coach_kaia_warrior.png" alt="Coach Kaia" class="coach-photo" /></div>
+        <div class="coach-info">
+          <h3 class="coach-name">Coach Kaia</h3>
+          <span class="coach-prog tag-mind">KlynMind · Yoga & Méditation</span>
+          <p class="coach-bio">Professeure de yoga certifiée, spécialiste pleine conscience. 28 jours pour reconnecter corps, souffle et équilibre intérieur.</p>
+          <blockquote class="coach-quote">« Le calme est la base de toute puissance. »</blockquote>
+        </div>
+      </article>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       TÉMOIGNAGES
-  ══════════════════════════════════════════════ -->
+  <!-- ══ TÉMOIGNAGES ══ -->
   <section class="temoignages" id="temoignages">
     <div class="temo-header fade-in">
       <span class="eyebrow gold">Résultats réels</span>
-      <h2 class="h2">Elles l'ont fait. Elles témoignent.</h2>
+      <h2 class="h2">Ils l'ont fait. Ils témoignent.</h2>
     </div>
     <div class="temo-grid">
-
       <div class="temo-card fade-in">
         <div class="temo-stars">★★★★★</div>
-        <p class="temo-text">« J'ai perdu 4,5 kg en 28 jours sans me priver. Le programme est incroyablement bien structuré — chaque semaine tu sens la progression. Et le PDF est tellement beau, ça donne vraiment envie de le suivre. »</p>
+        <p class="temo-text">« J'ai perdu 4,5 kg en 28 jours sans me priver. Le programme est incroyablement bien structuré — chaque semaine tu sens la progression. »</p>
         <div class="temo-author">
           <div class="temo-avatar">S</div>
-          <div>
-            <p class="temo-name">Sofia M.</p>
-            <p class="temo-prog">KlynShape Sans Matériel · Paris</p>
-          </div>
+          <div><p class="temo-name">Sofia M.</p><p class="temo-prog">KlynShape · Paris</p></div>
         </div>
       </div>
-
       <div class="temo-card featured-temo fade-in">
         <div class="temo-stars">★★★★★</div>
-        <p class="temo-text">« Ce qui m'a le plus surprise c'est la qualité du contenu — pas juste des exercices, mais la nutrition, la récupération, tout est pensé. Coach Maya explique tout avec une précision qu'on n'a même pas chez certains coaches en salle. »</p>
+        <p class="temo-text">« Ce qui m'a le plus surprise c'est la qualité du contenu — pas juste des exercices, mais la nutrition, la récupération, tout est pensé. »</p>
         <div class="temo-author">
           <div class="temo-avatar">C</div>
-          <div>
-            <p class="temo-name">Camille D.</p>
-            <p class="temo-prog">KlynShape Avec Matériel · Lyon</p>
-          </div>
+          <div><p class="temo-name">Camille D.</p><p class="temo-prog">KlynShape · Lyon</p></div>
         </div>
         <div class="temo-result">−5 kg en 28 jours</div>
       </div>
-
       <div class="temo-card fade-in">
         <div class="temo-stars">★★★★★</div>
-        <p class="temo-text">« KlynMind a changé ma relation à mon corps. Je dormais mal, j'étais stressée. 28 jours plus tard, j'ai une routine du matin que j'adore et une sérénité que je n'avais plus depuis des années. »</p>
+        <p class="temo-text">« KlynMind a changé ma relation à mon corps. 28 jours plus tard, j'ai une routine du matin que j'adore et une sérénité que je n'avais plus depuis des années. »</p>
         <div class="temo-author">
           <div class="temo-avatar">L</div>
-          <div>
-            <p class="temo-name">Léa V.</p>
-            <p class="temo-prog">KlynMind · Strasbourg</p>
-          </div>
+          <div><p class="temo-name">Léa V.</p><p class="temo-prog">KlynMind · Strasbourg</p></div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       NEWSLETTER / CTA FINAL
-  ══════════════════════════════════════════════ -->
+  <!-- ══ PDF ══ -->
+  <section class="pdf-section" id="pdf">
+    <div class="pdf-section-inner">
+      <div class="section-header" style="margin-bottom:40px;">
+        <span class="eyebrow">Option imprimable</span>
+        <h2>Les programmes en PDF</h2>
+        <p>Tu préfères une version papier ? Télécharge et imprime ton programme. Accès à vie, une seule fois.</p>
+      </div>
+
+      <div class="progs-grid" style="max-width:1000px;margin:0 auto;">
+        <div class="prog-card fade-in">
+          <div class="prog-cover-wrap">
+            <img src="assets/hero_maya_cover.png" alt="KlynShape PDF" />
+            <div class="prog-cover-overlay"></div>
+          </div>
+          <div class="prog-card-body">
+            <span class="prog-tag tag-shape">PDF · KlynShape</span>
+            <h4>Perte de poids · Sans matériel</h4>
+            <div class="prog-card-price"><span class="price">29€</span> <span class="price-note">accès à vie</span></div>
+            <a href="https://buy.stripe.com/fZucN60uX2DWbTU9jL5Rm04" class="btn-gold btn-sm" target="_blank" rel="noopener">Obtenir →</a>
+          </div>
+        </div>
+        <div class="prog-card fade-in">
+          <div class="prog-cover-wrap">
+            <img src="assets/hero_lena_cover.png" alt="KlynShape Équipement PDF" />
+            <div class="prog-cover-overlay"></div>
+          </div>
+          <div class="prog-card-body">
+            <span class="prog-tag tag-shape">PDF · KlynShape</span>
+            <h4>Perte de poids · Avec matériel</h4>
+            <div class="prog-card-price"><span class="price">29€</span> <span class="price-note">accès à vie</span></div>
+            <a href="https://buy.stripe.com/eVqeVe91t6Uc6zA0Nf5Rm06" class="btn-gold btn-sm" target="_blank" rel="noopener">Obtenir →</a>
+          </div>
+        </div>
+        <div class="prog-card fade-in">
+          <div class="prog-cover-wrap">
+            <img src="assets/hero_mind_cover.jpg" alt="KlynMind PDF" />
+            <div class="prog-cover-overlay"></div>
+          </div>
+          <div class="prog-card-body">
+            <span class="prog-tag tag-mind">PDF · KlynMind</span>
+            <h4>Yoga & Méditation 28J</h4>
+            <div class="prog-card-price"><span class="price">29€</span> <span class="price-note">accès à vie</span></div>
+            <a href="https://buy.stripe.com/eVq14o0uX5Q87DEcvX5Rm07" class="btn-mind btn-sm" target="_blank" rel="noopener">Obtenir →</a>
+          </div>
+        </div>
+        <div class="prog-card fade-in">
+          <div class="prog-cover-wrap">
+            <img src="assets/hero_military_hq.png" alt="KlynMilitary PDF" />
+            <div class="prog-cover-overlay"></div>
+          </div>
+          <div class="prog-card-body">
+            <span class="prog-tag tag-military">PDF · KlynMilitary</span>
+            <h4>Calisthenics 28J</h4>
+            <div class="prog-card-price"><span class="price">29€</span> <span class="price-note">accès à vie</span></div>
+            <a href="https://buy.stripe.com/14A00k5Ph1zSaPQ9jL5Rm08" class="btn-gold btn-sm" target="_blank" rel="noopener">Obtenir →</a>
+          </div>
+        </div>
+      </div>
+      <p class="pdf-note">📄 PDF haute qualité · Imprimable · Téléchargement immédiat après paiement</p>
+    </div>
+  </section>
+
+  <!-- ══ STREETWEAR ══ -->
+  <section class="streetwear-section" id="streetwear">
+    <div class="section-header">
+      <span class="eyebrow">Bientôt disponible</span>
+      <h2>KLYN Wear</h2>
+      <p>La marque arrive. Streetwear premium, en print-on-demand.</p>
+    </div>
+    <div class="streetwear-card">
+      <div class="streetwear-soon">Bientôt sur Shopify</div>
+      <h3>Porter la discipline.<br />Afficher l'état d'esprit.</h3>
+      <p>Hoodies, tees, accessories — la collection KLYN arrive. Produits premium, fabrication à la demande, livraison mondiale.</p>
+      <div style="margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:10px 20px;font-family:'Montserrat',sans-serif;font-size:12px;color:rgba(255,255,255,0.4);">Hoodies</div>
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:10px 20px;font-family:'Montserrat',sans-serif;font-size:12px;color:rgba(255,255,255,0.4);">T-shirts</div>
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:10px 20px;font-family:'Montserrat',sans-serif;font-size:12px;color:rgba(255,255,255,0.4);">Accessories</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA FINAL ══ -->
   <section class="cta-final">
     <div class="cta-final-bg">
       <img src="assets/hero_lena_cover.png" alt="" class="cta-bg-img" />
       <div class="cta-bg-overlay"></div>
     </div>
     <div class="cta-final-content fade-in">
-      <span class="eyebrow">Prête à commencer ?</span>
+      <span class="eyebrow">Prêt(e) ?</span>
       <h2 class="h2-white">Ta transformation<br />commence aujourd'hui.</h2>
-      <p class="cta-sub">Accès immédiat. Coach expert. 28 jours. Résultats réels.</p>
+      <p class="cta-sub">2 minutes de quiz. Accès immédiat. 14,99€/mois.</p>
       <div class="cta-btns">
-        <a href="boutique.html" class="btn-gold btn-lg">Choisir mon programme</a>
+        <a href="https://klyn-app.org" class="btn-gold btn-lg" target="_blank" rel="noopener">Démarrer sur l'app →</a>
         <a href="#programmes" class="btn-white">Voir les programmes ↑</a>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       FOOTER
-  ══════════════════════════════════════════════ -->
+  <!-- ══ FOOTER ══ -->
   <footer class="footer">
     <div class="footer-inner">
-
       <div class="footer-brand">
         <img src="assets/logo.png" alt="KLYN" class="footer-logo" />
-        <p class="footer-tagline">Transformation physique &amp; mentale premium.<br />Corps. Esprit. Style.</p>
+        <p class="footer-tagline">Transformation physique & mentale premium.<br />Corps. Esprit. Style.</p>
         <div class="footer-socials">
           <a href="https://instagram.com/klyn_official" target="_blank" rel="noopener" aria-label="Instagram">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
@@ -498,24 +644,22 @@
           </a>
         </div>
       </div>
-
       <div class="footer-links">
         <div class="footer-col">
-          <h4>Programmes</h4>
+          <h4>L'app</h4>
           <ul>
-            <li><a href="klynshape.html">KlynShape</a></li>
-            <li><a href="klynmind.html">KlynMind</a></li>
-            <li><a href="klynbuilt.html">KlynBuilt</a></li>
-            <li><a href="boutique.html">Boutique</a></li>
+            <li><a href="https://klyn-app.org" target="_blank">Accéder à l'app</a></li>
+            <li><a href="https://klyn-app.org/pricing" target="_blank">Tarifs</a></li>
+            <li><a href="https://klyn-app.org/login" target="_blank">Se connecter</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Marque</h4>
+          <h4>Programmes</h4>
           <ul>
-            <li><a href="vetements.html">Klyn Wear</a></li>
-            <li><a href="#app">L'application</a></li>
-            <li><a href="#coaches">Nos coachs</a></li>
-            <li><a href="#temoignages">Témoignages</a></li>
+            <li><a href="#programmes">KlynShape</a></li>
+            <li><a href="#programmes">KlynMilitary</a></li>
+            <li><a href="#programmes">KlynBuild</a></li>
+            <li><a href="#programmes">KlynMind</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -528,7 +672,6 @@
           </ul>
         </div>
       </div>
-
     </div>
     <div class="footer-bottom">
       <p>© 2026 KLYN. Tous droits réservés. · Paiement sécurisé Stripe</p>
@@ -537,67 +680,5 @@
 
   <script src="js/main.js"></script>
 
-  <!-- ══════ POPUP QUIZ ══════ -->
-  <div id="quiz-popup" style="
-    display:none;
-    position:fixed;top:0;left:0;right:0;bottom:0;
-    background:rgba(0,0,0,0.85);
-    z-index:9999;
-    align-items:center;
-    justify-content:center;
-    backdrop-filter:blur(6px);
-    -webkit-backdrop-filter:blur(6px);
-  ">
-    <div style="
-      background:#111;
-      border:1px solid rgba(212,175,55,0.2);
-      max-width:480px;
-      width:90%;
-      padding:3rem 2.5rem;
-      text-align:center;
-      position:relative;
-    ">
-      <button onclick="document.getElementById('quiz-popup').style.display='none'" style="
-        position:absolute;top:1rem;right:1.2rem;
-        background:none;border:none;color:rgba(255,255,255,0.4);
-        font-size:1.4rem;cursor:pointer;line-height:1;
-      ">✕</button>
-
-      <p style="font-family:'Montserrat',sans-serif;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#D4AF37;margin-bottom:1rem;">Quiz personnalisé · 2 min</p>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:#fff;margin-bottom:1rem;line-height:1.2;">Quel programme<br/>est fait pour toi ?</h2>
-      <p style="font-family:'Montserrat',sans-serif;font-size:0.85rem;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:2rem;">Réponds à 5 questions rapides et découvre le programme KLYN adapté à ton objectif, ton niveau et ton mode de vie.</p>
-
-      <a href="quiz.html" style="
-        display:block;
-        background:linear-gradient(135deg,#D4AF37,#b89610);
-        color:#0A0A0A;
-        font-family:'Montserrat',sans-serif;
-        font-size:0.8rem;
-        font-weight:700;
-        letter-spacing:0.12em;
-        text-transform:uppercase;
-        text-decoration:none;
-        padding:1.1rem 2rem;
-        margin-bottom:1rem;
-      ">Trouver mon programme →</a>
-
-      <button onclick="document.getElementById('quiz-popup').style.display='none'" style="
-        background:none;border:none;
-        color:rgba(255,255,255,0.3);
-        font-family:'Montserrat',sans-serif;
-        font-size:0.72rem;
-        cursor:pointer;
-        text-decoration:underline;
-      ">Je veux voir le site d'abord</button>
-    </div>
-  </div>
-
-  <script>
-    // Afficher le popup 1.2s après l'arrivée sur la page
-    setTimeout(function() {
-      const popup = document.getElementById('quiz-popup');
-      popup.style.display = 'flex';
-    }, 1200);
-  </script>
 </body>
 </html>
