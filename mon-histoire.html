@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comment j'ai perdu 18 kg en 3 mois avec KLYN — Nicki, fondatrice</title>
+  <meta name="description" content="Mon histoire : comment j'ai perdu 18 kg en 3 mois avec KLYN Shape, sans régime extrême ni salle de sport. La méthode que j'ai construite, et pourquoi j'ai créé KLYN." />
+  <meta property="og:title" content="Comment j'ai perdu 18 kg en 3 mois — Nicki, fondatrice de KLYN" />
+  <meta property="og:description" content="Pas de régime extrême. Pas de salle tous les jours. Juste une méthode structurée — et 18 kg en 3 mois." />
+  <meta property="og:image" content="assets/nicki_avantapres.png" />
+  <link rel="canonical" href="https://klynofficiel.org/mon-histoire.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* ── ARTICLE PAGE ── */
+    .article-hero {
+      background: var(--black);
+      padding: 140px 24px 80px;
+      text-align: center;
+      border-bottom: 1px solid rgba(212,175,55,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .article-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(212,175,55,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .article-hero .eyebrow { margin-bottom: 1.4rem; }
+    .article-hero h1 {
+      font-family: var(--font-title);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.15;
+      max-width: 760px;
+      margin: 0 auto 1.2rem;
+    }
+    .article-hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .article-meta {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.08em;
+      margin-bottom: 2.4rem;
+    }
+    .article-stats-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .astat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .astat-num {
+      font-family: var(--font-title);
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .astat-label {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+    .astat-divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* ── ARTICLE BODY ── */
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 80px 24px 100px;
+    }
+
+    /* Avant/après image */
+    .article-avantapres {
+      margin: 0 auto 72px;
+      max-width: 600px;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.6), 0 0 0 1px rgba(212,175,55,0.1);
+      position: relative;
+    }
+    .article-avantapres img { width: 100%; display: block; }
+    .article-avantapres-caption {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(212,175,55,0.3);
+      color: var(--gold);
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    /* Sections article */
+    .article-section { margin-bottom: 56px; }
+    .article-section h2 {
+      font-family: var(--font-title);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+      line-height: 1.2;
+    }
+    .article-section h2 .gold { color: var(--gold); }
+    .article-section p {
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+    .article-section p strong {
+      color: rgba(255,255,255,0.85);
+      font-weight: 600;
+    }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 2px solid var(--gold);
+      padding: 4px 0 4px 24px;
+      margin: 32px 0;
+    }
+    .pull-quote p {
+      font-family: var(--font-title);
+      font-size: 1.25rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.8) !important;
+      line-height: 1.6 !important;
+    }
+
+    /* Phase badge */
+    .phase-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212,175,55,0.08);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    /* CTA article */
+    .article-cta {
+      background: linear-gradient(135deg, rgba(212,175,55,0.06) 0%, rgba(212,175,55,0.02) 100%);
+      border: 1px solid rgba(212,175,55,0.15);
+      border-radius: 6px;
+      padding: 48px 40px;
+      text-align: center;
+      margin-top: 72px;
+    }
+    .article-cta .eyebrow { margin-bottom: 1rem; }
+    .article-cta h3 {
+      font-family: var(--font-title);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .article-cta p {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+      max-width: 440px;
+      margin: 0 auto 2rem;
+    }
+    .article-cta .btn-gold {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .article-cta .btn-gold:hover {
+      background: var(--gold2);
+      transform: translateY(-1px);
+    }
+    .article-cta-guarantee {
+      margin-top: 1rem;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.05em;
+    }
+
+    /* Separator */
+    .article-sep {
+      width: 40px;
+      height: 1px;
+      background: rgba(212,175,55,0.3);
+      margin: 48px auto;
+    }
+
+    @media (max-width: 600px) {
+      .article-cta { padding: 36px 24px; }
+      .article-stats-bar { gap: 24px; }
+      .astat-divider { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.png" alt="KLYN" />
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="index.html#programmes">Programmes</a></li>
+        <li><a href="index.html#coaches">Coachs</a></li>
+        <li><a href="index.html#pdf">PDF</a></li>
+        <li><a href="index.html#streetwear">Wear</a></li>
+      </ul>
+      <a href="https://klyn-app.org" class="nav-cta-btn" target="_blank" rel="noopener">Accéder à l'app →</a>
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══ HERO ══ -->
+  <header class="article-hero">
+    <span class="eyebrow gold">La Fondatrice · Mon Histoire</span>
+    <h1>Comment j'ai perdu <em>18 kg en 3 mois</em><br>avec KLYN Shape</h1>
+    <p class="article-meta">Par Nicki, fondatrice de KLYN</p>
+    <div class="article-stats-bar">
+      <div class="astat">
+        <span class="astat-num">−18 kg</span>
+        <span class="astat-label">perdus</span>
+      </div>
+      <div class="astat-divider"></div>
+      <div class="astat">
+        <span class="astat-num">3 mois</span>
+        <span class="astat-label">de transformation</span>
+      </div>
+      <div class="astat-divider"></div>
+      <div class="astat">
+        <span class="astat-num">0 €</span>
+        <span class="astat-label">de salle de sport</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══ ARTICLE ══ -->
+  <main class="article-body">
+
+    <!-- Photo avant/après -->
+    <div class="article-avantapres fade-in">
+      <img src="assets/nicki_avantapres.png" alt="Nicki — Transformation KLYN · Avant / Après · −18 kg en 3 mois" loading="eager" />
+      <div class="article-avantapres-caption">Avant · Après · −18 kg · 3 mois</div>
+    </div>
+
+    <!-- Intro -->
+    <div class="article-section fade-in">
+      <p>Il y a quelques mois, je ne me reconnaissais plus dans le miroir. Pas parce que j'avais arrêté d'essayer — j'avais <strong>tout essayé</strong>. Les régimes, les salles de sport, les PDF de programmes téléchargés sur internet. Rien ne tenait. Au bout de deux semaines, j'abandonnais. Toujours la même histoire.</p>
+      <p>Ce qui a tout changé, c'est la méthode que j'ai ensuite intégrée dans KLYN. Et en 3 mois, j'ai perdu <strong>18 kg</strong>. Je vais t'expliquer exactement comment.</p>
+    </div>
+
+    <div class="article-sep"></div>
+
+    <!-- Pourquoi les programmes classiques -->
+    <div class="article-section fade-in">
+      <h2>Pourquoi les programmes classiques <span class="gold">ne fonctionnent pas</span></h2>
+      <p>La plupart des programmes de perte de poids font la même erreur : ils te donnent un plan figé, sans tenir compte de ton niveau, de ta disponibilité, de ce que tu manges vraiment. Tu rates une séance, tu te sens coupable, tu arrêtes.</p>
+      <div class="pull-quote">
+        <p>« Le problème, ce n'est pas toi. C'est le programme. »</p>
+      </div>
+      <p>Un bon programme de remise en forme doit s'adapter à toi, pas l'inverse. C'est ce que j'ai compris — et c'est sur ce principe que j'ai construit KLYN.</p>
+    </div>
+
+    <!-- Phase 1 -->
+    <div class="article-section fade-in">
+      <span class="phase-badge">Phase 1 · Semaines 1–4</span>
+      <h2>Shape Bodyweight — <span class="gold">les 4 premières semaines</span></h2>
+      <p>J'ai commencé <strong>sans aucun équipement</strong>. Pas de salle, pas d'haltères, juste mon corps et un espace au sol.</p>
+      <p>Le programme KLYN Shape Bodyweight, c'est 3 séances guidées par semaine, progressives. Chaque mouvement est expliqué, chaque répétition compte. La coach IA Maya t'accompagne séance après séance — elle adapte l'intensité à ton niveau, pas à un niveau générique.</p>
+      <p>Les premières semaines, j'ai perdu environ <strong>4 à 5 kg</strong>. Surtout grâce à un changement que je n'attendais pas : la nutrition.</p>
+    </div>
+
+    <!-- Nutrition -->
+    <div class="article-section fade-in">
+      <h2>Le vrai secret : la nutrition représente <span class="gold">70% des résultats</span></h2>
+      <p>Je vais être directe : <strong>le sport seul ne suffit pas</strong>. J'ai mis du temps à l'accepter.</p>
+      <p>Avec KLYN Shape, j'ai suivi le plan nutritionnel inclus dans l'application : 28 recettes calibrées sur 28 jours, avec les grammages, les macros, et les alternatives si tu n'aimes pas un ingrédient. Petit-déjeuner, déjeuner, dîner — tout était préparé pour moi.</p>
+      <div class="pull-quote">
+        <p>« Ce n'est pas un régime. C'est de la nutrition structurée. Et c'est ce qui a déclenché les vrais résultats. »</p>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="article-section fade-in">
+      <span class="phase-badge">Phase 2 · Semaines 5–8</span>
+      <h2>Shape Équipement — <span class="gold">les 4 semaines suivantes</span></h2>
+      <p>Après un mois en bodyweight, j'ai intégré des haltères et des bandes élastiques. Le programme évolue naturellement — la coach Léna prend le relais avec des séances plus intenses, axées sur le sculptage et la perte de masse grasse.</p>
+      <p>C'est à ce stade que les <strong>transformations visuelles deviennent les plus marquées</strong>. Mon corps a commencé à se redessiner : moins de volume, plus de tonus.</p>
+    </div>
+
+    <!-- Semaine 3 -->
+    <div class="article-section fade-in">
+      <h2>Semaine 3 : le moment où <span class="gold">j'ai failli arrêter</span></h2>
+      <p>Je vais être honnête. À la troisième semaine, la balance n'avait pas bougé depuis plusieurs jours. J'avais envie de tout arrêter.</p>
+      <p>Ce qui m'a sauvée, c'est <strong>la structure</strong>. J'avais un plan pour le lendemain. Une séance programmée. Des repas déjà décidés. Je n'avais pas à décider — j'avais juste à suivre.</p>
+      <p>J'ai tenu. Et la semaine 4, le corps a rattrapé.</p>
+      <div class="pull-quote">
+        <p>« La structure est plus importante que la motivation. La motivation fluctue. Le plan, lui, reste. »</p>
+      </div>
+    </div>
+
+    <!-- Résultat -->
+    <div class="article-section fade-in">
+      <h2>Le résultat : <span class="gold">−18 kg en 3 mois</span></h2>
+      <p>Au bout de 12 semaines, j'avais perdu 18 kg. Pas grâce à un miracle, pas grâce à une pilule ou un régime extrême. Grâce à une méthode cohérente : <strong>sport progressif + nutrition calibrée + accompagnement constant</strong>.</p>
+      <p>C'est exactement cette méthode que j'ai intégrée dans KLYN.</p>
+    </div>
+
+    <div class="article-sep"></div>
+
+    <!-- Pourquoi KLYN -->
+    <div class="article-section fade-in">
+      <h2>Pourquoi j'ai <span class="gold">créé KLYN</span></h2>
+      <p>Pendant toute ma transformation, j'aurais voulu avoir une application qui me guide vraiment — pas un PDF figé, pas un programme générique, mais quelque chose qui s'adapte à moi, qui réponde à mes questions à 2h du matin, qui m'encourage quand j'ai envie d'abandonner.</p>
+      <p><strong>KLYN, c'est l'outil que je n'avais pas.</strong> Alors je l'ai construit.</p>
+      <p>5 coachs IA (Maya, Léna, Atlas, Onyx, Kaïa), 4 programmes (Shape, Build, Military, Mind), nutrition incluse, coach IA disponible 24h/24. Tout ce dont tu as besoin pour ta transformation — dans une seule app.</p>
+    </div>
+
+    <!-- CTA -->
+    <div class="article-cta fade-in">
+      <span class="eyebrow gold">Commence aujourd'hui</span>
+      <h3>Prête à écrire<br>ta propre histoire ?</h3>
+      <p>Fais le quiz de 2 minutes — il te recommande le programme et le coach adaptés à ton profil, tes objectifs, et ta disponibilité.</p>
+      <a href="https://klyn-app.org" target="_blank" rel="noopener" class="btn-gold">Commencer ma transformation →</a>
+      <p class="article-cta-guarantee">✦ 3 jours gratuits · Sans carte bancaire · Remboursé si insatisfaite sous 30 jours</p>
+    </div>
+
+  </main>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="KLYN" class="footer-logo" />
+        <p class="footer-tagline">Transformation physique & mentale premium.<br />Corps. Esprit. Style.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/klyn_official" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          </a>
+          <a href="https://tiktok.com/@klyn_official" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 106.34 6.34V8.58a8.16 8.16 0 004.77 1.52V6.65a4.85 4.85 0 01-1-.04z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>L'app</h4>
+          <ul>
+            <li><a href="https://klyn-app.org" target="_blank">Accéder à l'app</a></li>
+            <li><a href="https://klyn-app.org/pricing" target="_blank">Tarifs</a></li>
+            <li><a href="https://klyn-app.org/login" target="_blank">Se connecter</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Programmes</h4>
+          <ul>
+            <li><a href="index.html#programmes">KlynShape</a></li>
+            <li><a href="index.html#programmes">KlynMilitary</a></li>
+            <li><a href="index.html#programmes">KlynBuild</a></li>
+            <li><a href="index.html#programmes">KlynMind</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Infos</h4>
+          <ul>
+            <li><a href="mentions-legales.html">Mentions légales</a></li>
+            <li><a href="cgv.html">CGV</a></li>
+            <li><a href="confidentialite.html">Confidentialité</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 KLYN. Tous droits réservés. · Paiement sécurisé Stripe</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>
