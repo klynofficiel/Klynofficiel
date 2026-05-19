@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Challenge 7 Jours KLYN — Remise en forme & Détox Gratuit</title>
+  <meta name="description" content="Télécharge gratuitement ton programme KLYN 7 Jours : 5 séances bodyweight + 7 boissons détox. Zéro matériel, résultats visibles." />
+  <meta property="og:title" content="Challenge 7 Jours KLYN — Gratuit" />
+  <meta property="og:description" content="5 séances bodyweight + 7 boissons détox. Zéro matériel. Résultats visibles en 7 jours." />
+  <meta property="og:image" content="assets/hero_shape_bw_cover.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>emailjs.init('EnI-QxWfKuzLdfKZ-');</script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #0A0A0A;
+      color: #fff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(212,175,55,0.15) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.3);
+      border-radius: 100px;
+      padding: 7px 18px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #D4AF37;
+      margin-bottom: 32px;
+    }
+    .badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #D4AF37;
+      box-shadow: 0 0 8px #D4AF37;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #D4AF37;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(44px, 10vw, 88px);
+      font-weight: 700;
+      line-height: 1;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      background: linear-gradient(135deg, #E8C84A, #D4AF37, #C9A227);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-days {
+      font-size: clamp(13px, 2vw, 16px);
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 28px;
+    }
+
+    .hero-sub {
+      font-size: clamp(14px, 2.5vw, 17px);
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.75;
+      max-width: 520px;
+      margin: 0 auto 48px;
+    }
+    .hero-sub strong {
+      color: rgba(255,255,255,0.9);
+      font-weight: 600;
+    }
+
+    /* ── PILLULES BENEFITS ── */
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+    .pill {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 100px;
+      padding: 8px 16px;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+    }
+    .pill span { color: #D4AF37; font-size: 14px; }
+
+    /* ── FORM CARD ── */
+    .form-wrap {
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+    .form-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 12px;
+      padding: 36px 32px;
+      backdrop-filter: blur(10px);
+    }
+    .form-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+    .form-group input {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 15px 18px;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input::placeholder { color: rgba(255,255,255,0.3); }
+    .form-group input:focus { border-color: rgba(212,175,55,0.5); }
+
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, #E8C84A, #D4AF37);
+      color: #0A0A0A;
+      border: none;
+      border-radius: 8px;
+      padding: 16px;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-submit:active { transform: translateY(0); }
+    .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .form-legal {
+      font-size: 10px;
+      color: rgba(255,255,255,0.25);
+      text-align: center;
+      margin-top: 14px;
+      line-height: 1.6;
+    }
+
+    /* ── SUCCESS STATE ── */
+    .success-box {
+      display: none;
+      text-align: center;
+      padding: 40px 24px;
+    }
+    .success-box.show { display: block; }
+    .success-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    .success-box h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .success-box p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+    }
+
+    /* ── SECTION PREUVES ── */
+    .section-proof {
+      padding: 80px 24px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .proof-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 48px;
+    }
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .proof-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 28px 24px;
+      text-align: left;
+    }
+    .proof-card-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+    .proof-card h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #D4AF37;
+      margin-bottom: 8px;
+    }
+    .proof-card p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 32px 24px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #D4AF37;
+      margin-bottom: 8px;
+    }
+    .footer p {
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+    }
+    .footer a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: underline;
+      font-size: 11px;
+    }
+
+    /* ── SCROLL INDICATOR ── */
+    .scroll-hint {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 0.3;
+    }
+    .scroll-hint span { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; }
+    .scroll-hint-line {
+      width: 1px; height: 32px;
+      background: linear-gradient(to bottom, #D4AF37, transparent);
+      animation: grow 1.5s infinite;
+    }
+    @keyframes grow {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ── LOADING SPINNER ── */
+    .spinner {
+      display: inline-block;
+      width: 16px; height: 16px;
+      border: 2px solid rgba(0,0,0,0.2);
+      border-top-color: #0A0A0A;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 480px) {
+      .form-card { padding: 28px 20px; }
+      .pills { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="badge">Programme gratuit · Édition limitée</div>
+
+  <p class="hero-tag">Challenge</p>
+  <h1><em>7 Jours</em><br>KLYN</h1>
+  <p class="hero-days">Remise en forme &amp; Détox</p>
+
+  <p class="hero-sub">
+    <strong>5 séances bodyweight</strong> + <strong>7 boissons détox</strong> faites maison.<br>
+    Zéro matériel. Résultats visibles en une semaine.
+  </p>
+
+  <div class="pills">
+    <div class="pill"><span>⚡</span> 20–30 min par jour</div>
+    <div class="pill"><span>💪</span> Zéro matériel</div>
+    <div class="pill"><span>🌿</span> 7 boissons drainantes</div>
+    <div class="pill"><span>🔥</span> Résultats en 7 jours</div>
+  </div>
+
+  <!-- FORM -->
+  <div class="form-wrap">
+    <div class="form-card" id="form-card">
+      <p class="form-title">Reçois ton programme gratuitement</p>
+
+      <form id="challenge-form" novalidate>
+        <div class="form-group">
+          <input type="text" id="prenom" name="prenom" placeholder="Ton prénom" required autocomplete="given-name" />
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" name="email" placeholder="Ton adresse email" required autocomplete="email" />
+        </div>
+        <button type="submit" class="btn-submit" id="submit-btn">
+          Télécharger mon programme gratuit →
+        </button>
+      </form>
+
+      <p class="form-legal">
+        En t'inscrivant tu acceptes de recevoir des conseils fitness de KLYN.<br>
+        Désabonnement en un clic. Aucun spam.
+      </p>
+    </div>
+
+    <div class="success-box" id="success-box">
+      <div class="success-icon">✅</div>
+      <h3>C'est parti !</h3>
+      <p>Vérifie ta boîte mail — ton programme 7 Jours KLYN est en route 📩<br><br>
+      <small style="color:rgba(255,255,255,0.3)">Pense à vérifier tes spams si tu ne vois rien dans 2 minutes.</small></p>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>En savoir plus</span>
+    <div class="scroll-hint-line"></div>
+  </div>
+</section>
+
+<!-- ═══ CE QUE TU REÇOIS ═══ -->
+<section class="section-proof">
+  <p class="proof-label">Ce que contient le programme</p>
+  <div class="proof-grid">
+    <div class="proof-card">
+      <div class="proof-card-icon">🏋️</div>
+      <h4>5 Séances Bodyweight</h4>
+      <p>Des exercices guidés avec photos, adaptés à tous les niveaux. 20 à 30 min, où tu veux.</p>
+    </div>
+    <div class="proof-card">
+      <div class="proof-card-icon">🌿</div>
+      <h4>7 Boissons Détox</h4>
+      <p>Une boisson drainante par jour, faite maison en 5 minutes avec des ingrédients simples.</p>
+    </div>
+    <div class="proof-card">
+      <div class="proof-card-icon">🔄</div>
+      <h4>Nouvelles Habitudes</h4>
+      <p>Un rituel quotidien pensé pour t'installer durablement dans un mode de vie sain.</p>
+    </div>
+    <div class="proof-card">
+      <div class="proof-card-icon">📱</div>
+      <h4>Application KLYN</h4>
+      <p>Pour aller plus loin après les 7 jours — 5 programmes, 5 coachs, 28 jours de transformation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-logo">KLYN</div>
+  <p>© 2026 KLYN · <a href="https://klyn-app.org" target="_blank">klyn-app.org</a></p>
+</footer>
+
+<script>
+  const form = document.getElementById('challenge-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const formCard = document.getElementById('form-card');
+  const successBox = document.getElementById('success-box');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const prenom = document.getElementById('prenom').value.trim();
+    const email = document.getElementById('email').value.trim();
+
+    if (!prenom || !email) return;
+
+    // Loading state
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="spinner"></span>Envoi en cours...';
+
+    try {
+      await emailjs.send('klyninsta', 'lk8ducj', { prenom, email });
+      // Success
+      formCard.style.display = 'none';
+      successBox.classList.add('show');
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Télécharger mon programme gratuit →';
+      alert('Une erreur est survenue. Réessaie dans quelques instants.');
+    }
+  });
+</script>
+
+</body>
+</html>
