@@ -29,6 +29,7 @@
     /* ── HERO ── */
     .hero {
       min-height: 100dvh;
+      padding-top: 60px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -342,13 +343,113 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    /* ── TOP NAV ── */
+    .top-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212,175,55,0.15);
+    }
+    .top-nav-logo {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #D4AF37;
+      text-decoration: none;
+    }
+    .top-nav-links { display: flex; gap: 20px; align-items: center; }
+    .top-nav-links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .top-nav-links a:hover { color: #D4AF37; }
+    .top-nav-links .nav-cta {
+      color: #0A0A0A;
+      background: #D4AF37;
+      padding: 7px 16px;
+      border-radius: 2px;
+      font-weight: 600;
+    }
+    .top-nav-links .nav-cta:hover { color: #0A0A0A; opacity: 0.85; }
+
+    /* ── SUCCESS CTA ── */
+    .success-cta-block {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .success-cta-block p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .success-cta-block .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .btn-site {
+      display: block;
+      padding: 14px 20px;
+      background: #D4AF37;
+      color: #0A0A0A;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      text-align: center;
+      transition: opacity 0.2s;
+    }
+    .btn-site:hover { opacity: 0.85; }
+    .btn-app {
+      display: block;
+      padding: 13px 20px;
+      border: 1px solid rgba(212,175,55,0.4);
+      color: #D4AF37;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .btn-app:hover { background: rgba(212,175,55,0.08); }
+
     @media (max-width: 480px) {
       .form-card { padding: 28px 20px; }
       .pills { gap: 8px; }
+      .top-nav-links .nav-label { display: none; }
     }
   </style>
 </head>
 <body>
+
+<!-- ═══ TOP NAV ═══ -->
+<nav class="top-nav">
+  <a href="https://klynofficiel.org" class="top-nav-logo">KLYN</a>
+  <div class="top-nav-links">
+    <a href="https://klynofficiel.org" class="nav-label">Site</a>
+    <a href="https://klynofficiel.org/klynshape" class="nav-label">Programmes</a>
+    <a href="https://klyn-app.org" class="nav-cta">Essayer l'app →</a>
+  </div>
+</nav>
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
@@ -398,6 +499,13 @@
       <h3>C'est parti !</h3>
       <p>Vérifie ta boîte mail — ton programme 7 Jours KLYN est en route 📩<br><br>
       <small style="color:rgba(255,255,255,0.3)">Pense à vérifier tes spams si tu ne vois rien dans 2 minutes.</small></p>
+      <div class="success-cta-block">
+        <p>Aller plus loin avec KLYN</p>
+        <div class="cta-buttons">
+          <a href="https://klyn-app.org" target="_blank" class="btn-site">Découvrir l'app KLYN →</a>
+          <a href="https://klynofficiel.org/klynshape" target="_blank" class="btn-app">Voir tous les programmes</a>
+        </div>
+      </div>
     </div>
   </div>
 
