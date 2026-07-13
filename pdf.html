@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programmes PDF KLYN — Version imprimable · Accès à vie</title>
+  <meta name="description" content="Les programmes KLYN en PDF : version imprimable, paiement unique 29€, accès à vie. KlynShape, KlynMind, KlynMilitary — 28 jours de sport + nutrition, sans abonnement." />
+  <meta property="og:title" content="Programmes PDF KLYN — Version imprimable" />
+  <meta property="og:description" content="Tu préfères le papier ? Les programmes 28 jours KLYN en PDF. Paiement unique, accès à vie." />
+  <meta property="og:image" content="https://klynofficiel.org/assets/hero_shape_bw_cover.jpg" />
+  <link rel="canonical" href="https://klynofficiel.org/pdf.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    .pdf-hero {
+      background: #000;
+      padding: 160px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .pdf-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,175,55,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .pdf-hero-inner { max-width: 720px; margin: 0 auto; position: relative; }
+    .pdf-hero .eyebrow {
+      font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800;
+      letter-spacing: 0.25em; text-transform: uppercase; color: #D4AF37;
+      display: block; margin-bottom: 14px;
+    }
+    .pdf-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 6vw, 54px); font-weight: 300;
+      color: #fff; line-height: 1.15; margin-bottom: 18px;
+    }
+    .pdf-hero p {
+      font-family: 'Montserrat', sans-serif; font-size: 14px;
+      color: rgba(255,255,255,0.5); line-height: 1.8;
+    }
+    .pdf-hero-points {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 10px 24px; margin-top: 26px;
+      font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;
+      color: rgba(255,255,255,0.55);
+    }
+    .pdf-hero-points span::before { content: '✓'; color: #D4AF37; margin-right: 7px; font-weight: 800; }
+
+    .pdf-grid-section { background: #000; padding: 40px 24px 30px; }
+    .pdf-grid-inner { max-width: 1000px; margin: 0 auto; }
+    .pdf-note {
+      font-family: 'Montserrat', sans-serif; font-size: 12px;
+      color: rgba(255,255,255,0.3); text-align: center; margin-top: 20px;
+    }
+
+    /* ── EXPLICATIONS ── */
+    .pdf-explain-section {
+      background: #050505;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 90px 24px;
+    }
+    .pdf-explain-inner { max-width: 900px; margin: 0 auto; }
+    .explain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin-top: 48px;
+    }
+    .explain-card {
+      background: #0C0C0C;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px;
+      padding: 30px 26px;
+    }
+    .explain-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px; font-weight: 600; color: #D4AF37;
+      line-height: 1; margin-bottom: 14px; display: block;
+    }
+    .explain-card h4 {
+      font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700;
+      color: #fff; margin-bottom: 8px;
+    }
+    .explain-card p {
+      font-family: 'Montserrat', sans-serif; font-size: 12.5px;
+      color: rgba(255,255,255,0.45); line-height: 1.7;
+    }
+
+    /* ── CONTENU DU PDF ── */
+    .pdf-contents-section { background: #000; padding: 90px 24px; }
+    .pdf-contents-inner { max-width: 720px; margin: 0 auto; }
+    .contents-list { margin-top: 40px; display: flex; flex-direction: column; gap: 0; }
+    .contents-item {
+      display: flex; align-items: flex-start; gap: 18px;
+      padding: 22px 6px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .contents-item:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+    .contents-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .contents-item h4 {
+      font-family: 'Montserrat', sans-serif; font-size: 13.5px; font-weight: 700;
+      color: #fff; margin-bottom: 5px;
+    }
+    .contents-item p {
+      font-family: 'Montserrat', sans-serif; font-size: 12.5px;
+      color: rgba(255,255,255,0.45); line-height: 1.7;
+    }
+
+    /* ── FAQ ── */
+    .pdf-faq-section {
+      background: #050505;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 90px 24px;
+    }
+    .pdf-faq-inner { max-width: 720px; margin: 0 auto; }
+    .faq-item {
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      margin-top: 12px;
+      background: #0C0C0C;
+      overflow: hidden;
+    }
+    .faq-item summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 20px 22px;
+      font-family: 'Montserrat', sans-serif; font-size: 13.5px; font-weight: 600;
+      color: #fff;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: #D4AF37; font-size: 20px; font-weight: 400; flex-shrink: 0; }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-item .faq-body {
+      padding: 0 22px 20px;
+      font-family: 'Montserrat', sans-serif; font-size: 12.5px;
+      color: rgba(255,255,255,0.5); line-height: 1.8;
+    }
+    .faq-item .faq-body a { color: #D4AF37; }
+
+    /* ── BANDEAU APP ── */
+    .pdf-app-banner {
+      background: #000;
+      padding: 80px 24px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .pdf-app-banner-inner {
+      max-width: 640px; margin: 0 auto;
+      background: linear-gradient(160deg, #101010, #0A0A0A);
+      border: 1px solid rgba(212,175,55,0.25);
+      border-radius: 22px;
+      padding: 48px 34px;
+    }
+    .pdf-app-banner h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px; font-weight: 300; color: #fff; margin-bottom: 10px; line-height: 1.25;
+    }
+    .pdf-app-banner p {
+      font-family: 'Montserrat', sans-serif; font-size: 13px;
+      color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 28px;
+    }
+    .pdf-app-banner-actions { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .appstore-badge { display: inline-block; line-height: 0; transition: transform 0.2s, filter 0.2s; }
+    .appstore-badge img { height: 54px; width: auto; display: block; }
+    .appstore-badge:hover { transform: translateY(-2px); filter: drop-shadow(0 8px 24px rgba(255,255,255,0.15)); }
+
+    .section-header { max-width: 1000px; margin: 0 auto; text-align: center; }
+    .section-header .eyebrow { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: #D4AF37; display: block; margin-bottom: 12px; }
+    .section-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 5vw, 42px); font-weight: 300; color: #fff; margin-bottom: 12px; line-height: 1.2; }
+    .section-header p { font-family: 'Montserrat', sans-serif; font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.7; }
+  </style>
+
+  <!-- ── KLYN Tracking ─────────────────────────── -->
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJGGYT1WNG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YJGGYT1WNG');
+  </script>
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '830877619542878');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=830877619542878&ev=PageView&noscript=1"/></noscript>
+  <!-- TikTok Pixel -->
+  <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+      ttq.load('D7OPT7RC77U1UDE5F7FG');
+      ttq.page();
+    }(window, document, 'ttq');
+  </script>
+  <!-- Microsoft Clarity -->
+  <script>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wd82dbgfnj");
+  </script>
+  <!-- ──────────────────────────────────────────── -->
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.png" alt="KLYN" />
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="index.html#app">L'app</a></li>
+        <li><a href="index.html#programmes">Programmes</a></li>
+        <li><a href="index.html#coaches">Coachs</a></li>
+        <li><a href="mon-histoire.html">Mon Histoire</a></li>
+        <li><a href="pdf.html" class="active">PDF</a></li>
+      </ul>
+      <a href="index.html#telecharger" class="nav-cta-btn">Télécharger l'app →</a>
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══ HERO PDF ══ -->
+  <section class="pdf-hero">
+    <div class="pdf-hero-inner">
+      <span class="eyebrow">Version imprimable</span>
+      <h1>Les programmes KLYN<br />en PDF</h1>
+      <p>
+        Tu préfères le papier à l'écran ? Chaque programme 28 jours existe en version PDF premium :
+        tu l'achètes une seule fois, tu le télécharges immédiatement, il est à toi pour toujours.
+        Pas d'abonnement, pas de compte à créer.
+      </p>
+      <div class="pdf-hero-points">
+        <span>Paiement unique</span>
+        <span>Accès à vie</span>
+        <span>Téléchargement immédiat</span>
+        <span>Imprimable</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ LES 4 PDF ══ -->
+  <section class="pdf-grid-section" id="pdfs">
+    <div class="pdf-grid-inner">
+      <div class="progs-grid">
+
+        <div class="prog-card fade-in">
+          <div class="prog-cover-wrap">
+            <img src="assets/hero_maya_cover.png" alt="KlynShape PDF — Perte de poids sans matériel" />
+            <div class="prog-cover-overlay">
+              <span class="prog-cover-badge bestseller">N°1</span>
+            </div>
+          </div>
+          <div class="prog-card-body">
+            <span class="prog-tag tag-shape">PDF · KlynShape</span>
+            <h4>Perte de poids · Sans matériel</h4>
+            <p class="prog-coach-note">28 jours · 80 exercices guidés · Nutrition incluse</p>
+            <div class="prog-card-price"><span class="price">29€</span> <span class="price-note">accès à vie</span></div>
+            <a href="https://buy.stripe.com/fZucN60uX2DWbTU9jL5Rm04" class="btn-gold btn-sm" target="_blank" rel="noopener">Obtenir →</a>
+          </div>
+        </div>
+
+        <div class="prog-card fade-in">
+          <div class="prog-cover-wrap">
+            <img src="assets/hero_lena_cover.png" alt="KlynShape Équipement PDF — Perte de poids avec matériel" />
+            <div class="prog-cover-overlay"></div>
+          </div>
+          <div class="prog-card-body">
+            <span class="prog-tag tag-shape">PDF · KlynShape</span>
+            <h4>Perte de poids · Avec matériel</h4>
+            <p class="prog-coach-note">28 jours · Haltères &amp; bandes · Nutrition incluse</p>
+            <div class="prog-card-price"><span class="price">29€</span> <span class="price-note">accès à vie</span></div>
+            <a href="https://buy.stripe.com/eVqeVe91t6Uc6zA0Nf5Rm06" class="btn-gold btn-sm" target="_blank" rel="noopener">Obtenir →</a>
+          </div>
+        </div>
+
+        <div class="prog-card fade-in">
+          <div class="prog-cover-wrap">
+            <img src="assets/hero_mind_cover.jpg" alt="KlynMind PDF — Yoga et méditation" />
+            <div class="prog-cover-overlay"></div>
+          </div>
+          <div class="prog-card-body">
+            <span class="prog-tag tag-mind">PDF · KlynMind</span>
+            <h4>Yoga &amp; Méditation 28J</h4>
+            <p class="prog-coach-note">28 jours · Postures, respiration, méditation</p>
+            <div class="prog-card-price"><span class="price">29€</span> <span class="price-note">accès à vie</span></div>
+            <a href="https://buy.stripe.com/eVq14o0uX5Q87DEcvX5Rm07" class="btn-mind btn-sm" target="_blank" rel="noopener">Obtenir →</a>
+          </div>
+        </div>
+
+        <div class="prog-card fade-in">
+          <div class="prog-cover-wrap">
+            <img src="assets/hero_military_hq.png" alt="KlynMilitary PDF — Calisthenics" />
+            <div class="prog-cover-overlay"></div>
+          </div>
+          <div class="prog-card-body">
+            <span class="prog-tag tag-military">PDF · KlynMilitary</span>
+            <h4>Calisthenics 28J</h4>
+            <p class="prog-coach-note">28 jours · 78 exercices · Nutrition performance</p>
+            <div class="prog-card-price"><span class="price">29€</span> <span class="price-note">accès à vie</span></div>
+            <a href="https://buy.stripe.com/14A00k5Ph1zSaPQ9jL5Rm08" class="btn-gold btn-sm" target="_blank" rel="noopener">Obtenir →</a>
+          </div>
+        </div>
+
+      </div>
+      <p class="pdf-note">📄 PDF haute qualité · Imprimable · Téléchargement immédiat après paiement · Paiement sécurisé Stripe</p>
+    </div>
+  </section>
+
+  <!-- ══ COMMENT ÇA MARCHE ══ -->
+  <section class="pdf-explain-section">
+    <div class="pdf-explain-inner">
+      <div class="section-header fade-in">
+        <span class="eyebrow">Comment ça marche</span>
+        <h2>Simple. En 3 étapes.</h2>
+      </div>
+      <div class="explain-grid">
+        <div class="explain-card fade-in">
+          <span class="explain-num">1</span>
+          <h4>Choisis ton programme</h4>
+          <p>Perte de poids (avec ou sans matériel), calisthenics ou yoga &amp; méditation. Chaque PDF couvre les 28 jours complets du programme.</p>
+        </div>
+        <div class="explain-card fade-in">
+          <span class="explain-num">2</span>
+          <h4>Paie une seule fois</h4>
+          <p>29€, paiement sécurisé par Stripe (CB, Apple Pay, Google Pay). Pas d'abonnement, pas de renouvellement — c'est un achat unique.</p>
+        </div>
+        <div class="explain-card fade-in">
+          <span class="explain-num">3</span>
+          <h4>Télécharge immédiatement</h4>
+          <p>Le lien de téléchargement s'affiche juste après le paiement et t'est envoyé par email. Le PDF est à toi, à vie — imprime-le si tu veux.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CE QU'IL Y A DEDANS ══ -->
+  <section class="pdf-contents-section">
+    <div class="pdf-contents-inner">
+      <div class="section-header fade-in">
+        <span class="eyebrow">À l'intérieur</span>
+        <h2>Ce que contient chaque PDF</h2>
+      </div>
+      <div class="contents-list">
+        <div class="contents-item fade-in">
+          <span class="contents-icon">📅</span>
+          <div>
+            <h4>Le programme 28 jours, jour par jour</h4>
+            <p>4 semaines structurées avec une progression maîtrisée : chaque jour a sa séance détaillée, exercices, séries, répétitions et temps de repos.</p>
+          </div>
+        </div>
+        <div class="contents-item fade-in">
+          <span class="contents-icon">🏋️</span>
+          <div>
+            <h4>Les exercices illustrés</h4>
+            <p>Chaque exercice est illustré et expliqué : position de départ, mouvement, erreurs à éviter. Tu sais exactement quoi faire, même sans coach.</p>
+          </div>
+        </div>
+        <div class="contents-item fade-in">
+          <span class="contents-icon">🥗</span>
+          <div>
+            <h4>Le plan nutrition</h4>
+            <p>Les recommandations nutrition adaptées à l'objectif du programme, pour accompagner tes 4 semaines d'entraînement.</p>
+          </div>
+        </div>
+        <div class="contents-item fade-in">
+          <span class="contents-icon">🖨️</span>
+          <div>
+            <h4>Un format pensé pour l'impression</h4>
+            <p>Mise en page haute qualité, lisible sur écran comme sur papier. Imprime la semaine en cours et emmène-la à l'entraînement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FAQ ══ -->
+  <section class="pdf-faq-section">
+    <div class="pdf-faq-inner">
+      <div class="section-header fade-in">
+        <span class="eyebrow">Questions fréquentes</span>
+        <h2>PDF ou app ?</h2>
+      </div>
+
+      <details class="faq-item fade-in">
+        <summary>Quelle est la différence entre le PDF et l'app ?</summary>
+        <div class="faq-body">Le PDF est une version statique et imprimable du programme : parfait si tu préfères le papier ou si tu ne veux pas d'abonnement. L'app va beaucoup plus loin : suivi de progression, coach IA, scan d'assiette, Coach Caméra qui compte tes répétitions, montre connectée, rappels… Le contenu sport 28 jours est le même — c'est l'expérience autour qui change.</div>
+      </details>
+      <details class="faq-item fade-in">
+        <summary>C'est un abonnement ?</summary>
+        <div class="faq-body">Non. Le PDF est un achat unique de 29€ : tu paies une fois, tu télécharges, c'est à toi pour toujours. Aucun renouvellement, aucun prélèvement récurrent.</div>
+      </details>
+      <details class="faq-item fade-in">
+        <summary>Comment je reçois mon PDF ?</summary>
+        <div class="faq-body">Immédiatement après le paiement Stripe, le lien de téléchargement s'affiche et t'est envoyé par email. Si tu ne le retrouves pas, écris-nous via la <a href="contact.html">page contact</a> et on te le renvoie.</div>
+      </details>
+      <details class="faq-item fade-in">
+        <summary>Le PDF est-il adapté aux débutantes ?</summary>
+        <div class="faq-body">Oui. Chaque programme démarre en douceur la semaine 1 et monte progressivement en intensité. Les exercices sont illustrés et expliqués pas à pas. KlynShape sans matériel est le plus accessible pour commencer.</div>
+      </details>
+      <details class="faq-item fade-in">
+        <summary>J'ai acheté un PDF, je peux passer à l'app ?</summary>
+        <div class="faq-body">Bien sûr — l'app propose un essai gratuit de 7 jours, sans engagement. Tu peux la tester quand tu veux depuis <a href="index.html#telecharger">la page de téléchargement</a>.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ══ BANDEAU APP ══ -->
+  <section class="pdf-app-banner">
+    <div class="pdf-app-banner-inner fade-in">
+      <h3>Tu veux le coach complet ?</h3>
+      <p>Suivi en temps réel, coach IA, scan d'assiette, Coach Caméra, montre connectée — tout est dans l'app KLYN. Essai gratuit 7 jours, sans engagement.</p>
+      <div class="pdf-app-banner-actions">
+        <a href="https://apps.apple.com/fr/app/klyn-coach-fitness-28-jours/id6779508974" class="appstore-badge" target="_blank" rel="noopener">
+          <img src="assets/appstore_badge_fr.svg" alt="Télécharger dans l'App Store" />
+        </a>
+        <a href="https://klyn-app.org" class="btn-outline" target="_blank" rel="noopener">Utiliser la web app →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="KLYN" class="footer-logo" />
+        <p class="footer-tagline">Transformation physique & mentale premium.<br />Corps. Esprit. Style.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/klyn_officiel" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          </a>
+          <a href="https://tiktok.com/@klyn_officiel" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 106.34 6.34V8.58a8.16 8.16 0 004.77 1.52V6.65a4.85 4.85 0 01-1-.04z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>L'app</h4>
+          <ul>
+            <li><a href="https://apps.apple.com/fr/app/klyn-coach-fitness-28-jours/id6779508974" target="_blank" rel="noopener">Sur l'App Store</a></li>
+            <li><a href="https://klyn-app.org" target="_blank">Web app</a></li>
+            <li><a href="https://klyn-app.org/login" target="_blank">Se connecter</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Découvrir</h4>
+          <ul>
+            <li><a href="index.html#programmes">Les programmes</a></li>
+            <li><a href="pdf.html">Programmes PDF</a></li>
+            <li><a href="mon-histoire.html">Mon histoire</a></li>
+            <li><a href="https://www.moncarnet-gala.fr/articles/view/KLYN" target="_blank" rel="noopener">KLYN dans GALA</a></li>
+            <li><a href="vetements.html">KLYN Wear</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Infos</h4>
+          <ul>
+            <li><a href="mentions-legales.html">Mentions légales</a></li>
+            <li><a href="cgv.html">CGV</a></li>
+            <li><a href="confidentialite.html">Confidentialité</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 KLYN. Tous droits réservés. · Paiement sécurisé Stripe</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>
