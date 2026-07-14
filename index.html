@@ -66,7 +66,54 @@
       color: rgba(255,255,255,0.45); line-height: 1.7;
     }
 
-    /* ── SECTION TÉLÉCHARGER ── */
+        /* ── PARRAINAGE ── */
+    .referral-section {
+      background: #050505;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 90px 24px;
+    }
+    .referral-inner { max-width: 940px; margin: 0 auto; }
+    .referral-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+    @media (max-width: 780px) { .referral-steps { grid-template-columns: 1fr; } }
+    .referral-step {
+      background: #0C0C0C;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 18px;
+      padding: 32px 26px;
+      text-align: center;
+    }
+    .referral-step-num {
+      width: 40px; height: 40px;
+      margin: 0 auto 18px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      border: 1px solid rgba(212,175,55,0.4);
+      color: #D4AF37;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 600;
+    }
+    .referral-step h4 {
+      font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700;
+      color: #fff; margin-bottom: 10px;
+    }
+    .referral-step p {
+      font-family: 'Montserrat', sans-serif; font-size: 12.5px;
+      color: rgba(255,255,255,0.45); line-height: 1.7;
+    }
+    .referral-note {
+      text-align: center;
+      margin-top: 36px;
+      font-family: 'Montserrat', sans-serif; font-size: 12px;
+      color: rgba(255,255,255,0.4);
+    }
+    .referral-note strong { color: #D4AF37; }
+
+/* ── SECTION TÉLÉCHARGER ── */
     .store-section {
       background: #000;
       padding: 100px 24px;
@@ -517,16 +564,7 @@
           <h4>Montre connectée</h4>
           <p>Connecte Apple Santé : pas, calories actives, sommeil. Ta cible nutrition s'affine automatiquement selon ta dépense réelle.</p>
         </div>
-        <div class="feature-card feature-new fade-in">
-          <div class="shine"></div>
-          <span class="feature-badge-new">Nouveau</span>
-          <div class="feature-icon-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.6"/><path d="M3 20c0-3 2.2-5 5-5s5 2 5 5"/><path d="M14 20c0-2.4 1.6-4.2 3.6-4.4"/></svg>
-          </div>
-          <h4>Parrainage</h4>
-          <p>Invite un ami sur KLYN : dès qu'il s'abonne, tu gagnes 1 mois gratuit. Ton code se partage en un clic depuis ton profil.</p>
-        </div>
-<div class="feature-card fade-in">
+        <div class="feature-card fade-in">
           <div class="feature-bg" style="background-image:url('assets/coach_kaia_warrior.png')"></div>
           <div class="shine"></div>
           <div class="feature-icon-badge">
@@ -834,7 +872,38 @@
     </div>
   </section>
 
-  <!-- ══ FONDATRICE ══ -->
+  <!-- ══ PARRAINAGE ══ -->
+  <section class="referral-section" id="parrainage">
+    <div class="referral-inner">
+      <div class="section-header fade-in">
+        <span class="eyebrow gold">Parrainage</span>
+        <h2>Invite un ami, gagne un mois offert.</h2>
+        <p>Gratuit, simple, sans limite de parrainages.</p>
+      </div>
+
+      <div class="referral-steps">
+        <div class="referral-step fade-in">
+          <div class="referral-step-num">1</div>
+          <h4>Partage ton code</h4>
+          <p>Dans l'onglet Profil de l'app, récupère ton code personnel et envoie-le à un ami en un clic (SMS, Instagram, WhatsApp...).</p>
+        </div>
+        <div class="referral-step fade-in">
+          <div class="referral-step-num">2</div>
+          <h4>Il s'abonne avec ton code</h4>
+          <p>Ton ami entre ton code lors de son inscription sur KLYN, puis démarre son abonnement (après son essai gratuit de 7 jours).</p>
+        </div>
+        <div class="referral-step fade-in">
+          <div class="referral-step-num">3</div>
+          <h4>Tu gagnes 1 mois gratuit</h4>
+          <p>Dès que son abonnement est confirmé et payé, 30 jours sont ajoutés automatiquement à ton compte. Répète l'opération avec autant d'amis que tu veux.</p>
+        </div>
+      </div>
+
+      <p class="referral-note">Ton code de parrainage se trouve dans l'onglet <strong>Profil</strong> de l'app, une fois connecté.</p>
+    </div>
+  </section>
+
+<!-- ══ FONDATRICE ══ -->
   <section class="fondatrice-section" id="fondatrice">
     <div class="fondatrice-inner wrap">
 
