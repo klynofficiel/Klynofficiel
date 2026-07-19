@@ -1,16 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://klynofficiel.org/</loc></url>
-  <url><loc>https://klynofficiel.org/challenge</loc></url>
-  <url><loc>https://klynofficiel.org/klynshape</loc></url>
-  <url><loc>https://klynofficiel.org/klynbuilt</loc></url>
-  <url><loc>https://klynofficiel.org/klynmind</loc></url>
-  <url><loc>https://klynofficiel.org/boutique</loc></url>
-  <url><loc>https://klynofficiel.org/bundles</loc></url>
-  <url><loc>https://klynofficiel.org/vetements</loc></url>
-  <url><loc>https://klynofficiel.org/quiz</loc></url>
-  <url><loc>https://klynofficiel.org/result</loc></url>
-  <url><loc>https://klynofficiel.org/mon-histoire</loc></url>
-  <url><loc>https://klynofficiel.org/pdf</loc></url>
-  <url><loc>https://klynofficiel.org/press</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://klynofficiel.org/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/" />
+  </url>
+  <url>
+    <loc>https://klynofficiel.org/en/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/" />
+  </url>
+  <url>
+    <loc>https://klynofficiel.org/es/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/" />
+  </url>
+  <url>
+    <loc>https://klynofficiel.org/pdf.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/pdf.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/pdf.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/pdf.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/pdf.html" />
+  </url>
+  <url>
+    <loc>https://klynofficiel.org/en/pdf.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/pdf.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/pdf.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/pdf.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/pdf.html" />
+  </url>
+  <url>
+    <loc>https://klynofficiel.org/es/pdf.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/pdf.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/pdf.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/pdf.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/pdf.html" />
+  </url>
+  <url>
+    <loc>https://klynofficiel.org/press.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/press.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/press.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/press.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/press.html" />
+  </url>
+  <url>
+    <loc>https://klynofficiel.org/en/press.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/press.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/press.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/press.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/press.html" />
+  </url>
+  <url>
+    <loc>https://klynofficiel.org/es/press.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/press.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/press.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/press.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/press.html" />
+  </url>
+  <url>
+    <loc>https://klynofficiel.org/mon-histoire.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/mon-histoire.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/mon-histoire.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/mon-histoire.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/mon-histoire.html" />
+  </url>
+  <url>
+    <loc>https://klynofficiel.org/en/mon-histoire.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/mon-histoire.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/mon-histoire.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/mon-histoire.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/mon-histoire.html" />
+  </url>
+  <url>
+    <loc>https://klynofficiel.org/es/mon-histoire.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/mon-histoire.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/mon-histoire.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/mon-histoire.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/mon-histoire.html" />
+  </url>
+  <url>
+    <loc>https://klynofficiel.org/partenaires.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/partenaires.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/partenaires.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/partenaires.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/partenaires.html" />
+  </url>
+  <url>
+    <loc>https://klynofficiel.org/en/partenaires.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/partenaires.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/partenaires.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/partenaires.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/partenaires.html" />
+  </url>
+  <url>
+    <loc>https://klynofficiel.org/es/partenaires.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/partenaires.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/partenaires.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/partenaires.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/partenaires.html" />
+  </url>
+  <url>
+    <loc>https://klynofficiel.org/vetements.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/vetements.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/vetements.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/vetements.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/vetements.html" />
+  </url>
+  <url>
+    <loc>https://klynofficiel.org/en/vetements.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/vetements.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/vetements.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/vetements.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/vetements.html" />
+  </url>
+  <url>
+    <loc>https://klynofficiel.org/es/vetements.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/vetements.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/vetements.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/vetements.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/vetements.html" />
+  </url>
 </urlset>
