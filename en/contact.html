@@ -28,6 +28,30 @@
     footer.simple { border-top: 1px solid #222; padding: 32px 24px; text-align:center; color:#777; font-size:.82rem; }
     footer.simple a { color:#999; margin: 0 10px; }
   </style>
+<!-- klyn-auto-lang : redirection auto selon la langue de l'appareil -->
+<script>
+(function(){try{
+  if(location.protocol.indexOf('http')!==0)return;      // pas en aperçu local file://
+  var KEY='klyn_lang';
+  // mémorise le choix manuel fait via le sélecteur de langue
+  document.addEventListener('click',function(e){
+    var a=e.target&&e.target.closest?e.target.closest('.lang-switch a'):null; if(!a)return;
+    var t=(a.textContent||'').trim().toLowerCase();
+    if(t==='fr'||t==='en'||t==='es'){try{localStorage.setItem(KEY,t);}catch(_){}}
+  },true);
+  var p=location.pathname;
+  if(/^\/(en|es)\//.test(p))return;                    // déjà dans une langue -> pas de redirection
+  var lang=null; try{lang=localStorage.getItem(KEY);}catch(_){}
+  if(!lang){
+    var n=(navigator.language||navigator.userLanguage||'fr').toLowerCase();
+    lang = n.indexOf('es')===0 ? 'es' : n.indexOf('fr')===0 ? 'fr' : 'en'; // défaut international = EN
+  }
+  if(lang==='en'||lang==='es'){
+    var rest=p.replace(/^\//,'');
+    location.replace('/'+lang+'/'+rest+location.search+location.hash);
+  }
+}catch(e){}})();
+</script>
 <link rel="alternate" hreflang="fr" href="https://klynofficiel.org/contact.html" />
 <link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/contact.html" />
 <link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/contact.html" />
