@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our partners — Tigre & Mouette, handmade crochet in Antibes | KLYN</title>
+  <meta name="description" content="The brands and creators who share KLYN's values: handmade, local craftsmanship. Tigre & Mouette: handmade crochet tops and bikinis in Antibes, unique made-to-measure pieces, now also in-store." />
+  <meta property="og:title" content="Our partners — KLYN" />
+  <meta property="og:description" content="The brands and creators who share KLYN's values: handmade, local craftsmanship. Featured: Tigre & Mouette, handmade crochet in Antibes." />
+  <meta property="og:image" content="https://klynofficiel.org/assets/partenaires/tm-tags.jpg" />
+  <link rel="canonical" href="https://klynofficiel.org/en/partenaires.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    .partners-hero {
+      background: var(--black);
+      padding: 160px 24px 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .partners-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,175,55,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .partners-hero-inner { max-width: 680px; margin: 0 auto; position: relative; }
+    .partners-hero h1 {
+      font-family: var(--font-title);
+      font-size: clamp(32px, 6vw, 50px); font-weight: 300;
+      color: var(--white); line-height: 1.15; margin-bottom: 16px;
+    }
+    .partners-hero p {
+      font-family: var(--font-body); font-size: 14px;
+      color: rgba(255,255,255,0.5); line-height: 1.8;
+    }
+
+    .partners-section { background: var(--black); padding: 30px 24px 100px; }
+    .partner-card {
+      max-width: 980px; margin: 0 auto;
+      background: linear-gradient(160deg, #101010, #0A0A0A);
+      border: 1px solid rgba(212,175,55,0.18);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+    }
+    .partner-gallery {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 2px;
+      background: #000;
+    }
+    .partner-gallery img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .partner-gallery a:first-child { grid-row: 1 / 3; }
+    .partner-gallery a { display: block; overflow: hidden; }
+    .partner-gallery img { transition: transform 0.5s ease; }
+    .partner-gallery a:hover img { transform: scale(1.04); }
+
+    .partner-body { padding: 40px 36px 44px; }
+    .partner-kicker {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-body); font-size: 10px; font-weight: 800;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .partner-kicker svg { flex-shrink: 0; }
+    .partner-body h2 {
+      font-family: var(--font-title); font-weight: 300;
+      font-size: clamp(26px, 4vw, 36px); color: var(--white);
+      line-height: 1.2; margin-bottom: 18px;
+    }
+    .partner-body p {
+      font-family: var(--font-body); font-size: 14px; line-height: 1.85;
+      color: rgba(255,255,255,0.55); margin-bottom: 16px;
+    }
+    .partner-body p strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+    .partner-tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 28px; }
+    .partner-tag {
+      font-family: var(--font-body); font-size: 10.5px; font-weight: 700;
+      letter-spacing: 0.05em; color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 100px;
+      padding: 7px 14px;
+    }
+    .partner-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    .btn-insta {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: var(--gold); color: var(--black);
+      font-family: var(--font-body); font-size: 12.5px; font-weight: 700;
+      letter-spacing: 0.04em; text-decoration: none;
+      padding: 13px 24px; border-radius: 100px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-insta:hover { background: var(--gold2); transform: translateY(-2px); }
+
+    .partners-more {
+      max-width: 980px; margin: 56px auto 0;
+      text-align: center;
+      font-family: var(--font-body); font-size: 12.5px;
+      color: rgba(255,255,255,0.3); letter-spacing: 0.03em;
+      border-top: 1px solid rgba(255,255,255,0.06); padding-top: 34px;
+    }
+
+    @media (max-width: 720px) {
+      .partner-gallery { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
+      .partner-gallery a:first-child { grid-row: auto; grid-column: 1 / 3; }
+      .partner-body { padding: 30px 22px 36px; }
+    }
+
+    /* ── CARROUSEL PIÈCES PHARES ── */
+    .tm-showcase { max-width: 980px; margin: 40px auto 0; }
+    .tm-showcase-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 16px; margin-bottom: 18px; padding: 0 4px;
+    }
+    .tm-showcase-head h3 {
+      font-family: var(--font-title); font-weight: 300; color: var(--white);
+      font-size: clamp(20px, 3vw, 26px);
+    }
+    .tm-showcase-head span {
+      font-family: var(--font-body); font-size: 11px; color: rgba(255,255,255,0.35);
+      letter-spacing: 0.04em; white-space: nowrap;
+    }
+    .tm-carousel-wrap { position: relative; }
+    .tm-carousel {
+      display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+      padding: 4px 4px 14px; scrollbar-width: thin; scrollbar-color: rgba(212,175,55,0.4) transparent;
+    }
+    .tm-carousel::-webkit-scrollbar { height: 6px; }
+    .tm-carousel::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.35); border-radius: 10px; }
+    .tm-carousel-item {
+      flex: 0 0 auto; width: 240px; scroll-snap-align: start;
+      border-radius: 16px; overflow: hidden; background: #000;
+      border: 1px solid rgba(212,175,55,0.15);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.35);
+    }
+    .tm-carousel-item img { display: block; width: 100%; height: 320px; object-fit: cover; transition: transform 0.4s ease; }
+    .tm-carousel-item a:hover img { transform: scale(1.05); }
+    .tm-carousel-item.tm-video { width: 300px; background: #111; }
+    .tm-carousel-item.tm-video .tm-video-inner { width: 100%; min-height: 320px; display: flex; align-items: center; justify-content: center; }
+    .tm-carousel-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(10,10,10,0.75); border: 1px solid rgba(212,175,55,0.3);
+      color: var(--gold); display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 2; transition: background 0.2s;
+    }
+    .tm-carousel-btn:hover { background: rgba(212,175,55,0.15); }
+    .tm-carousel-btn.prev { left: -8px; }
+    .tm-carousel-btn.next { right: -8px; }
+    @media (max-width: 720px) {
+      .tm-carousel-btn { display: none; }
+      .tm-carousel-item { width: 200px; }
+      .tm-carousel-item img { height: 270px; }
+    }
+  </style>
+
+  <!-- ── KLYN Tracking ─────────────────────────── -->
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJGGYT1WNG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YJGGYT1WNG');
+  </script>
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '830877619542878');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=830877619542878&ev=PageView&noscript=1"/></noscript>
+  <!-- TikTok Pixel -->
+  <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+      ttq.load('D7OPT7RC77U1UDE5F7FG');
+      ttq.page();
+    }(window, document, 'ttq');
+  </script>
+  <!-- Microsoft Clarity -->
+  <script>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wd82dbgfnj");
+  </script>
+  <!-- ──────────────────────────────────────────── -->
+<link rel="alternate" hreflang="fr" href="https://klynofficiel.org/partenaires.html" />
+<link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/partenaires.html" />
+<link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/partenaires.html" />
+<link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/partenaires.html" />
+<style>
+.lang-switch{display:flex;gap:5px;align-items:center;margin-left:14px}
+.lang-switch a{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:.05em;color:rgba(255,255,255,.42);text-decoration:none;padding:4px 7px;border-radius:6px;transition:color .2s,background .2s}
+.lang-switch a:hover{color:#fff}
+.lang-switch a.active{color:#D4AF37;background:rgba(212,175,55,.1)}
+@media(max-width:900px){.lang-switch{margin-left:6px}.lang-switch a{padding:3px 5px;font-size:10px}}
+</style>
+<link rel="alternate" hreflang="fr" href="https://klynofficiel.org/partenaires.html" />
+<link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/partenaires.html" />
+<link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/partenaires.html" />
+<link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/partenaires.html" />
+<style>
+.lang-switch{display:flex;gap:5px;align-items:center;margin-left:14px}
+.lang-switch a{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:.05em;color:rgba(255,255,255,.42);text-decoration:none;padding:4px 7px;border-radius:6px;transition:color .2s,background .2s}
+.lang-switch a:hover{color:#fff}
+.lang-switch a.active{color:#D4AF37;background:rgba(212,175,55,.1)}
+@media(max-width:900px){.lang-switch{margin-left:6px}.lang-switch a{padding:3px 5px;font-size:10px}}
+</style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="../assets/logo.png" alt="KLYN" />
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#app">The app</a></li>
+        <li><a href="index.html#programmes">Programs</a></li>
+        <li><a href="index.html#coaches">Coaches</a></li>
+        <li><a href="mon-histoire.html">My Story</a></li>
+        <li><a href="pdf.html">PDF</a></li>
+        <li><a href="press.html">Press</a></li>
+        <li><a href="partenaires.html" class="active">Partners</a></li>
+      </ul>
+      <a href="index.html#telecharger" class="nav-cta-btn">Download the app →</a>
+      <div class="lang-switch"><a href="https://klynofficiel.org/partenaires.html" class="active">FR</a><a href="https://klynofficiel.org/en/partenaires.html">EN</a><a href="https://klynofficiel.org/es/partenaires.html">ES</a></div>
+      <div class="lang-switch"><a href="https://klynofficiel.org/partenaires.html">FR</a><a href="https://klynofficiel.org/en/partenaires.html" class="active">EN</a><a href="https://klynofficiel.org/es/partenaires.html">ES</a></div>
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══ HERO ══ -->
+  <section class="partners-hero">
+    <div class="partners-hero-inner">
+      <span class="eyebrow gold">They support KLYN</span>
+      <h1>Our partners</h1>
+      <p>
+        Here we spotlight brands and creators who share our values: handmade work, local craftsmanship, time well spent over mass production.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ PARTENAIRE : TIGRE & MOUETTE ══ -->
+  <section class="partners-section">
+    <div class="partner-card fade-in">
+      <div class="partner-gallery">
+        <a href="https://www.instagram.com/tigre.et.mouette/" target="_blank" rel="noopener">
+          <img src="../assets/partenaires/tm-tags.jpg" alt="Tigre & Mouette labels, 100% cotton crochet handmade in Antibes" loading="lazy" />
+        </a>
+        <a href="https://www.instagram.com/tigre.et.mouette/" target="_blank" rel="noopener">
+          <img src="../assets/partenaires/tm-orange-steps.jpg" alt="Handmade crochet top by Tigre & Mouette, unique made-to-measure piece" loading="lazy" />
+        </a>
+        <a href="https://www.instagram.com/tigre.et.mouette/" target="_blank" rel="noopener">
+          <img src="../assets/partenaires/tm-beach-toast.jpg" alt="Tigre & Mouette crochet bikinis, artisanal creation in Antibes" loading="lazy" />
+        </a>
+      </div>
+      <div class="partner-body">
+        <div class="partner-kicker">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          Crochet designer · Antibes
+        </div>
+        <h2>Tigre &amp; Mouette</h2>
+        <p>
+          <strong>Tigre &amp; Mouette</strong> is a crochet studio based in <strong>Antibes</strong>, on the French Riviera. Tops, bikinis and accessories are <strong>entirely handcrafted</strong>, stitch by stitch, in small batches — no machines, no outsourcing.
+        </p>
+        <p>
+          The studio stands by a clear charter: natural or recycled materials to limit environmental impact, and a deliberate choice to <strong>support local artisans</strong> rather than mass production. Cotton, worked for its softness and durability, remains its material of choice.
+        </p>
+        <p>
+          Each piece is <strong>unique and made to measure</strong>: the color, pattern and finishes are chosen for each order, placed directly by message on Instagram.
+        </p>
+        <p>
+          We spotlight Tigre &amp; Mouette because we share the same philosophy: <strong>handmade</strong>, <strong>local</strong>, and time well spent over mass production. The creations are now also available <strong>in-store</strong>, in Antibes.
+        </p>
+        <div class="partner-tags">
+          <span class="partner-tag">Handmade</span>
+          <span class="partner-tag">Small batches</span>
+          <span class="partner-tag">Made to measure</span>
+          <span class="partner-tag">Antibes</span>
+          <span class="partner-tag">Also in-store</span>
+        </div>
+        <div class="partner-actions">
+          <a href="https://www.instagram.com/tigre.et.mouette/" class="btn-insta" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+            View @tigre.et.mouette
+          </a>
+          <a href="https://www.instagram.com/tigre.et.mouette/" class="btn-outline" target="_blank" rel="noopener">Order a creation →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CARROUSEL PIÈCES PHARES ══ -->
+    <div class="tm-showcase fade-in">
+      <div class="tm-showcase-head">
+        <h3>Her signature pieces</h3>
+        <span>@tigre.et.mouette →</span>
+      </div>
+      <div class="tm-carousel-wrap">
+        <button class="tm-carousel-btn prev" id="tmPrev" aria-label="Previous">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="tm-carousel" id="tmCarousel">
+          <a class="tm-carousel-item" href="https://www.instagram.com/p/DZUhhiIDPfb/" target="_blank" rel="noopener">
+            <img src="../assets/partenaires/tm-c1-elektra-card.jpg" alt="Elektra model, colorful cotton and linen top, Tigre & Mouette" loading="lazy" />
+          </a>
+          <a class="tm-carousel-item" href="https://www.instagram.com/tigre.et.mouette/" target="_blank" rel="noopener">
+            <img src="../assets/partenaires/tm-c2-green-top.jpg" alt="Green crochet top Tigre & Mouette, 2026 season collection" loading="lazy" />
+          </a>
+          <a class="tm-carousel-item" href="https://www.instagram.com/p/DapBy9zMFiB/" target="_blank" rel="noopener">
+            <img src="../assets/partenaires/tm-c3-texture.jpg" alt="Summer Essential crochet detail, Tigre & Mouette" loading="lazy" />
+          </a>
+          <a class="tm-carousel-item" href="https://www.instagram.com/tigre.et.mouette/" target="_blank" rel="noopener">
+            <img src="../assets/partenaires/tm-c4-blue-wall.jpg" alt="Blue, orange and yellow crochet top, Tigre & Mouette" loading="lazy" />
+          </a>
+          <a class="tm-carousel-item" href="https://www.instagram.com/tigre.et.mouette/" target="_blank" rel="noopener">
+            <img src="../assets/partenaires/tm-c5-smiling.jpg" alt="Blue crochet top worn on the French Riviera, Tigre & Mouette" loading="lazy" />
+          </a>
+          <a class="tm-carousel-item" href="https://www.instagram.com/tigre.et.mouette/" target="_blank" rel="noopener">
+            <img src="../assets/partenaires/tm-c6-friends.jpg" alt="Yellow and blue crochet tops, Tigre & Mouette" loading="lazy" />
+          </a>
+          <a class="tm-carousel-item" href="https://www.instagram.com/tigre.et.mouette/" target="_blank" rel="noopener">
+            <img src="../assets/partenaires/tm-c7-summer-essential.jpg" alt="The Summer Essential, 100% cotton, handmade in Antibes, €55 — Tigre & Mouette" loading="lazy" />
+          </a>
+        </div>
+        <button class="tm-carousel-btn next" id="tmNext" aria-label="Next">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <p class="partners-more">More partners and friends who support KLYN will be added to this page soon.</p>
+  </section>
+
+  <script>
+    (function() {
+      var track = document.getElementById('tmCarousel');
+      var prev = document.getElementById('tmPrev');
+      var next = document.getElementById('tmNext');
+      if (!track || !prev || !next) return;
+      function scrollByCard(dir) {
+        var card = track.querySelector('.tm-carousel-item');
+        var step = card ? card.offsetWidth + 14 : 260;
+        track.scrollBy({ left: dir * step, behavior: 'smooth' });
+      }
+      prev.addEventListener('click', function() { scrollByCard(-1); });
+      next.addEventListener('click', function() { scrollByCard(1); });
+    })();
+  </script>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="../assets/logo.png" alt="KLYN" class="footer-logo" />
+        <p class="footer-tagline">Premium physical & mental transformation.<br />Body. Mind. Style.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/klyn_officiel" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          </a>
+          <a href="https://tiktok.com/@klyn_officiel" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 106.34 6.34V8.58a8.16 8.16 0 004.77 1.52V6.65a4.85 4.85 0 01-1-.04z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>The app</h4>
+          <ul>
+            <li><a href="https://apps.apple.com/fr/app/klyn-coach-fitness-28-jours/id6779508974" target="_blank" rel="noopener">On the App Store</a></li>
+            <li><a href="https://klyn-app.org" target="_blank">Web app</a></li>
+            <li><a href="https://klyn-app.org/login" target="_blank">Log in</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Discover</h4>
+          <ul>
+            <li><a href="index.html#programmes">The programs</a></li>
+            <li><a href="pdf.html">PDF programs</a></li>
+            <li><a href="mon-histoire.html">My story</a></li>
+            <li><a href="press.html">KLYN in GALA</a></li>
+            <li><a href="partenaires.html">Our partners</a></li>
+            <li><a href="vetements.html">KLYN Wear</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Info</h4>
+          <ul>
+            <li><a href="mentions-legales.html">Legal notice</a></li>
+            <li><a href="cgv.html">Terms</a></li>
+            <li><a href="confidentialite.html">Privacy</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 KLYN. All rights reserved. · Secure payment by Stripe</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+
+</body>
+</html>
