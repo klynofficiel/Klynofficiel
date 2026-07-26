@@ -453,6 +453,94 @@
 .lang-switch a.active{color:#D4AF37;background:rgba(212,175,55,.1)}
 @media(max-width:900px){.lang-switch{margin-left:6px}.lang-switch a{padding:3px 5px;font-size:10px}}
 </style>
+
+<style>
+/* ══ MODALE FEATURES — KLYN ══ */
+.features-grid .feature-card{cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.features-grid .feature-card:focus-visible{outline:2px solid #D4AF37;outline-offset:3px;}
+.feature-more{display:inline-flex;align-items:center;gap:5px;margin-top:13px;
+  font-family:'Montserrat',sans-serif;font-size:9.5px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:#D4AF37;opacity:.7;transition:opacity .3s,gap .3s;}
+.feature-more svg{width:11px;height:11px;}
+.feature-card:hover .feature-more{opacity:1;gap:9px;}
+
+.fmodal{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;
+  padding:20px;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;}
+.fmodal.is-open{opacity:1;visibility:visible;}
+.fmodal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.84);
+  -webkit-backdrop-filter:blur(12px) saturate(115%);backdrop-filter:blur(12px) saturate(115%);}
+.fmodal-panel{position:relative;width:min(548px,100%);max-height:88vh;overflow-y:auto;
+  background:#0C0C0C;border:1px solid rgba(212,175,55,.26);border-radius:22px;
+  box-shadow:0 34px 90px rgba(0,0,0,.78),0 0 70px rgba(212,175,55,.06);
+  transform:translateY(28px) scale(.955);opacity:0;-webkit-overflow-scrolling:touch;
+  transition:transform .5s cubic-bezier(.16,1,.3,1),opacity .4s ease;}
+.fmodal.is-open .fmodal-panel{transform:translateY(0) scale(1);opacity:1;}
+.fmodal-panel::-webkit-scrollbar{width:0;}
+
+.fmodal-hero{position:relative;height:206px;overflow:hidden;border-radius:21px 21px 0 0;background:#000;}
+.fmodal-hero img{width:100%;height:100%;object-fit:cover;opacity:.5;transform:scale(1.05);
+  transition:transform 7s ease-out,opacity .6s ease;}
+.fmodal.is-open .fmodal-hero img{transform:scale(1.15);}
+.fmodal-hero::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(12,12,12,.2) 0%,rgba(12,12,12,.68) 58%,#0C0C0C 100%);}
+.fmodal-glow{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);
+  width:250px;height:250px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(212,175,55,.28) 0%,rgba(212,175,55,.07) 45%,transparent 70%);}
+.fmodal-icon{position:absolute;left:26px;bottom:20px;z-index:2;width:54px;height:54px;
+  border-radius:16px;display:flex;align-items:center;justify-content:center;color:#D4AF37;
+  background:rgba(212,175,55,.13);border:1px solid rgba(212,175,55,.42);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  box-shadow:0 8px 26px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.07);}
+.fmodal-icon svg{width:27px;height:27px;}
+.fmodal.is-open .fmodal-icon{animation:fmIcon .65s .1s cubic-bezier(.16,1,.3,1) both;}
+@keyframes fmIcon{from{opacity:0;transform:translateY(14px) scale(.85);}to{opacity:1;transform:none;}}
+
+.fmodal-close{position:absolute;top:15px;right:15px;z-index:4;width:35px;height:35px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;
+  background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.16);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  transition:background .25s,border-color .25s,transform .35s;}
+.fmodal-close svg{width:15px;height:15px;}
+.fmodal-close:hover{background:rgba(212,175,55,.18);border-color:rgba(212,175,55,.55);transform:rotate(90deg);}
+
+.fmodal-body{padding:22px 28px 28px;}
+.fmodal-eyebrow{display:inline-block;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;
+  letter-spacing:.16em;text-transform:uppercase;color:#D4AF37;background:rgba(212,175,55,.1);
+  border:1px solid rgba(212,175,55,.25);border-radius:100px;padding:3px 10px;margin-bottom:12px;}
+.fmodal-eyebrow:empty{display:none;}
+.fmodal-title{font-family:'Montserrat',sans-serif;font-size:21px;font-weight:800;line-height:1.25;
+  color:#fff;margin:0 0 11px;letter-spacing:-.01em;}
+.fmodal-desc{font-size:14px;line-height:1.72;color:rgba(255,255,255,.6);margin:0;}
+.fmodal-points{list-style:none;margin:19px 0 0;padding:0;}
+.fmodal-points li{position:relative;padding:9px 0 9px 26px;font-size:13.5px;line-height:1.55;
+  color:rgba(255,255,255,.82);border-top:1px solid rgba(255,255,255,.055);opacity:0;
+  animation:fmLine .5s cubic-bezier(.16,1,.3,1) both;}
+.fmodal-points li:first-child{border-top:0;}
+.fmodal-points li::before{content:'';position:absolute;left:6px;top:16px;width:6px;height:6px;
+  border-radius:50%;background:#D4AF37;box-shadow:0 0 9px rgba(212,175,55,.75);}
+@keyframes fmLine{from{opacity:0;transform:translateX(-9px);}to{opacity:1;transform:none;}}
+.fmodal-cta{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:24px;
+  padding:14px 22px;border-radius:100px;text-decoration:none;cursor:pointer;
+  font-family:'Montserrat',sans-serif;font-size:12.5px;font-weight:800;letter-spacing:.03em;color:#0A0A0A;
+  background:linear-gradient(135deg,#E8C55A 0%,#D4AF37 52%,#B8912A 100%);
+  box-shadow:0 10px 30px rgba(212,175,55,.24);transition:transform .25s,box-shadow .25s,filter .25s;}
+.fmodal-cta:hover{transform:translateY(-2px);box-shadow:0 15px 38px rgba(212,175,55,.34);filter:brightness(1.06);}
+
+@media(max-width:600px){
+  .fmodal{padding:0;align-items:flex-end;}
+  .fmodal-panel{width:100%;max-height:93vh;border-radius:24px 24px 0 0;border-bottom:0;
+    transform:translateY(100%) scale(1);}
+  .fmodal.is-open .fmodal-panel{transform:translateY(0);}
+  .fmodal-hero{height:178px;border-radius:23px 23px 0 0;}
+  .fmodal-body{padding:20px 22px 30px;}
+  .fmodal-title{font-size:19px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .fmodal,.fmodal-panel,.fmodal-hero img,.fmodal-icon,.fmodal-points li,.fmodal-cta{
+    transition-duration:.01ms!important;animation-duration:.01ms!important;}
+  .fmodal.is-open .fmodal-hero img{transform:scale(1.05);}
+}
+</style>
 </head>
 <body>
 
@@ -562,7 +650,7 @@
   </div>
 
   <!-- ══ FEATURES DE L'APP ══ -->
-  <section class="features-section" id="app">
+  <section class="features-section" id="app" data-modal-cta="Descargar la app" data-modal-close="Cerrar">
     <div class="features-inner">
       <div class="section-header fade-in">
         <span class="eyebrow">En la app</span>
@@ -571,7 +659,7 @@
       </div>
 
       <div class="features-grid">
-        <div class="feature-card feature-new fade-in">
+        <div class="feature-card feature-new fade-in" role="button" tabindex="0" data-modal-img="../assets/food_bowl_clean.jpg" data-modal-eyebrow="Nuevo" data-modal-title="Escanea tu plato" data-modal-desc="Fotografía tu comida: la IA reconoce el plato, estima la ración y calcula las calorías. Todo ocurre en tu teléfono, ninguna foto sale a internet." data-modal-points="Reconoce 178 platos de referencia | Calorías y macros estimadas automáticamente | Análisis 100 % sin conexión, no se guarda nada | Cuenta el plato en lugar de una comida del día">
           <div class="feature-bg" style="background-image:url('../assets/food_bowl_clean.jpg')"></div>
           <div class="shine"></div>
           <span class="feature-badge-new">Nuevo</span>
@@ -580,8 +668,9 @@
           </div>
           <h4>Escanea tu plato</h4>
           <p>Haz una foto de tu comida: tu coach comprueba que es el plato correcto, estima la porción y las calorías. Análisis 100% en tu teléfono.</p>
+          <span class="feature-more">Saber más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
         </div>
-        <div class="feature-card feature-new fade-in">
+        <div class="feature-card feature-new fade-in" role="button" tabindex="0" data-modal-img="../assets/coach_onyx_hq.png" data-modal-eyebrow="Nuevo" data-modal-title="Coach Cámara" data-modal-desc="Un solo botón lanza toda tu sesión. El coach anuncia cada ejercicio, tu cámara cuenta las repeticiones y el tiempo de plancha, y te corrige en voz alta si pierdes la postura." data-modal-points="Conteo automático de repeticiones | Correcciones de voz en directo | Encadena series y descansos solo | No se graba ni se envía nada: 100 % en el dispositivo">
           <div class="feature-bg" style="background-image:url('../assets/coach_onyx_hq.png')"></div>
           <div class="shine"></div>
           <span class="feature-badge-new">Nuevo</span>
@@ -590,8 +679,9 @@
           </div>
           <h4>Coach Cámara</h4>
           <p>Inicia una sesión guiada: tu teléfono cuenta tus repeticiones y corrige tu postura en directo, sin enviar nada a internet.</p>
+          <span class="feature-more">Saber más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
         </div>
-        <div class="feature-card feature-new fade-in">
+        <div class="feature-card feature-new fade-in" role="button" tabindex="0" data-modal-img="../assets/coach_lena_hq.png" data-modal-eyebrow="Nuevo" data-modal-title="Reloj conectado" data-modal-desc="Conecta Apple Salud y tu objetivo nutricional deja de ser una estimación: se ajusta a tu gasto real, suavizado en 7 días para mantenerse estable y sano." data-modal-points="Pasos, calorías activas, sueño, frecuencia cardíaca | Objetivo calórico basado en tu gasto real | El Coach IA lo tiene en cuenta | Opcional: sin reloj, el test sigue siendo la referencia">
           <div class="feature-bg" style="background-image:url('../assets/coach_lena_hq.png')"></div>
           <div class="shine"></div>
           <span class="feature-badge-new">Nuevo</span>
@@ -600,8 +690,42 @@
           </div>
           <h4>Reloj conectado</h4>
           <p>Conecta Apple Salud: pasos, calorías activas, sueño. Tu objetivo de nutrición se ajusta automáticamente según tu gasto real.</p>
+          <span class="feature-more">Saber más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card feature-new fade-in" role="button" tabindex="0" data-modal-img="../assets/hero_shape_eq_cover.jpg" data-modal-eyebrow="Nuevo" data-modal-title="Sesión freestyle" data-modal-desc="¿No te apetece el programa de hoy? Dile a KLYN dónde estás, qué tienes a mano y qué quieres trabajar: te compone una sesión equilibrada en diez segundos." data-modal-points="Casa o gimnasio, con o sin material | Intensidad suave, media o intensa | Zona objetivo: tren superior, inferior, core o completo | Ejercicios sacados de los programas oficiales">
+          <div class="feature-bg" style="background-image:url('../assets/hero_shape_eq_cover.jpg')"></div>
+          <div class="shine"></div>
+          <span class="feature-badge-new">Nuevo</span>
+          <div class="feature-icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2.5 5 13.5h5.5L10 21.5l8-11h-5.5Z"/></svg>
+          </div>
+          <h4>Sesión freestyle</h4>
+          <p>¿No te apetece el programa de hoy? Genera una sesión a medida en 10 segundos: tu lugar, tu material, tu intensidad, la zona a trabajar.</p>
+          <span class="feature-more">Saber más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="feature-card feature-new fade-in" role="button" tabindex="0" data-modal-img="../assets/hero_built_strong.png" data-modal-eyebrow="Nuevo" data-modal-title="Programa adaptativo" data-modal-desc="Después de cada sesión solo dices si fue fácil, adecuada o demasiado dura. KLYN ajusta repeticiones, series e intensidad para mantenerte justo en tu límite." data-modal-points="Dos sesiones fáciles seguidas: sube el volumen | Una sesión muy dura: baja enseguida | Suelo y techo para seguir seguro | Tus programas nunca se reescriben">
+          <div class="feature-bg" style="background-image:url('../assets/hero_built_strong.png')"></div>
+          <div class="shine"></div>
+          <span class="feature-badge-new">Nuevo</span>
+          <div class="feature-icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h6M14 7h6M4 17h10M18 17h2"/><circle cx="12" cy="7" r="2.2"/><circle cx="16" cy="17" r="2.2"/></svg>
+          </div>
+          <h4>Programa adaptativo</h4>
+          <p>¿Demasiado fácil? ¿Demasiado duro? Después de cada sesión indicas cómo te sentiste: repeticiones, series e intensidad se ajustan solas a tu nivel real.</p>
+          <span class="feature-more">Saber más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="feature-card feature-new fade-in" role="button" tabindex="0" data-modal-img="../assets/hero_nutrition_lifestyle.jpg" data-modal-eyebrow="Nuevo" data-modal-title="¿Qué tienes en la nevera?" data-modal-desc="Marca los ingredientes que tienes a mano. KLYN busca primero entre sus platos de referencia y, si nada encaja, inventa una receta real con lo que tienes." data-modal-points="Sugerencia ajustada a tu objetivo | Calorías y macros a la vista | Receta a medida si hace falta | Se acabó el «no sé qué comer»">
+          <div class="feature-bg" style="background-image:url('../assets/hero_nutrition_lifestyle.jpg')"></div>
+          <div class="shine"></div>
+          <span class="feature-badge-new">Nuevo</span>
+          <div class="feature-icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M6 10h12"/><path d="M9.5 5.5v2M9.5 13v2.5"/></svg>
+          </div>
+          <h4>¿Qué tienes en la nevera?</h4>
+          <p>Marca lo que tienes a mano: KLYN te propone una comida adaptada a tu objetivo. Se acabó el «no sé qué comer».</p>
+          <span class="feature-more">Saber más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="feature-card fade-in" role="button" tabindex="0" data-modal-img="../assets/coach_kaia_warrior.png" data-modal-eyebrow="" data-modal-title="Coach IA" data-modal-desc="Un coach disponible a cualquier hora que conoce tu programa, tu progreso y tu actividad. Pregúntale lo que quieras sobre tu sesión, tu alimentación o tu recuperación." data-modal-points="Respuestas adaptadas a tu programa | Consejos de nutrición y recuperación | Disponible 24/7, sin cita | Gratis desde tu primer programa">
           <div class="feature-bg" style="background-image:url('../assets/coach_kaia_warrior.png')"></div>
           <div class="shine"></div>
           <div class="feature-icon-badge">
@@ -609,8 +733,9 @@
           </div>
           <h4>Coach IA</h4>
           <p>Un coach que te responde a cualquier hora: sesión del día, nutrición, recuperación, motivación. Conoce tu programa y tu actividad.</p>
+          <span class="feature-more">Saber más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card fade-in" role="button" tabindex="0" data-modal-img="../assets/hero_nutrition_cover.jpg" data-modal-eyebrow="" data-modal-title="Nutrición 28 días" data-modal-desc="Tres comidas al día pensadas para tu objetivo, con calorías y macros a la vista. Tus alergias y tu dieta declaradas se vigilan en cada comida." data-modal-points="28 días de menús: desayuno, comida, cena | Calorías y macros de cada plato | Alertas de alérgenos con plato alternativo | Raciones recalculadas según tu objetivo">
           <div class="feature-bg" style="background-image:url('../assets/food_protein_clean.jpg')"></div>
           <div class="shine"></div>
           <div class="feature-icon-badge">
@@ -618,8 +743,9 @@
           </div>
           <h4>Nutrición 28 días</h4>
           <p>3 comidas al día con calorías + macros, adaptadas a tu objetivo. Alertas de alergias con platos alternativos compatibles.</p>
+          <span class="feature-more">Saber más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card fade-in" role="button" tabindex="0" data-modal-img="../assets/hero_mind_cover.jpg" data-modal-eyebrow="" data-modal-title="KLYN Mind" data-modal-desc="28 días de meditación, respiración y trabajo postural para recuperar también la cabeza. Una transformación que dura es tanto mental como física." data-modal-points="Sesiones guiadas de meditación | Ejercicios de respiración y postura | Rutinas cortas, fáciles de mantener | Incluido con todos los programas">
           <div class="feature-bg" style="background-image:url('../assets/coach_kaia_lotus.png')"></div>
           <div class="shine"></div>
           <div class="feature-icon-badge">
@@ -627,8 +753,9 @@
           </div>
           <h4>KLYN Mind</h4>
           <p>Meditación, respiración, postura — 28 días para el equilibrio mental y la recuperación. Incluido con todos los programas.</p>
+          <span class="feature-more">Saber más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card fade-in" role="button" tabindex="0" data-modal-img="../assets/coach_maya_hq.png" data-modal-eyebrow="" data-modal-title="Seguimiento inteligente" data-modal-desc="Tu progreso en tiempo real, tus fotos antes/después, tus medidas. KLYN te avisa cuando aflojas y te resume la semana cada domingo." data-modal-points="Racha e hitos: D7, D14, programa terminado | Fotos antes/después y medidas | XP y niveles, de Recluta a la cima | Recordatorio tras 24 h sin sesión">
           <div class="feature-bg" style="background-image:url('../assets/coach_maya_clean.jpg')"></div>
           <div class="shine"></div>
           <div class="feature-icon-badge">
@@ -636,15 +763,17 @@
           </div>
           <h4>Seguimiento inteligente</h4>
           <p>Progreso en tiempo real, fotos antes/después, medidas, recordatorios y resumen semanal cada domingo.</p>
+          <span class="feature-more">Saber más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card fade-in" role="button" tabindex="0" data-modal-img="../assets/coach_atlas_strong.png" data-modal-eyebrow="" data-modal-title="Multilingüe" data-modal-desc="KLYN habla cuatro idiomas, coach incluido. Cambia cuando quieras: tus programas, tu nutrición y tu coach te siguen al instante." data-modal-points="Français, English, Español, Português | El Coach IA responde en tu idioma | Cambia de idioma cuando quieras | Contenido totalmente traducido">
           <div class="feature-bg" style="background-image:url('../assets/coach_atlas_strong.png')"></div>
           <div class="shine"></div>
           <div class="feature-icon-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 4 5.4 4 8.5s-1.4 6.1-4 8.5c-2.6-2.4-4-5.4-4-8.5s1.4-6.1 4-8.5Z"/></svg>
           </div>
           <h4>Multilingüe</h4>
-          <p>La app habla tu idioma: Français, English, Español — Português muy pronto.</p>
+          <p>La app habla tu idioma: Français, English, Español, Português.</p>
+          <span class="feature-more">Saber más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
         </div>
       </div>
     </div>
@@ -1090,5 +1219,96 @@
 
   <script src="../js/main.js"></script>
 
+
+<script>
+/* ══ MODALE FEATURES — ouverture des cartes ══ */
+(function(){
+  var grid = document.querySelector('.features-grid');
+  if(!grid) return;
+  var cards = grid.querySelectorAll('.feature-card[data-modal-title]');
+  if(!cards.length) return;
+  var sec = document.querySelector('.features-section');
+  var CTA = (sec && sec.getAttribute('data-modal-cta')) || 'Telecharger';
+  var CLOSE = (sec && sec.getAttribute('data-modal-close')) || 'Fermer';
+
+  var m = document.createElement('div');
+  m.className = 'fmodal';
+  m.setAttribute('role','dialog');
+  m.setAttribute('aria-modal','true');
+  m.setAttribute('aria-hidden','true');
+  m.innerHTML =
+    '<div class="fmodal-backdrop" data-fm-close></div>'+
+    '<div class="fmodal-panel">'+
+      '<button class="fmodal-close" type="button" data-fm-close aria-label="'+CLOSE+'">'+
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>'+
+      '</button>'+
+      '<div class="fmodal-hero"><img alt="" loading="lazy"><span class="fmodal-glow"></span><span class="fmodal-icon"></span></div>'+
+      '<div class="fmodal-body">'+
+        '<span class="fmodal-eyebrow"></span>'+
+        '<h3 class="fmodal-title"></h3>'+
+        '<p class="fmodal-desc"></p>'+
+        '<ul class="fmodal-points"></ul>'+
+        '<a class="fmodal-cta" href="#telecharger" data-fm-close>'+CTA+
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><path d="M5 12h13M13 6l6 6-6 6"/></svg>'+
+        '</a>'+
+      '</div>'+
+    '</div>';
+  document.body.appendChild(m);
+
+  var elImg = m.querySelector('.fmodal-hero img'),
+      elIcon = m.querySelector('.fmodal-icon'),
+      elEye = m.querySelector('.fmodal-eyebrow'),
+      elTitle = m.querySelector('.fmodal-title'),
+      elDesc = m.querySelector('.fmodal-desc'),
+      elPts = m.querySelector('.fmodal-points'),
+      elClose = m.querySelector('.fmodal-close');
+  var lastFocus = null;
+
+  function open(card){
+    var img = card.getAttribute('data-modal-img') || '';
+    elImg.src = img; elImg.alt = card.getAttribute('data-modal-title') || '';
+    var badge = card.querySelector('.feature-icon-badge');
+    elIcon.innerHTML = badge ? badge.innerHTML : '';
+    elEye.textContent = card.getAttribute('data-modal-eyebrow') || '';
+    elTitle.textContent = card.getAttribute('data-modal-title') || '';
+    elDesc.textContent = card.getAttribute('data-modal-desc') || '';
+    elPts.innerHTML = '';
+    var pts = (card.getAttribute('data-modal-points') || '').split('|');
+    for(var i=0;i<pts.length;i++){
+      var p = pts[i].trim(); if(!p) continue;
+      var li = document.createElement('li');
+      li.textContent = p;
+      li.style.animationDelay = (0.16 + i*0.075) + 's';
+      elPts.appendChild(li);
+    }
+    lastFocus = card;
+    m.classList.add('is-open');
+    m.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function(){ try{ elClose.focus(); }catch(e){} }, 80);
+  }
+  function close(){
+    m.classList.remove('is-open');
+    m.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    if(lastFocus){ try{ lastFocus.focus(); }catch(e){} lastFocus = null; }
+  }
+
+  for(var i=0;i<cards.length;i++){
+    (function(card){
+      card.addEventListener('click', function(){ open(card); });
+      card.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar'){ e.preventDefault(); open(card); }
+      });
+    })(cards[i]);
+  }
+  m.addEventListener('click', function(e){
+    if(e.target.closest && e.target.closest('[data-fm-close]')) close();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && m.classList.contains('is-open')) close();
+  });
+})();
+</script>
 </body>
 </html>
