@@ -453,6 +453,94 @@
 .lang-switch a.active{color:#D4AF37;background:rgba(212,175,55,.1)}
 @media(max-width:900px){.lang-switch{margin-left:6px}.lang-switch a{padding:3px 5px;font-size:10px}}
 </style>
+
+<style>
+/* ══ MODALE FEATURES — KLYN ══ */
+.features-grid .feature-card{cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.features-grid .feature-card:focus-visible{outline:2px solid #D4AF37;outline-offset:3px;}
+.feature-more{display:inline-flex;align-items:center;gap:5px;margin-top:13px;
+  font-family:'Montserrat',sans-serif;font-size:9.5px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:#D4AF37;opacity:.7;transition:opacity .3s,gap .3s;}
+.feature-more svg{width:11px;height:11px;}
+.feature-card:hover .feature-more{opacity:1;gap:9px;}
+
+.fmodal{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;
+  padding:20px;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;}
+.fmodal.is-open{opacity:1;visibility:visible;}
+.fmodal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.84);
+  -webkit-backdrop-filter:blur(12px) saturate(115%);backdrop-filter:blur(12px) saturate(115%);}
+.fmodal-panel{position:relative;width:min(548px,100%);max-height:88vh;overflow-y:auto;
+  background:#0C0C0C;border:1px solid rgba(212,175,55,.26);border-radius:22px;
+  box-shadow:0 34px 90px rgba(0,0,0,.78),0 0 70px rgba(212,175,55,.06);
+  transform:translateY(28px) scale(.955);opacity:0;-webkit-overflow-scrolling:touch;
+  transition:transform .5s cubic-bezier(.16,1,.3,1),opacity .4s ease;}
+.fmodal.is-open .fmodal-panel{transform:translateY(0) scale(1);opacity:1;}
+.fmodal-panel::-webkit-scrollbar{width:0;}
+
+.fmodal-hero{position:relative;height:206px;overflow:hidden;border-radius:21px 21px 0 0;background:#000;}
+.fmodal-hero img{width:100%;height:100%;object-fit:cover;opacity:.5;transform:scale(1.05);
+  transition:transform 7s ease-out,opacity .6s ease;}
+.fmodal.is-open .fmodal-hero img{transform:scale(1.15);}
+.fmodal-hero::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(12,12,12,.2) 0%,rgba(12,12,12,.68) 58%,#0C0C0C 100%);}
+.fmodal-glow{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);
+  width:250px;height:250px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(212,175,55,.28) 0%,rgba(212,175,55,.07) 45%,transparent 70%);}
+.fmodal-icon{position:absolute;left:26px;bottom:20px;z-index:2;width:54px;height:54px;
+  border-radius:16px;display:flex;align-items:center;justify-content:center;color:#D4AF37;
+  background:rgba(212,175,55,.13);border:1px solid rgba(212,175,55,.42);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  box-shadow:0 8px 26px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.07);}
+.fmodal-icon svg{width:27px;height:27px;}
+.fmodal.is-open .fmodal-icon{animation:fmIcon .65s .1s cubic-bezier(.16,1,.3,1) both;}
+@keyframes fmIcon{from{opacity:0;transform:translateY(14px) scale(.85);}to{opacity:1;transform:none;}}
+
+.fmodal-close{position:absolute;top:15px;right:15px;z-index:4;width:35px;height:35px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;
+  background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.16);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  transition:background .25s,border-color .25s,transform .35s;}
+.fmodal-close svg{width:15px;height:15px;}
+.fmodal-close:hover{background:rgba(212,175,55,.18);border-color:rgba(212,175,55,.55);transform:rotate(90deg);}
+
+.fmodal-body{padding:22px 28px 28px;}
+.fmodal-eyebrow{display:inline-block;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;
+  letter-spacing:.16em;text-transform:uppercase;color:#D4AF37;background:rgba(212,175,55,.1);
+  border:1px solid rgba(212,175,55,.25);border-radius:100px;padding:3px 10px;margin-bottom:12px;}
+.fmodal-eyebrow:empty{display:none;}
+.fmodal-title{font-family:'Montserrat',sans-serif;font-size:21px;font-weight:800;line-height:1.25;
+  color:#fff;margin:0 0 11px;letter-spacing:-.01em;}
+.fmodal-desc{font-size:14px;line-height:1.72;color:rgba(255,255,255,.6);margin:0;}
+.fmodal-points{list-style:none;margin:19px 0 0;padding:0;}
+.fmodal-points li{position:relative;padding:9px 0 9px 26px;font-size:13.5px;line-height:1.55;
+  color:rgba(255,255,255,.82);border-top:1px solid rgba(255,255,255,.055);opacity:0;
+  animation:fmLine .5s cubic-bezier(.16,1,.3,1) both;}
+.fmodal-points li:first-child{border-top:0;}
+.fmodal-points li::before{content:'';position:absolute;left:6px;top:16px;width:6px;height:6px;
+  border-radius:50%;background:#D4AF37;box-shadow:0 0 9px rgba(212,175,55,.75);}
+@keyframes fmLine{from{opacity:0;transform:translateX(-9px);}to{opacity:1;transform:none;}}
+.fmodal-cta{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:24px;
+  padding:14px 22px;border-radius:100px;text-decoration:none;cursor:pointer;
+  font-family:'Montserrat',sans-serif;font-size:12.5px;font-weight:800;letter-spacing:.03em;color:#0A0A0A;
+  background:linear-gradient(135deg,#E8C55A 0%,#D4AF37 52%,#B8912A 100%);
+  box-shadow:0 10px 30px rgba(212,175,55,.24);transition:transform .25s,box-shadow .25s,filter .25s;}
+.fmodal-cta:hover{transform:translateY(-2px);box-shadow:0 15px 38px rgba(212,175,55,.34);filter:brightness(1.06);}
+
+@media(max-width:600px){
+  .fmodal{padding:0;align-items:flex-end;}
+  .fmodal-panel{width:100%;max-height:93vh;border-radius:24px 24px 0 0;border-bottom:0;
+    transform:translateY(100%) scale(1);}
+  .fmodal.is-open .fmodal-panel{transform:translateY(0);}
+  .fmodal-hero{height:178px;border-radius:23px 23px 0 0;}
+  .fmodal-body{padding:20px 22px 30px;}
+  .fmodal-title{font-size:19px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .fmodal,.fmodal-panel,.fmodal-hero img,.fmodal-icon,.fmodal-points li,.fmodal-cta{
+    transition-duration:.01ms!important;animation-duration:.01ms!important;}
+  .fmodal.is-open .fmodal-hero img{transform:scale(1.05);}
+}
+</style>
 </head>
 <body>
 
@@ -562,7 +650,7 @@
   </div>
 
   <!-- ══ FEATURES DE L'APP ══ -->
-  <section class="features-section" id="app">
+  <section class="features-section" id="app" data-modal-cta="Get the app" data-modal-close="Close">
     <div class="features-inner">
       <div class="section-header fade-in">
         <span class="eyebrow">In the app</span>
@@ -571,7 +659,7 @@
       </div>
 
       <div class="features-grid">
-        <div class="feature-card feature-new fade-in">
+        <div class="feature-card feature-new fade-in" role="button" tabindex="0" data-modal-img="../assets/food_bowl_clean.jpg" data-modal-eyebrow="New" data-modal-title="Scan your plate" data-modal-desc="Photograph your meal: the AI recognises the dish, estimates the portion and works out the calories. It all happens on your phone — no photo ever leaves it." data-modal-points="Recognises 178 reference dishes | Calories and macros estimated automatically | 100% offline analysis, nothing is stored | Counts the dish in place of a planned meal">
           <div class="feature-bg" style="background-image:url('../assets/food_bowl_clean.jpg')"></div>
           <div class="shine"></div>
           <span class="feature-badge-new">New</span>
@@ -580,8 +668,9 @@
           </div>
           <h4>Scan your plate</h4>
           <p>Snap a photo of your meal: your coach checks it's the right dish, estimates the portion and the calories. 100% analyzed on your phone.</p>
+          <span class="feature-more">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
         </div>
-        <div class="feature-card feature-new fade-in">
+        <div class="feature-card feature-new fade-in" role="button" tabindex="0" data-modal-img="../assets/coach_onyx_hq.png" data-modal-eyebrow="New" data-modal-title="Camera Coach" data-modal-desc="One button runs your whole session. The coach announces each exercise, your camera counts your reps and plank time, and corrects you out loud when your form slips." data-modal-points="Automatic rep counting | Live voice cues for safe form | Runs sets and rest periods on its own | Nothing is filmed or sent: 100% on-device">
           <div class="feature-bg" style="background-image:url('../assets/coach_onyx_hq.png')"></div>
           <div class="shine"></div>
           <span class="feature-badge-new">New</span>
@@ -590,8 +679,9 @@
           </div>
           <h4>Camera Coach</h4>
           <p>Start a guided session: your phone counts your reps and corrects your posture live, without sending anything to the internet.</p>
+          <span class="feature-more">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
         </div>
-        <div class="feature-card feature-new fade-in">
+        <div class="feature-card feature-new fade-in" role="button" tabindex="0" data-modal-img="../assets/coach_lena_hq.png" data-modal-eyebrow="New" data-modal-title="Connected watch" data-modal-desc="Connect Apple Health and your nutrition target stops being a guess: it locks onto your real expenditure, smoothed over 7 days to stay stable and healthy." data-modal-points="Steps, active calories, sleep, heart rate | Calorie target based on real expenditure | The AI Coach factors it into its advice | Optional: without a watch, the quiz stays the reference">
           <div class="feature-bg" style="background-image:url('../assets/coach_lena_hq.png')"></div>
           <div class="shine"></div>
           <span class="feature-badge-new">New</span>
@@ -600,8 +690,42 @@
           </div>
           <h4>Connected watch</h4>
           <p>Connect Apple Health: steps, active calories, sleep. Your nutrition target refines automatically based on your real expenditure.</p>
+          <span class="feature-more">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card feature-new fade-in" role="button" tabindex="0" data-modal-img="../assets/hero_shape_eq_cover.jpg" data-modal-eyebrow="New" data-modal-title="Freestyle session" data-modal-desc="Not feeling today&#x27;s program? Tell KLYN where you are, what you have on hand and what you want to train — it builds a balanced session in ten seconds." data-modal-points="Home or gym, with or without equipment | Light, medium or intense | Target area: upper, lower, core or full body | Exercises drawn from the official programs">
+          <div class="feature-bg" style="background-image:url('../assets/hero_shape_eq_cover.jpg')"></div>
+          <div class="shine"></div>
+          <span class="feature-badge-new">New</span>
+          <div class="feature-icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2.5 5 13.5h5.5L10 21.5l8-11h-5.5Z"/></svg>
+          </div>
+          <h4>Freestyle session</h4>
+          <p>Not feeling today's program? Generate a custom session in 10 seconds: your location, your equipment, your intensity, the area to train.</p>
+          <span class="feature-more">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="feature-card feature-new fade-in" role="button" tabindex="0" data-modal-img="../assets/hero_built_strong.png" data-modal-eyebrow="New" data-modal-title="Adaptive program" data-modal-desc="After each session you simply say whether it felt easy, just right or too hard. KLYN adjusts reps, sets and intensity to keep you exactly at your limit." data-modal-points="Two easy sessions in a row: volume goes up | One session too hard: it eases off straight away | Floor and ceiling to keep it safe | Your programs are never rewritten">
+          <div class="feature-bg" style="background-image:url('../assets/hero_built_strong.png')"></div>
+          <div class="shine"></div>
+          <span class="feature-badge-new">New</span>
+          <div class="feature-icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h6M14 7h6M4 17h10M18 17h2"/><circle cx="12" cy="7" r="2.2"/><circle cx="16" cy="17" r="2.2"/></svg>
+          </div>
+          <h4>Adaptive program</h4>
+          <p>Too easy? Too hard? After each session you rate how it felt — reps, sets and intensity adjust themselves to your real level.</p>
+          <span class="feature-more">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="feature-card feature-new fade-in" role="button" tabindex="0" data-modal-img="../assets/hero_nutrition_lifestyle.jpg" data-modal-eyebrow="New" data-modal-title="What&#x27;s in your fridge?" data-modal-desc="Tick the ingredients you have on hand. KLYN first searches its reference dishes and, if nothing fits, invents a real recipe with what you&#x27;ve got." data-modal-points="Suggestion matched to your goal | Calories and macros shown | A tailor-made recipe when needed | No more “I don&#x27;t know what to eat”">
+          <div class="feature-bg" style="background-image:url('../assets/hero_nutrition_lifestyle.jpg')"></div>
+          <div class="shine"></div>
+          <span class="feature-badge-new">New</span>
+          <div class="feature-icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M6 10h12"/><path d="M9.5 5.5v2M9.5 13v2.5"/></svg>
+          </div>
+          <h4>What's in your fridge?</h4>
+          <p>Tick what you have on hand: KLYN suggests a meal that fits your goal. No more "I don't know what to eat".</p>
+          <span class="feature-more">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="feature-card fade-in" role="button" tabindex="0" data-modal-img="../assets/coach_kaia_warrior.png" data-modal-eyebrow="" data-modal-title="AI Coach" data-modal-desc="A coach available at any hour that knows your program, your progress and your activity. Ask it anything about your session, your food or your recovery." data-modal-points="Answers tailored to your program | Nutrition and recovery guidance | Available 24/7, no appointment | Free from your first program">
           <div class="feature-bg" style="background-image:url('../assets/coach_kaia_warrior.png')"></div>
           <div class="shine"></div>
           <div class="feature-icon-badge">
@@ -609,8 +733,9 @@
           </div>
           <h4>AI Coach</h4>
           <p>A coach that answers you at any hour: today's session, nutrition, recovery, motivation. It knows your program and your activity.</p>
+          <span class="feature-more">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card fade-in" role="button" tabindex="0" data-modal-img="../assets/hero_nutrition_cover.jpg" data-modal-eyebrow="" data-modal-title="28-day nutrition" data-modal-desc="Three meals a day built around your goal, with calories and macros shown. The allergies and diet you declared are checked at every meal." data-modal-points="28 days of menus: breakfast, lunch, dinner | Calories and macros for every dish | Allergen alerts with a safe swap | Portions rescaled to your target">
           <div class="feature-bg" style="background-image:url('../assets/food_protein_clean.jpg')"></div>
           <div class="shine"></div>
           <div class="feature-icon-badge">
@@ -618,8 +743,9 @@
           </div>
           <h4>28-day nutrition</h4>
           <p>3 meals a day with calories + macros, tailored to your goal. Allergy alerts with compatible replacement dishes.</p>
+          <span class="feature-more">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card fade-in" role="button" tabindex="0" data-modal-img="../assets/hero_mind_cover.jpg" data-modal-eyebrow="" data-modal-title="KLYN Mind" data-modal-desc="28 days of meditation, breathing and posture work so your head recovers too. A transformation that lasts is as much mental as physical." data-modal-points="Guided meditation sessions | Breathing and posture exercises | Short routines, easy to keep up | Included with every program">
           <div class="feature-bg" style="background-image:url('../assets/coach_kaia_lotus.png')"></div>
           <div class="shine"></div>
           <div class="feature-icon-badge">
@@ -627,8 +753,9 @@
           </div>
           <h4>KLYN Mind</h4>
           <p>Meditation, breathing, posture — 28 days for mental balance and recovery. Included with every program.</p>
+          <span class="feature-more">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card fade-in" role="button" tabindex="0" data-modal-img="../assets/coach_maya_hq.png" data-modal-eyebrow="" data-modal-title="Smart tracking" data-modal-desc="Your progress in real time, your before/after photos, your measurements. KLYN nudges you when you drop off and sums up your week every Sunday." data-modal-points="Streak and milestones: D7, D14, program complete | Before/after photos and measurements | XP and levels, from Recruit to the top | Reminder after 24h without a session">
           <div class="feature-bg" style="background-image:url('../assets/coach_maya_clean.jpg')"></div>
           <div class="shine"></div>
           <div class="feature-icon-badge">
@@ -636,15 +763,17 @@
           </div>
           <h4>Smart tracking</h4>
           <p>Real-time progress, before/after photos, measurements, reminders and a weekly recap every Sunday.</p>
+          <span class="feature-more">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card fade-in" role="button" tabindex="0" data-modal-img="../assets/coach_atlas_strong.png" data-modal-eyebrow="" data-modal-title="Multilingual" data-modal-desc="KLYN speaks four languages, coach included. Switch whenever you like: your programs, your nutrition and your coach follow instantly." data-modal-points="Français, English, Español, Português | The AI Coach replies in your language | Switch language at any time | Fully translated content">
           <div class="feature-bg" style="background-image:url('../assets/coach_atlas_strong.png')"></div>
           <div class="shine"></div>
           <div class="feature-icon-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 4 5.4 4 8.5s-1.4 6.1-4 8.5c-2.6-2.4-4-5.4-4-8.5s1.4-6.1 4-8.5Z"/></svg>
           </div>
           <h4>Multilingual</h4>
-          <p>The app speaks your language: Français, English, Español — Português coming soon.</p>
+          <p>The app speaks your language: Français, English, Español, Português.</p>
+          <span class="feature-more">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
         </div>
       </div>
     </div>
@@ -1090,5 +1219,96 @@
 
   <script src="../js/main.js"></script>
 
+
+<script>
+/* ══ MODALE FEATURES — ouverture des cartes ══ */
+(function(){
+  var grid = document.querySelector('.features-grid');
+  if(!grid) return;
+  var cards = grid.querySelectorAll('.feature-card[data-modal-title]');
+  if(!cards.length) return;
+  var sec = document.querySelector('.features-section');
+  var CTA = (sec && sec.getAttribute('data-modal-cta')) || 'Telecharger';
+  var CLOSE = (sec && sec.getAttribute('data-modal-close')) || 'Fermer';
+
+  var m = document.createElement('div');
+  m.className = 'fmodal';
+  m.setAttribute('role','dialog');
+  m.setAttribute('aria-modal','true');
+  m.setAttribute('aria-hidden','true');
+  m.innerHTML =
+    '<div class="fmodal-backdrop" data-fm-close></div>'+
+    '<div class="fmodal-panel">'+
+      '<button class="fmodal-close" type="button" data-fm-close aria-label="'+CLOSE+'">'+
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>'+
+      '</button>'+
+      '<div class="fmodal-hero"><img alt="" loading="lazy"><span class="fmodal-glow"></span><span class="fmodal-icon"></span></div>'+
+      '<div class="fmodal-body">'+
+        '<span class="fmodal-eyebrow"></span>'+
+        '<h3 class="fmodal-title"></h3>'+
+        '<p class="fmodal-desc"></p>'+
+        '<ul class="fmodal-points"></ul>'+
+        '<a class="fmodal-cta" href="#telecharger" data-fm-close>'+CTA+
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><path d="M5 12h13M13 6l6 6-6 6"/></svg>'+
+        '</a>'+
+      '</div>'+
+    '</div>';
+  document.body.appendChild(m);
+
+  var elImg = m.querySelector('.fmodal-hero img'),
+      elIcon = m.querySelector('.fmodal-icon'),
+      elEye = m.querySelector('.fmodal-eyebrow'),
+      elTitle = m.querySelector('.fmodal-title'),
+      elDesc = m.querySelector('.fmodal-desc'),
+      elPts = m.querySelector('.fmodal-points'),
+      elClose = m.querySelector('.fmodal-close');
+  var lastFocus = null;
+
+  function open(card){
+    var img = card.getAttribute('data-modal-img') || '';
+    elImg.src = img; elImg.alt = card.getAttribute('data-modal-title') || '';
+    var badge = card.querySelector('.feature-icon-badge');
+    elIcon.innerHTML = badge ? badge.innerHTML : '';
+    elEye.textContent = card.getAttribute('data-modal-eyebrow') || '';
+    elTitle.textContent = card.getAttribute('data-modal-title') || '';
+    elDesc.textContent = card.getAttribute('data-modal-desc') || '';
+    elPts.innerHTML = '';
+    var pts = (card.getAttribute('data-modal-points') || '').split('|');
+    for(var i=0;i<pts.length;i++){
+      var p = pts[i].trim(); if(!p) continue;
+      var li = document.createElement('li');
+      li.textContent = p;
+      li.style.animationDelay = (0.16 + i*0.075) + 's';
+      elPts.appendChild(li);
+    }
+    lastFocus = card;
+    m.classList.add('is-open');
+    m.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function(){ try{ elClose.focus(); }catch(e){} }, 80);
+  }
+  function close(){
+    m.classList.remove('is-open');
+    m.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    if(lastFocus){ try{ lastFocus.focus(); }catch(e){} lastFocus = null; }
+  }
+
+  for(var i=0;i<cards.length;i++){
+    (function(card){
+      card.addEventListener('click', function(){ open(card); });
+      card.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar'){ e.preventDefault(); open(card); }
+      });
+    })(cards[i]);
+  }
+  m.addEventListener('click', function(e){
+    if(e.target.closest && e.target.closest('[data-fm-close]')) close();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && m.classList.contains('is-open')) close();
+  });
+})();
+</script>
 </body>
 </html>
