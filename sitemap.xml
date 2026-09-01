@@ -85,27 +85,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/mon-histoire.html" />
   </url>
   <url>
-    <loc>https://klynofficiel.org/partenaires.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/partenaires.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/partenaires.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/partenaires.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/partenaires.html" />
-  </url>
-  <url>
-    <loc>https://klynofficiel.org/en/partenaires.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/partenaires.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/partenaires.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/partenaires.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/partenaires.html" />
-  </url>
-  <url>
-    <loc>https://klynofficiel.org/es/partenaires.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/partenaires.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/partenaires.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://klynofficiel.org/es/partenaires.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://klynofficiel.org/partenaires.html" />
-  </url>
-  <url>
     <loc>https://klynofficiel.org/vetements.html</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://klynofficiel.org/vetements.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://klynofficiel.org/en/vetements.html" />
