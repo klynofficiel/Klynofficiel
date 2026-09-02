@@ -1484,6 +1484,65 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
 .cta-price b{font-size:24px}
 .cta-price span{font-size:8.5px}
 
+
+/* ══════════════════════════════════════════════════════════════════════
+   LISIBILITE MOBILE + SECTION FONCTIONS TACTILE   (2026-09-02)
+   Rien au-dessus de 900px n'est touche.
+   ══════════════════════════════════════════════════════════════════════ */
+@media(max-width:900px){
+  /* --- 1. le gris de lecture passe de 40% a 60% (contraste 3,0:1 -> 6,1:1) --- */
+  :root{--tx3:rgba(255,255,255,.60);--tx2:rgba(255,255,255,.74)}
+
+  /* --- 2. tailles de lecture --- */
+  .sub{font-size:15.5px;line-height:1.85}
+  .fi-p{font-size:15.5px;line-height:1.85;max-width:none}
+  .duo-txt>p,.d3-txt>p{font-size:15.5px;line-height:1.85}
+  .cf-det p.d,.sdetail .tz{font-size:15px;line-height:1.8}
+  .ticks li,.steps li,.cf-det li,.pgc .desc{font-size:14.5px;line-height:1.75}
+  .pgc li{font-size:13.5px;line-height:1.7}
+  .dl-c>p,.rs p,.foot p{font-size:14px;line-height:1.75}
+  .foot ul a{font-size:14px}
+  .dl-c h3,.rs h4{font-size:16.5px}
+  .fq summary{font-size:15.5px}
+  .fq p{font-size:15px;line-height:1.8}
+  .btn{font-size:14px}
+  .btn-sm{font-size:13px}
+  .nav-links a{font-size:15px}
+  .lang a{font-size:12px}
+  .chip{font-size:10.5px}
+  /* surtitres : moins d'interlettrage, un poil plus gros */
+  .eyebrow{font-size:11px;letter-spacing:.16em}
+
+  /* --- 3. la sphere 3D devient une bande tactile qui glisse --- */
+  .feats .c2grid{padding-top:44vh}
+  .feats .c2grid>div,.featintro,.sdetail{min-width:0}
+  .featintro>h2,.featintro>.fi-p{max-width:calc(100vw - 44px)}
+  .feats .c2hint{display:none}
+  .feats .fi-list{display:none}
+  .orb.strip{position:static;left:auto;top:auto;width:auto;height:auto;
+    transform:none;transform-style:flat;
+    display:flex;gap:12px;overflow-x:auto;overflow-y:hidden;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    padding:4px 0 18px;margin:22px -22px 0;scroll-padding-left:22px;
+    scrollbar-width:none}
+  .orb.strip::-webkit-scrollbar{display:none}
+  .orb.strip::before,.orb.strip::after{content:"";flex:0 0 22px}
+  .orb.strip .oit{position:static;flex:0 0 76%;max-width:300px;
+    transform:none!important;opacity:1!important;z-index:auto!important;
+    pointer-events:auto!important;scroll-snap-align:center;will-change:auto}
+  .orb.strip .ocard{width:100%;margin:0;padding:15px 16px}
+  .orb.strip .ocard b{font-size:14.5px}
+  .orb.strip .ocard em{font-size:13px;line-height:1.6}
+  .orb.strip .ocard u{font-size:9.5px;opacity:.8}
+  .stripnote{display:flex;align-items:center;gap:8px;margin-top:20px;
+    font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gold)}
+  .stripnote i{font-style:normal;animation:nudge 1.9s ease-in-out infinite}
+  @keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+}
+@media(max-width:900px) and (prefers-reduced-motion:reduce){
+  .stripnote i{animation:none}
+}
 </style>
 </head>
 <body>
@@ -2078,8 +2137,9 @@ FEATS.forEach(function(f,i){
   var t=(i+0.5)/N, phi=Math.acos(1-1.55*t-0.22), th=Math.PI*(1+Math.sqrt(5))*i;
   el._x=Math.sin(phi)*Math.cos(th); el._y=Math.cos(phi)*0.62; el._z=Math.sin(phi)*Math.sin(th);
   el._o=-2; el._i=i; el._zz=-9999; el._pe='';
-  el.addEventListener('pointerdown',function(ev){
-    ev.preventDefault(); ev.stopPropagation();
+  el.addEventListener(MOB?'click':'pointerdown',function(ev){
+    if(!MOB) ev.preventDefault();
+    ev.stopPropagation();
     el.classList.add('press'); setTimeout(function(){ el.classList.remove('press'); },220);
     openFeat(i);
   });
@@ -2156,6 +2216,16 @@ var c2on=false, oang=0, omx=0, omt=0, slow=0, frozen=false;
     });
   });
 })();
+if(MOB){
+  var _fi=document.getElementById('featintro');
+  if(_fi && orb){
+    orb.classList.add('strip');
+    var _n=document.createElement('span');
+    _n.className='stripnote';
+    _n.innerHTML='Swipe <i>\u2192</i>';
+    _fi.appendChild(_n); _fi.appendChild(orb);
+  }
+}
 new IntersectionObserver(function(en){
   if(en[0].isIntersecting) core2.classList.add('on');
 },{threshold:0.12}).observe(core2);
@@ -2198,7 +2268,7 @@ function loop(now){
   requestAnimationFrame(loop);
   if(document.hidden) return;
   if(sceneVis) tornado();
-  if(c2on) nucleus();
+  if(c2on && !MOB) nucleus();
   if(!last) last=now;
   if(!hold && c2on && beats.length && now-last>5600){ last=now; setBeat((cur+1)%STORY.length); }
   if(hold) last=now;
