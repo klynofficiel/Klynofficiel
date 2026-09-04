@@ -923,6 +923,7 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
 .feats .orb{left:65%;top:50%}
 .feats .c2grid{grid-template-columns:minmax(0,400px) 1fr}
 /* noyau doré à la place du portrait */
+.fscr{display:none}
 .fcen{display:none;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
   z-index:60;pointer-events:auto;width:min(46vw,174px);padding:14px 12px 15px;
   border-radius:20px;text-align:center;cursor:pointer;
@@ -1530,47 +1531,59 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
   /* surtitres : moins d'interlettrage, un poil plus gros */
   .eyebrow{font-size:11px;letter-spacing:.16em}
 
-  /* --- 3. sur mobile : un anneau de pastilles autour d'une carte lisible --- */
-  .feats .c2grid{padding-top:86vh}
+  /* --- 3. sur mobile : le mockup au centre, les fonctions en anneau autour --- */
+  .feats .c2grid{padding-top:90vh}
   .feats .c2grid>div,.featintro,.sdetail{min-width:0}
   .featintro>h2,.featintro>.fi-p{max-width:calc(100vw - 44px)}
   .feats .fi-list{display:none}
 
-  .feats .fphone{left:50%;top:12.5%}
-  .feats .fphone img{height:min(15vh,124px)}
-  .feats .fplinth{bottom:10px;height:16px}
+  .feats .orb,.feats .fcore,.feats .fring,.feats .fphone{left:50%;top:41%}
+  .feats .fcore{width:min(66vw,278px)}
+  .feats .fring.a{width:min(98vw,410px)}
+  .feats .fring.b{width:min(64vw,268px)}
   .feats .flabel{display:none}
+  .feats .fplinth{display:none}
+  .feats .fphone img{height:min(32vh,248px)}
+  .feats .fsheen{width:165%}
 
-  .feats .orb,.feats .fcore,.feats .fring,.feats .fcen{left:50%;top:44%}
-  .feats .fcore{width:min(78vw,330px)}
-  .feats .fring.a{width:min(96vw,400px)}
-  .feats .fring.b{width:min(68vw,286px)}
+  /* l'ecran du telephone : il montre la fonction choisie */
+  .feats .fscr{display:flex;flex-direction:column;position:absolute;left:50%;top:50%;
+    width:79.5%;height:100.6%;transform:translate(-51%,-49%) rotate(5.1deg);
+    border-radius:11px;overflow:hidden;z-index:3;pointer-events:none;background:#08080a}
+  .feats .fsimg{display:block;flex:1 1 0;min-height:0;overflow:hidden;position:relative}
+  .feats .fsimg img{width:100%;height:100%;object-fit:cover;display:block;opacity:.95;
+    transform:scale(1.52);transform-origin:50% 16%}
+  .feats .fsimg:after{content:"";position:absolute;inset:auto 0 0 0;height:46%;
+    background:linear-gradient(180deg,transparent 0%,rgba(8,8,10,.55) 44%,#08080a 86%)}
+  .feats .fstx{flex:0 0 auto;padding:0 7px 11px;text-align:center;background:#08080a}
+  .feats .fstx b{display:block;font-size:11px;line-height:1.18;color:#fff;font-weight:700}
+  .feats .fstx em{display:none}
+  .feats .fstx u{display:block;margin:7px auto 0;width:fit-content;text-decoration:none;
+    padding:3px 10px;border-radius:100px;background:var(--gold);color:#0a0a0a;
+    font-family:var(--mono);font-size:6.5px;font-weight:700;letter-spacing:.1em}
 
-  /* les onze deviennent des pastilles rondes legendees, en anneau */
-  .feats .ocard{width:56px;height:56px;margin-left:-28px;margin-top:-28px;
+  /* les onze : pastilles rondes legendees, plus grandes */
+  .feats .ocard{width:72px;height:72px;margin-left:-36px;margin-top:-36px;
     padding:0;border-radius:50%;overflow:hidden;
     background:#0c0c0d;border:1px solid rgba(212,175,55,.5);
-    box-shadow:0 6px 16px rgba(0,0,0,.7);transition:none}
+    box-shadow:0 8px 20px rgba(0,0,0,.72);transition:none}
   .feats .ocard .r1{gap:0}
-  .feats .ocard .th{width:56px;height:56px;border:0;border-radius:50%}
-  .feats .ocard .th img{opacity:.28;filter:grayscale(.4)}
+  .feats .ocard .th{width:72px;height:72px;border:0;border-radius:50%}
+  .feats .ocard .th img{opacity:.4;filter:grayscale(.25)}
   .feats .ocard .th span{display:flex;position:absolute;left:50%;top:50%;right:auto;bottom:auto;
     transform:translate(-50%,-50%);width:auto;height:auto;border-radius:0;
     background:none;border:0;box-shadow:none;align-items:center;justify-content:center}
-  .feats .ocard svg{width:23px;height:23px;stroke-width:1.6}
+  .feats .ocard svg{width:28px;height:28px;stroke-width:1.6}
   .feats .ocard b,.feats .ocard em,.feats .ocard u,.feats .ocard .nw{display:none}
-  .feats .olab{display:block;position:absolute;left:50%;top:32px;transform:translateX(-50%);
-    width:78px;text-align:center;font-family:var(--mono);font-size:8.5px;font-weight:700;
+  .feats .olab{display:block;position:absolute;left:50%;top:41px;transform:translateX(-50%);
+    width:80px;text-align:center;font-family:var(--mono);font-size:9px;font-weight:700;
     letter-spacing:.05em;line-height:1.3;text-transform:uppercase;
-    color:rgba(255,255,255,.62);text-shadow:0 2px 6px #000,0 0 10px #000;pointer-events:none}
-  .feats .olab.up{top:auto;bottom:32px}
+    color:rgba(255,255,255,.66);text-shadow:0 2px 6px #000,0 0 10px #000;pointer-events:none}
+  .feats .olab.up{top:auto;bottom:41px}
   .feats .oit.act .ocard{border-color:rgba(212,175,55,1);
-    box-shadow:0 0 0 2px rgba(212,175,55,.3),0 8px 20px rgba(0,0,0,.7)}
-  .feats .oit.act .ocard .th img{opacity:.45}
+    box-shadow:0 0 0 2px rgba(212,175,55,.32),0 10px 24px rgba(0,0,0,.72)}
+  .feats .oit.act .ocard .th img{opacity:.55}
   .feats .oit.act .olab{color:var(--gold)}
-
-  /* la carte du centre : elle ne bouge jamais */
-  .feats .fcen{display:block}
 
   .feats .c2hint{display:block;bottom:14px;font-size:9px;letter-spacing:.16em;
     color:rgba(255,255,255,.42);transition:opacity .6s var(--ease)}
@@ -1639,11 +1652,12 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
     <span class="fring a"></span><span class="fring b"></span>
     <div class="fphone"><span class="fsheen"></span>
       <img src="assets/klyn3d/app_phone.webp" alt="L'application KLYN" />
+      <span class="fscr" id="fscr"><span class="fsimg"><img alt="" /></span>
+        <span class="fstx"><b></b><em></em><u></u></span></span>
       <span class="fplinth"></span>
       <span class="flabel">L'app KLYN<u>Tout est dedans</u></span>
     </div>
     <div class="orb" id="orb"></div>
-    <div class="fcen" id="fcen"><div class="fcin"></div></div>
   </div>
   <div class="c2vig"></div>
   <div class="c2grid" style="pointer-events:none">
@@ -2180,6 +2194,9 @@ FEATS.forEach(function(f,i){
     if(!MOB) ev.preventDefault();
     ev.stopPropagation();
     el.classList.add('press'); setTimeout(function(){ el.classList.remove('press'); },220);
+    if(MOB){ _pin=i; ecran(i);
+      if(_fprev>=0 && oit[_fprev]) oit[_fprev].classList.remove('act');
+      el.classList.add('act'); _fprev=i; }
     openFeat(i);
   });
   el.addEventListener('pointerenter',function(){ frozen=true; });
@@ -2268,6 +2285,7 @@ if(MOB){
     if(!_tir||e.touches.length!==1) return;
     var dx=e.touches[0].clientX-_x0;
     if(Math.abs(dx)>_bouge) _bouge=Math.abs(dx);
+    if(_bouge>10) _pin=-1;
     oang=_a0+dx*0.42;
   },{passive:true});
   fsec.addEventListener('touchend',function(){ _tir=false; },{passive:true});
@@ -2312,19 +2330,20 @@ function nucleus(){
     if(pe!==e._pe){ e.style.pointerEvents=pe; e._pe=pe; }
   }
 }
-var _fprev=-1, _fcen=document.getElementById('fcen'),
-    _fcin=_fcen?_fcen.querySelector('.fcin'):null, _fsw=0;
-if(_fcen) _fcen.addEventListener('click',function(){ if(_fprev>=0) openFeat(_fprev); });
-function carte(i){
-  var f=FEATS[i]; if(!_fcin||!f) return;
-  var lien=oit[i]?oit[i].querySelector('u'):null;
-  _fcin.innerHTML='<span class="fth"><img src="'+TH[f.i]+'" alt="" /></span>'
-    +'<b>'+f.t+'</b><em>'+f.a+'</em><u></u>';
-  if(lien) _fcin.querySelector('u').textContent=lien.textContent;
+var _fprev=-1, _pin=-1, _fscr=document.getElementById('fscr'),
+    _fsi=_fscr?_fscr.querySelector('.fsimg img'):null,
+    _fsb=_fscr?_fscr.querySelector('.fstx b'):null,
+    _fsu=_fscr?_fscr.querySelector('.fstx u'):null;
+function ecran(i){
+  var f=FEATS[i]; if(!_fscr||!f) return;
+  _fsi.src=(typeof THB!=='undefined'&&THB[f.i])?THB[f.i]:TH[f.i];
+  _fsb.textContent=f.t;
+  var l=oit[i]?oit[i].querySelector('u'):null;
+  if(l) _fsu.textContent=l.textContent.replace(/\s*[\u2192>]+\s*$/,'');
 }
 function anneau(){
   var n=oit.length, TAU=Math.PI*2, base=oang*RAD*0.9,
-      RX=Math.min(innerWidth*0.365,148), RY=Math.min(innerWidth*0.35,142),
+      RX=Math.min(innerWidth*0.36,146), RY=Math.min(innerWidth*0.42,170),
       act=0, best=9;
   for(var i=0;i<n;i++){
     var a=base+i*(TAU/n),
@@ -2339,12 +2358,10 @@ function anneau(){
     if(e._zz!==1){ e.style.zIndex=1; e._zz=1; e.style.opacity=o.toFixed(2); }
     if(e._pe!=='auto'){ e.style.pointerEvents='auto'; e._pe='auto'; }
   }
-  if(act!==_fprev){
+  if(_pin<0 && act!==_fprev){
     if(_fprev>=0 && oit[_fprev]) oit[_fprev].classList.remove('act');
     if(oit[act]) oit[act].classList.add('act');
-    if(_fprev<0){ carte(act); }
-    else { var q=act; _fcen.classList.add('sw'); clearTimeout(_fsw);
-           _fsw=setTimeout(function(){ carte(q); _fcen.classList.remove('sw'); },300); }
+    ecran(act);
     _fprev=act;
   }
 }
