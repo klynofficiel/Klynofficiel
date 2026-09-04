@@ -924,6 +924,7 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
 .feats .orb{left:65%;top:50%}
 .feats .c2grid{grid-template-columns:minmax(0,400px) 1fr}
 /* noyau doré à la place du portrait */
+.fwheel,.fsweep,.fspoke{display:none}
 .fscr{display:none}
 .fcen{display:none;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
   z-index:60;pointer-events:auto;width:min(46vw,174px);padding:14px 12px 15px;
@@ -1533,18 +1534,19 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
   .eyebrow{font-size:11px;letter-spacing:.16em}
 
   /* --- 3. sur mobile : le mockup au centre, les fonctions en anneau autour --- */
-  .feats .c2grid{padding-top:90vh}
+  .feats .c2grid{padding-top:73vh}
   .feats .c2grid>div,.featintro,.sdetail{min-width:0}
   .featintro>h2,.featintro>.fi-p{max-width:calc(100vw - 44px)}
   .feats .fi-list{display:none}
 
-  .feats .orb,.feats .fcore,.feats .fring,.feats .fphone{left:50%;top:41%}
-  .feats .fcore{width:min(66vw,278px)}
-  .feats .fring.a{width:min(98vw,410px)}
-  .feats .fring.b{width:min(64vw,268px)}
+  .feats .orb,.feats .fcore,.feats .fring,.feats .fphone,
+  .feats .fwheel,.feats .fsweep,.feats .fspoke{left:50%;top:32%}
+  .feats .fcore{width:min(62vw,262px)}
+  .feats .fring.a{width:min(98vw,388px)}
+  .feats .fring.b{width:min(37vw,150px)}
   .feats .flabel{display:none}
   .feats .fplinth{display:none}
-  .feats .fphone img{height:min(34vh,272px)}
+  .feats .fphone img{height:min(30vh,232px)}
   .feats .fsheen{width:165%}
 
   /* l'ecran du telephone : une vraie mini-interface, cadree au pixel */
@@ -1613,31 +1615,49 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
   .feats .fsp.sort b{transform:translateY(-8px);opacity:0}
   .feats .fsp.sort u{transform:translateY(-6px);opacity:0}
 
+  /* la roue : le cercle de l'orbite, un balayage dore, et onze rayons */
+  .feats .fwheel,.feats .fsweep,.feats .fspoke{display:block;position:absolute;
+    width:min(78vw,304px);aspect-ratio:1;transform:translate(-50%,-50%);
+    z-index:0;pointer-events:none}
+  .feats .fwheel{border-radius:50%;border:1px solid rgba(212,175,55,.2);
+    box-shadow:inset 0 0 40px rgba(212,175,55,.05)}
+  .feats .fsweep{border-radius:50%;
+    background:conic-gradient(from 0deg,transparent 0 58%,rgba(212,175,55,.42) 78%,
+      rgba(255,232,150,.72) 86%,rgba(212,175,55,.3) 92%,transparent 100%);
+    -webkit-mask:radial-gradient(closest-side,transparent 0 96.5%,#000 97.6%);
+    mask:radial-gradient(closest-side,transparent 0 96.5%,#000 97.6%);
+    animation:spin 11s linear infinite}
+  .feats .fspoke{
+    background:repeating-conic-gradient(from 0deg,rgba(212,175,55,.22) 0deg .45deg,
+      transparent .45deg 32.7272deg);
+    -webkit-mask:radial-gradient(closest-side,transparent 0 41%,#000 48%,#000 95%,transparent 99%);
+    mask:radial-gradient(closest-side,transparent 0 41%,#000 48%,#000 95%,transparent 99%)}
+
   /* les onze : pastilles rondes legendees */
-  .feats .ocard{width:72px;height:72px;margin-left:-36px;margin-top:-36px;
+  .feats .ocard{width:66px;height:66px;margin-left:-33px;margin-top:-33px;
     padding:0;border-radius:50%;overflow:hidden;
     background:#0c0c0d;border:1px solid rgba(212,175,55,.4);
     box-shadow:0 8px 20px rgba(0,0,0,.72);
     transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .35s var(--ease),
                box-shadow .35s var(--ease),opacity .5s var(--ease)}
   .feats .ocard .r1{gap:0}
-  .feats .ocard .th{width:72px;height:72px;border:0;border-radius:50%}
+  .feats .ocard .th{width:66px;height:66px;border:0;border-radius:50%}
   .feats .ocard .th img{opacity:.38;filter:grayscale(.3);transition:opacity .4s var(--ease),
     filter .4s var(--ease)}
   .feats .ocard .th span{display:flex;position:absolute;left:50%;top:50%;right:auto;bottom:auto;
     transform:translate(-50%,-50%);width:auto;height:auto;border-radius:0;
     background:none;border:0;box-shadow:none;align-items:center;justify-content:center}
-  .feats .ocard svg{width:28px;height:28px;stroke-width:1.6}
+  .feats .ocard svg{width:26px;height:26px;stroke-width:1.6}
   .feats .ocard b,.feats .ocard em,.feats .ocard u,.feats .ocard .nw{display:none}
-  .feats .olab{display:block;position:absolute;left:50%;top:41px;transform:translateX(-50%);
-    width:80px;text-align:center;font-family:var(--mono);font-size:9px;font-weight:700;
+  .feats .olab{display:block;position:absolute;left:50%;top:38px;transform:translateX(-50%);
+    width:68px;text-align:center;font-family:var(--mono);font-size:9px;font-weight:700;
     letter-spacing:.05em;line-height:1.3;text-transform:uppercase;
     color:rgba(255,255,255,.6);text-shadow:0 2px 6px #000,0 0 10px #000;pointer-events:none;
     transition:color .35s var(--ease),opacity .35s var(--ease)}
-  .feats .olab.up{top:auto;bottom:41px}
+  .feats .olab.up{top:auto;bottom:38px}
 
   /* celle qui est affichee dans le telephone */
-  .feats .oit.act .ocard{transform:scale(1.15);border-color:rgba(212,175,55,.95);
+  .feats .oit.act .ocard{transform:scale(1.12);border-color:rgba(212,175,55,.95);
     box-shadow:0 0 0 2px rgba(212,175,55,.28),0 0 26px rgba(212,175,55,.3),
                0 12px 26px rgba(0,0,0,.75)}
   .feats .oit.act .ocard .th img{opacity:.6;filter:grayscale(0)}
@@ -1646,7 +1666,7 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
   /* arrivee : les pastilles se posent une par une */
   .feats .ocard{opacity:0;transform:scale(.4)}
   .feats.on .ocard{opacity:1;transform:scale(1)}
-  .feats.on .oit.act .ocard{transform:scale(1.15)}
+  .feats.on .oit.act .ocard{transform:scale(1.12)}
 
   .feats .c2hint{display:block;bottom:14px;font-size:9px;letter-spacing:.16em;
     color:rgba(255,255,255,.42);transition:opacity .6s var(--ease)}
@@ -1725,6 +1745,8 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
       <span class="fplinth"></span>
       <span class="flabel">La app KLYN<u>Todo está dentro</u></span>
     </div>
+    <span class="fspoke" id="fspoke"></span>
+    <span class="fwheel"></span><span class="fsweep"></span>
     <div class="orb" id="orb"></div>
   </div>
   <div class="c2vig"></div>
@@ -2246,7 +2268,7 @@ function tornado(){
 /* ─────────── 2. NOYAU / HISTOIRE ─────────── */
 var orb=document.getElementById('orb'), core2=document.getElementById('core2'),
     fsec=document.getElementById('fonctions');
-var SHORT={"scan": "Escaneo plato", "cam": "Coach cámara", "watch": "Reloj", "bolt": "Freestyle", "adapt": "Adaptativo", "fridge": "Nevera", "ai": "Coach IA", "food": "Nutrición", "mind": "KLYN Mind", "chart": "Seguimiento", "globe": "Idiomas"};
+var SHORT={"scan": "Escaneo", "cam": "Cámara", "watch": "Reloj", "bolt": "Freestyle", "adapt": "Adaptativo", "fridge": "Nevera", "ai": "Coach IA", "food": "Nutrición", "mind": "KLYN Mind", "chart": "Progreso", "globe": "Idiomas"};
 var OR0=MOB?Math.round(Math.min(innerWidth*0.27,112)):442, OR=OR0, oit=[], N=FEATS.length;
 FEATS.forEach(function(f,i){
   var el=document.createElement('div'); el.className='oit';
@@ -2408,6 +2430,7 @@ function nucleus(){
     if(pe!==e._pe){ e.style.pointerEvents=pe; e._pe=pe; }
   }
 }
+var _spk=document.getElementById('fspoke'), _spa=-999;
 var _fprev=-1, _pin=-1, _vel=0, _t0=0, _fscr=document.getElementById('fscr'),
     _fsin=document.getElementById('fsin'), _fsh=document.getElementById('fshome'),
     _fsp=_fsin?[_fsin.children[0],_fsin.children[1]]:null, _pan=0, _fsw=0;
@@ -2446,8 +2469,10 @@ function ecran(i,vite){
 }
 function anneau(){
   var n=oit.length, TAU=Math.PI*2, base=oang*RAD*0.9,
-      RX=Math.min(innerWidth*0.36,146), RY=Math.min(innerWidth*0.44,174),
+      R=Math.min(innerWidth*0.39,152), RX=R, RY=R,
       act=0, best=9;
+  if(_spk){ var da=base*57.2958; if(da-_spa>0.25||_spa-da>0.25){
+    _spk.style.transform='translate(-50%,-50%) rotate('+da.toFixed(1)+'deg)'; _spa=da; } }
   for(var i=0;i<n;i++){
     var a=base+i*(TAU/n),
         d=Math.abs((((a%TAU)+TAU)%TAU)-TAU*0.75); if(d>Math.PI) d=TAU-d;
