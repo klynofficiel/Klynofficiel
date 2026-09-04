@@ -1543,33 +1543,60 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
   .feats .fring.b{width:min(64vw,268px)}
   .feats .flabel{display:none}
   .feats .fplinth{display:none}
-  .feats .fphone img{height:min(32vh,248px)}
+  .feats .fphone img{height:min(34vh,272px)}
   .feats .fsheen{width:165%}
 
-  /* l'ecran du telephone : il montre la fonction choisie */
+  /* l'ecran du telephone : une vraie mini-interface, cadree au pixel */
   .feats .fscr{display:flex;flex-direction:column;position:absolute;left:50%;top:50%;
     width:79.5%;height:100.6%;transform:translate(-51%,-49%) rotate(5.1deg);
-    border-radius:11px;overflow:hidden;z-index:3;pointer-events:none;background:#08080a}
-  .feats .fsimg{display:block;flex:1 1 0;min-height:0;overflow:hidden;position:relative}
-  .feats .fsimg img{width:100%;height:100%;object-fit:cover;display:block;opacity:.95;
-    transform:scale(1.52);transform-origin:50% 16%}
-  .feats .fsimg:after{content:"";position:absolute;inset:auto 0 0 0;height:46%;
-    background:linear-gradient(180deg,transparent 0%,rgba(8,8,10,.55) 44%,#08080a 86%)}
-  .feats .fstx{flex:0 0 auto;padding:0 7px 11px;text-align:center;background:#08080a}
-  .feats .fstx b{display:block;font-size:11px;line-height:1.18;color:#fff;font-weight:700}
-  .feats .fstx em{display:none}
-  .feats .fstx u{display:block;margin:7px auto 0;width:fit-content;text-decoration:none;
-    padding:3px 10px;border-radius:100px;background:var(--gold);color:#0a0a0a;
-    font-family:var(--mono);font-size:6.5px;font-weight:700;letter-spacing:.1em}
+    border-radius:11px;overflow:hidden;z-index:3;pointer-events:none;
+    background:linear-gradient(178deg,#141009 0%,#08080a 42%)}
 
-  /* les onze : pastilles rondes legendees, plus grandes */
+  .feats .fsbar{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;
+    padding:6px 9px 2px}
+  .feats .fsbar i{font-family:var(--mono);font-size:6px;font-style:normal;
+    color:rgba(255,255,255,.55);letter-spacing:.04em}
+  .feats .fsbar s{display:block;width:16px;height:3px;border-radius:2px;
+    background:rgba(255,255,255,.3);text-decoration:none}
+
+  .feats .fsin{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;gap:9px;padding:2px 8px 4px;min-height:0}
+  .feats .fsimg{display:block;width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;
+    border:1px solid rgba(212,175,55,.32);box-shadow:0 6px 16px rgba(0,0,0,.6);flex:0 0 auto}
+  .feats .fsimg img{width:100%;height:100%;object-fit:cover;display:block}
+  .feats .fsin b{display:block;font-size:10.5px;line-height:1.2;color:#fff;font-weight:700;
+    text-align:center}
+  .feats .fsin u{display:block;text-decoration:none;padding:4px 11px;border-radius:100px;
+    background:var(--gold);color:#0a0a0a;font-family:var(--mono);font-size:6px;
+    font-weight:700;letter-spacing:.1em;white-space:nowrap}
+
+  .feats .fstab{flex:0 0 auto;display:flex;align-items:center;justify-content:space-around;
+    padding:6px 8px 7px;border-top:1px solid rgba(255,255,255,.07)}
+  .feats .fstab i{display:block;width:7px;height:7px;border-radius:2px;
+    background:rgba(255,255,255,.16)}
+  .feats .fstab i.k{width:11px;height:11px;border-radius:50%;background:var(--gold)}
+
+  /* la transition d'une fonction a l'autre */
+  .feats .fsin>*{transition:opacity .26s var(--ease),transform .40s cubic-bezier(.16,1,.3,1)}
+  .feats .fsin.out>*{opacity:0}
+  .feats .fsin.out .fsimg{transform:translateY(-9px) scale(.94)}
+  .feats .fsin.out b{transform:translateY(-7px)}
+  .feats .fsin.out u{transform:translateY(-5px)}
+  .feats .fsin.in .fsimg{opacity:0;transform:translateY(13px) scale(.93)}
+  .feats .fsin.in b{opacity:0;transform:translateY(11px);transition-delay:.06s}
+  .feats .fsin.in u{opacity:0;transform:translateY(9px);transition-delay:.12s}
+
+  /* les onze : pastilles rondes legendees */
   .feats .ocard{width:72px;height:72px;margin-left:-36px;margin-top:-36px;
     padding:0;border-radius:50%;overflow:hidden;
-    background:#0c0c0d;border:1px solid rgba(212,175,55,.5);
-    box-shadow:0 8px 20px rgba(0,0,0,.72);transition:none}
+    background:#0c0c0d;border:1px solid rgba(212,175,55,.4);
+    box-shadow:0 8px 20px rgba(0,0,0,.72);
+    transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .35s var(--ease),
+               box-shadow .35s var(--ease),opacity .5s var(--ease)}
   .feats .ocard .r1{gap:0}
   .feats .ocard .th{width:72px;height:72px;border:0;border-radius:50%}
-  .feats .ocard .th img{opacity:.4;filter:grayscale(.25)}
+  .feats .ocard .th img{opacity:.38;filter:grayscale(.3);transition:opacity .4s var(--ease),
+    filter .4s var(--ease)}
   .feats .ocard .th span{display:flex;position:absolute;left:50%;top:50%;right:auto;bottom:auto;
     transform:translate(-50%,-50%);width:auto;height:auto;border-radius:0;
     background:none;border:0;box-shadow:none;align-items:center;justify-content:center}
@@ -1578,12 +1605,21 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
   .feats .olab{display:block;position:absolute;left:50%;top:41px;transform:translateX(-50%);
     width:80px;text-align:center;font-family:var(--mono);font-size:9px;font-weight:700;
     letter-spacing:.05em;line-height:1.3;text-transform:uppercase;
-    color:rgba(255,255,255,.66);text-shadow:0 2px 6px #000,0 0 10px #000;pointer-events:none}
+    color:rgba(255,255,255,.6);text-shadow:0 2px 6px #000,0 0 10px #000;pointer-events:none;
+    transition:color .35s var(--ease),opacity .35s var(--ease)}
   .feats .olab.up{top:auto;bottom:41px}
-  .feats .oit.act .ocard{border-color:rgba(212,175,55,1);
-    box-shadow:0 0 0 2px rgba(212,175,55,.32),0 10px 24px rgba(0,0,0,.72)}
-  .feats .oit.act .ocard .th img{opacity:.55}
+
+  /* celle qui est affichee dans le telephone */
+  .feats .oit.act .ocard{transform:scale(1.15);border-color:rgba(212,175,55,.95);
+    box-shadow:0 0 0 2px rgba(212,175,55,.28),0 0 26px rgba(212,175,55,.3),
+               0 12px 26px rgba(0,0,0,.75)}
+  .feats .oit.act .ocard .th img{opacity:.6;filter:grayscale(0)}
   .feats .oit.act .olab{color:var(--gold)}
+
+  /* arrivee : les pastilles se posent une par une */
+  .feats .ocard{opacity:0;transform:scale(.4)}
+  .feats.on .ocard{opacity:1;transform:scale(1)}
+  .feats.on .oit.act .ocard{transform:scale(1.15)}
 
   .feats .c2hint{display:block;bottom:14px;font-size:9px;letter-spacing:.16em;
     color:rgba(255,255,255,.42);transition:opacity .6s var(--ease)}
@@ -1652,8 +1688,10 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
     <span class="fring a"></span><span class="fring b"></span>
     <div class="fphone"><span class="fsheen"></span>
       <img src="assets/klyn3d/app_phone.webp" alt="L'application KLYN" />
-      <span class="fscr" id="fscr"><span class="fsimg"><img alt="" /></span>
-        <span class="fstx"><b></b><em></em><u></u></span></span>
+      <span class="fscr" id="fscr"><span class="fsbar"><i>9:41</i><s></s></span>
+        <span class="fsin" id="fsin"><span class="fsimg"><img alt="" /></span>
+          <b></b><u></u></span>
+        <span class="fstab"><i></i><i></i><i class="k"></i><i></i><i></i></span></span>
       <span class="fplinth"></span>
       <span class="flabel">L'app KLYN<u>Tout est dedans</u></span>
     </div>
@@ -2201,6 +2239,9 @@ FEATS.forEach(function(f,i){
   });
   el.addEventListener('pointerenter',function(){ frozen=true; });
   el.addEventListener('pointerleave',function(){ frozen=false; });
+  if(MOB){ var _c=el.querySelector('.ocard');
+    if(_c){ _c.style.transitionDelay=(0.06*i).toFixed(2)+'s,0s,0s,'+(0.06*i).toFixed(2)+'s';
+      setTimeout(function(){ _c.style.transitionDelay=''; },2800); } }
   orb.appendChild(el); oit.push(el);
 });
 
@@ -2274,10 +2315,10 @@ var c2on=false, oang=0, omx=0, omt=0, slow=0, frozen=false;
 })();
 if(MOB){
   /* au doigt : la sphere se fige et suit le glissement, le tap ouvre la fiche */
-  var _x0=0, _a0=0, _tir=false, _bouge=0, _hint=document.querySelector('.feats .c2hint');
+  var _x0=0, _a0=0, _tir=false, _bouge=0, _dl=0, _hint=document.querySelector('.feats .c2hint');
   fsec.addEventListener('touchstart',function(e){
     if(e.touches.length!==1) return;
-    _tir=true; _bouge=0; _x0=e.touches[0].clientX; _a0=oang;
+    _tir=true; _bouge=0; _x0=e.touches[0].clientX; _a0=oang; _vel=0; _dl=0;
     frozen=true;
     if(_hint) _hint.classList.add('gone');
   },{passive:true});
@@ -2286,9 +2327,13 @@ if(MOB){
     var dx=e.touches[0].clientX-_x0;
     if(Math.abs(dx)>_bouge) _bouge=Math.abs(dx);
     if(_bouge>10) _pin=-1;
-    oang=_a0+dx*0.42;
+    var na=_a0+dx*0.42; _vel=(na-oang)*0.55; oang=na; _dl=_vel;
   },{passive:true});
-  fsec.addEventListener('touchend',function(){ _tir=false; },{passive:true});
+  fsec.addEventListener('touchend',function(){
+    _tir=false;
+    _vel=Math.max(-9,Math.min(9,_dl*2.6));
+    if(_bouge<=10) _vel=0;
+  },{passive:true});
   orb.addEventListener('click',function(e){
     if(_bouge>8){ e.stopPropagation(); e.preventDefault(); }
   },true);
@@ -2314,7 +2359,10 @@ function nucleus(){
   var k = (frozen||sel>=0) ? 0 : 0.72;
   oang += ((RM?0:0.15)+omx*0.7)*k;
   if(oang>36000) oang-=36000;
-  if(MOB){ anneau(); return; }
+  if(MOB){
+    if(_vel){ oang+=_vel; _vel*=0.945; if(_vel<0.03&&_vel>-0.03) _vel=0; }
+    anneau(); return;
+  }
   var s=Math.sin(oang*RAD), c=Math.cos(oang*RAD);
   for(var i=0;i<oit.length;i++){
     var e=oit[i], x=e._x*OR, z=e._z*OR;
@@ -2330,20 +2378,33 @@ function nucleus(){
     if(pe!==e._pe){ e.style.pointerEvents=pe; e._pe=pe; }
   }
 }
-var _fprev=-1, _pin=-1, _fscr=document.getElementById('fscr'),
-    _fsi=_fscr?_fscr.querySelector('.fsimg img'):null,
-    _fsb=_fscr?_fscr.querySelector('.fstx b'):null,
-    _fsu=_fscr?_fscr.querySelector('.fstx u'):null;
-function ecran(i){
-  var f=FEATS[i]; if(!_fscr||!f) return;
+var _fprev=-1, _pin=-1, _vel=0, _fscr=document.getElementById('fscr'),
+    _fsin=document.getElementById('fsin'),
+    _fsi=_fsin?_fsin.querySelector('.fsimg img'):null,
+    _fsb=_fsin?_fsin.querySelector('b'):null,
+    _fsu=_fsin?_fsin.querySelector('u'):null, _fsw=0;
+function poser(i){
+  var f=FEATS[i]; if(!f) return;
   _fsi.src=(typeof THB!=='undefined'&&THB[f.i])?THB[f.i]:TH[f.i];
   _fsb.textContent=f.t;
   var l=oit[i]?oit[i].querySelector('u'):null;
   if(l) _fsu.textContent=l.textContent.replace(/\s*[\u2192>]+\s*$/,'');
 }
+function ecran(i,vite){
+  if(!_fsin||!FEATS[i]) return;
+  clearTimeout(_fsw);
+  if(vite || RM){ _fsin.classList.remove('out','in'); poser(i); return; }
+  _fsin.classList.remove('in'); _fsin.classList.add('out');
+  _fsw=setTimeout(function(){
+    poser(i);
+    _fsin.classList.remove('out'); _fsin.classList.add('in');
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      _fsin.classList.remove('in'); }); });
+  },175);
+}
 function anneau(){
   var n=oit.length, TAU=Math.PI*2, base=oang*RAD*0.9,
-      RX=Math.min(innerWidth*0.36,146), RY=Math.min(innerWidth*0.42,170),
+      RX=Math.min(innerWidth*0.36,146), RY=Math.min(innerWidth*0.44,174),
       act=0, best=9;
   for(var i=0;i<n;i++){
     var a=base+i*(TAU/n),
@@ -2359,9 +2420,10 @@ function anneau(){
     if(e._pe!=='auto'){ e.style.pointerEvents='auto'; e._pe='auto'; }
   }
   if(_pin<0 && act!==_fprev){
+    var neuf=_fprev<0;
     if(_fprev>=0 && oit[_fprev]) oit[_fprev].classList.remove('act');
     if(oit[act]) oit[act].classList.add('act');
-    ecran(act);
+    ecran(act,neuf);
     _fprev=act;
   }
 }
