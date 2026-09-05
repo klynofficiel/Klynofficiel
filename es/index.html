@@ -1548,19 +1548,23 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
   .featintro>.eyebrow{font-size:16px;letter-spacing:.2em;color:var(--gold)}
 
   /* --- 3. sur mobile : le mockup au centre, les fonctions en anneau autour --- */
-  .feats .c2grid{padding-top:72vh}
+  .feats .c2grid{padding-top:86px}
   .feats .c2grid>div,.featintro,.sdetail{min-width:0}
   .featintro>h2,.featintro>.fi-p{max-width:calc(100vw - 44px)}
   .feats .fi-list{display:none}
   /* le detail suit la selection : on garde le titre, le paragraphe cede la place */
-  .feats.vivant .fi-p{display:none}
+  .feats .fi-p{display:none}
+  .feats .c2vig{display:none}
+  .feats{background:radial-gradient(circle 370px at 50% var(--wy,62vh),
+    #17120a 0%,#0d0a07 48%,#050505 82%)}
+  .feats .fcore{width:min(76vw,320px)}
   .feats .sback{display:none}
-  .feats .sdetail{margin-top:22px}
+  .feats .sdetail{margin-top:var(--sm,515px)}
   .feats .sdetail h3{font-size:26px}
   .feats .sdetail .tz{font-size:15px;line-height:1.75;color:rgba(255,255,255,.78)}
 
   .feats .orb,.feats .fcore,.feats .fring,.feats .fphone,
-  .feats .fwheel,.feats .fsweep,.feats .fspoke{left:50%;top:31vh}
+  .feats .fwheel,.feats .fsweep,.feats .fspoke{left:50%;top:var(--wy,62vh)}
   .feats .fcore{width:min(62vw,262px)}
   .feats .fring.a{width:min(98vw,388px)}
   .feats .fring.b{width:min(37vw,150px)}
@@ -1636,7 +1640,7 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
   .feats .fsp.sort u{transform:translateY(-6px);opacity:0}
 
   /* la molette : on la voit, on la tourne */
-  .feats .fdial{display:flex;position:absolute;left:50%;top:calc(31vh + 214px);
+  .feats .fdial{display:flex;position:absolute;left:50%;top:calc(var(--wy,62vh) + 214px);
     transform:translateX(-50%);z-index:70;align-items:center;gap:11px;pointer-events:auto}
   .feats .fdb{width:38px;height:38px;flex:0 0 auto;border-radius:50%;
     border:1px solid rgba(212,175,55,.42);background:rgba(10,10,11,.88);color:var(--gold);
@@ -2544,7 +2548,7 @@ function anneau(){
     if(e._up!==hb){ e._up=hb; var lb=e.querySelector('.olab'); if(lb) lb.classList.toggle('up',hb); }
     e.style.transform='translate3d('+(Math.cos(a)*RX).toFixed(1)+'px,'
       +(Math.sin(a)*RY).toFixed(1)+'px,0) scale('+(0.86+0.16*pr*pr).toFixed(3)+')';
-    var o=0.5+0.5*pr;
+    var o=0.7+0.3*pr;
     if(Math.abs(o-e._o)>0.02){ e.style.opacity=o.toFixed(2); e._o=o; }
     if(e._zz!==1){ e.style.zIndex=1; e._zz=1; e.style.opacity=o.toFixed(2); }
     if(e._pe!=='auto'){ e.style.pointerEvents='auto'; e._pe='auto'; }
@@ -2582,6 +2586,23 @@ if(MOB && _fdt){
     e.stopPropagation(); _md=false;
     _vel=Math.max(-9,Math.min(9,_mv*2.4));
   },{passive:true});
+}
+
+if(MOB){
+  var _PT=86;
+  function caler(){
+    var fi=document.getElementById('featintro');
+    var h=fi?Math.round(fi.getBoundingClientRect().height):150;
+    var R=Math.min(innerWidth*0.395,154), demi=R+33+22;
+    fsec.style.setProperty('--wy',(_PT+h+26+demi)+'px');
+    fsec.style.setProperty('--sm',(demi+306)+'px');
+  }
+  caler();
+  addEventListener('resize',caler,{passive:true});
+  addEventListener('orientationchange',caler,{passive:true});
+  addEventListener('load',caler);
+  setTimeout(caler,400); setTimeout(caler,1400);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(caler);
 }
 
 var last=0;
