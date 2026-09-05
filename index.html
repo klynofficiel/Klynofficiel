@@ -1537,6 +1537,10 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
   .burger.x span:nth-child(1){transform:translateY(7px) rotate(45deg)}
   .burger.x span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   .chip{font-size:10.5px}
+  /* le bouton qui mene aux fonctions : bien plus gros */
+  .gbtn{font-size:15px;padding:17px 26px;gap:12px}
+  .gbtn u{font-size:11.5px;letter-spacing:.16em}
+  .gbtn i{width:11px;height:11px;border-right-width:2px;border-bottom-width:2px}
   /* surtitres : nettement plus grands */
   .eyebrow{font-size:15px;letter-spacing:.18em}
   .head .eyebrow{font-size:16px;letter-spacing:.2em}
@@ -1548,6 +1552,12 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
   .feats .c2grid>div,.featintro,.sdetail{min-width:0}
   .featintro>h2,.featintro>.fi-p{max-width:calc(100vw - 44px)}
   .feats .fi-list{display:none}
+  /* le detail suit la selection : on garde le titre, le paragraphe cede la place */
+  .feats.vivant .fi-p{display:none}
+  .feats .sback{display:none}
+  .feats .sdetail{margin-top:22px}
+  .feats .sdetail h3{font-size:26px}
+  .feats .sdetail .tz{font-size:15px;line-height:1.75;color:rgba(255,255,255,.78)}
 
   .feats .orb,.feats .fcore,.feats .fring,.feats .fphone,
   .feats .fwheel,.feats .fsweep,.feats .fspoke{left:50%;top:31vh}
@@ -1762,7 +1772,7 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
     <h4 id="panT"></h4><div class="sub" id="panS"></div><p id="panD"></p><ul id="panL"></ul></div>
   <div class="gate">
     <div class="hint">Bouge la souris &mdash; ou <b>attrape</b> et lance</div>
-    <button class="gbtn" id="gbtn"><u>Et dans l'app ?</u> Les 11 fonctions, une par une <i></i></button>
+    <button class="gbtn" id="gbtn"><u>Et dans l'app ?</u> Voir les 11 fonctions <i></i></button>
   </div>
 </section>
 <section class="core2 feats" id="fonctions">
@@ -2366,17 +2376,22 @@ function paintHot(){
     oit[j].classList.toggle('sel', sel===j);
   }
 }
-function openFeat(i){
-  sel=i; hold=true; frozen=true;
+function openFeat(i,doux){
+  if(!doux){ sel=i; hold=true; frozen=true; }
   var f=FEATS[i];
   dk.textContent = f.n ? 'Nouveau · dans l\'app' : 'Dans l\'app';
   document.getElementById('dth').innerHTML='<img src="'+THB[f.i]+'" alt="" />';
   dt.textContent = f.t; da.textContent = f.a;
   ds.innerHTML = f.s.map(function(x){ return '<li>'+x+'</li>'; }).join('');
   var fi=document.getElementById('featintro');
-  if(fi) fi.style.display='none';
+  if(MOB){ fsec.classList.add('vivant'); }
+  else if(fi) fi.style.display='none';
   sdetail.classList.add('on'); fsec.classList.add('detail');
-  paintHot();
+  if(!doux) paintHot();
+}
+function relance(){
+  if(sel<0) return;
+  sel=-1; hold=false; frozen=false; paintHot();
 }
 function closeFeat(){
   if(sel<0) return;
@@ -2412,6 +2427,7 @@ if(MOB){
   fsec.addEventListener('touchstart',function(e){
     if(e.touches.length!==1) return;
     _tir=true; _bouge=0; _x0=e.touches[0].clientX; _a0=oang; _vel=0; _dl=0;
+    if(typeof relance==='function') relance();
     frozen=true;
     if(_hint) _hint.classList.add('gone');
   },{passive:true});
@@ -2540,19 +2556,21 @@ function anneau(){
     if(_fprev>=0 && oit[_fprev]) oit[_fprev].classList.remove('act');
     if(oit[act]) oit[act].classList.add('act');
     ecran(act,neuf);
+    openFeat(act,true);
     _fprev=act;
   }
 }
 
 if(MOB && _fdt){
   var _mx=0, _ma=0, _md=false, _mv=0;
-  function pas(d){ _pin=-1; _vel=0; _tgt=(_tgt===null?oang:_tgt)+d*_PAS; }
+  function pas(d){ relance(); _pin=-1; _vel=0; _tgt=(_tgt===null?oang:_tgt)+d*_PAS; }
   var _bl=document.getElementById('fdL'), _br=document.getElementById('fdR');
   if(_bl) _bl.addEventListener('click',function(e){ e.stopPropagation(); pas(1); });
   if(_br) _br.addEventListener('click',function(e){ e.stopPropagation(); pas(-1); });
   _fdt.addEventListener('touchstart',function(e){
     if(e.touches.length!==1) return;
     e.stopPropagation();
+    relance();
     _md=true; _mx=e.touches[0].clientX; _ma=oang; _mv=0; _pin=-1; _vel=0; _tgt=null;
   },{passive:true});
   _fdt.addEventListener('touchmove',function(e){
