@@ -924,7 +924,7 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
 .feats .orb{left:65%;top:50%}
 .feats .c2grid{grid-template-columns:minmax(0,400px) 1fr}
 /* noyau doré à la place du portrait */
-.fwheel,.fsweep,.fspoke{display:none}
+.fwheel,.fsweep,.fspoke,.fdial{display:none}
 .fscr{display:none}
 .fcen{display:none;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
   z-index:60;pointer-events:auto;width:min(46vw,174px);padding:14px 12px 15px;
@@ -1539,16 +1539,18 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
   .chip{font-size:10.5px}
   /* surtitres : nettement plus grands */
   .eyebrow{font-size:15px;letter-spacing:.18em}
+  .head .eyebrow{font-size:16px;letter-spacing:.2em}
+  .head h1{font-size:29px;line-height:1.16;letter-spacing:-.01em}
   .featintro>.eyebrow{font-size:16px;letter-spacing:.2em;color:var(--gold)}
 
   /* --- 3. sur mobile : le mockup au centre, les fonctions en anneau autour --- */
-  .feats .c2grid{padding-top:66vh}
+  .feats .c2grid{padding-top:72vh}
   .feats .c2grid>div,.featintro,.sdetail{min-width:0}
   .featintro>h2,.featintro>.fi-p{max-width:calc(100vw - 44px)}
   .feats .fi-list{display:none}
 
   .feats .orb,.feats .fcore,.feats .fring,.feats .fphone,
-  .feats .fwheel,.feats .fsweep,.feats .fspoke{left:50%;top:29%}
+  .feats .fwheel,.feats .fsweep,.feats .fspoke{left:50%;top:31vh}
   .feats .fcore{width:min(62vw,262px)}
   .feats .fring.a{width:min(98vw,388px)}
   .feats .fring.b{width:min(37vw,150px)}
@@ -1622,6 +1624,31 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
   .feats .fsp.sort .fsimg{transform:translateY(-10px) scale(.95);opacity:0}
   .feats .fsp.sort b{transform:translateY(-8px);opacity:0}
   .feats .fsp.sort u{transform:translateY(-6px);opacity:0}
+
+  /* la molette : on la voit, on la tourne */
+  .feats .fdial{display:flex;position:absolute;left:50%;top:calc(31vh + 214px);
+    transform:translateX(-50%);z-index:70;align-items:center;gap:11px;pointer-events:auto}
+  .feats .fdb{width:38px;height:38px;flex:0 0 auto;border-radius:50%;
+    border:1px solid rgba(212,175,55,.42);background:rgba(10,10,11,.88);color:var(--gold);
+    font-size:20px;line-height:1;padding:0 0 3px;display:flex;align-items:center;
+    justify-content:center;cursor:pointer;-webkit-tap-highlight-color:transparent;
+    transition:background .2s var(--ease),transform .2s var(--ease),border-color .2s}
+  .feats .fdb:active{transform:scale(.9);background:rgba(212,175,55,.18);
+    border-color:rgba(212,175,55,.9)}
+  .feats .fdt{position:relative;width:148px;height:34px;flex:0 0 auto;border-radius:100px;
+    overflow:hidden;border:1px solid rgba(212,175,55,.32);touch-action:none;cursor:grab;
+    background:linear-gradient(180deg,#111112 0%,#050505 52%,#141415 100%);
+    box-shadow:inset 0 2px 7px rgba(0,0,0,.95),inset 0 -1px 0 rgba(255,255,255,.05),
+               0 3px 10px rgba(0,0,0,.6)}
+  .feats .fdr{position:absolute;left:-14px;right:-14px;top:0;bottom:0;display:block;
+    background:repeating-linear-gradient(90deg,
+      rgba(212,175,55,.62) 0 1.5px,transparent 1.5px 11px);
+    will-change:transform}
+  .feats .fdt:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+    background:linear-gradient(90deg,#050505 0%,rgba(5,5,5,.1) 26%,rgba(5,5,5,.1) 74%,#050505 100%)}
+  .feats .fdm{position:absolute;left:50%;top:5px;bottom:5px;width:2px;margin-left:-1px;
+    border-radius:2px;background:var(--gold);z-index:2;
+    box-shadow:0 0 9px rgba(212,175,55,.85)}
 
   /* la roue : le cercle de l'orbite, un balayage dore, et onze rayons */
   .feats .fwheel,.feats .fsweep,.feats .fspoke{display:block;position:absolute;
@@ -1757,6 +1784,11 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
     <span class="fspoke" id="fspoke"></span>
     <span class="fwheel"></span><span class="fsweep"></span>
     <div class="orb" id="orb"></div>
+    <div class="fdial" id="fdial">
+      <button class="fdb" id="fdL" type="button" aria-label="&#8249;">&#8249;</button>
+      <div class="fdt" id="fdt"><i class="fdr"></i><span class="fdm"></span></div>
+      <button class="fdb" id="fdR" type="button" aria-label="&#8250;">&#8250;</button>
+    </div>
   </div>
   <div class="c2vig"></div>
   <div class="c2grid" style="pointer-events:none">
@@ -2439,7 +2471,9 @@ function nucleus(){
     if(pe!==e._pe){ e.style.pointerEvents=pe; e._pe=pe; }
   }
 }
-var _spk=document.getElementById('fspoke'), _spa=-999;
+var _spk=document.getElementById('fspoke'), _spa=-999,
+    _fdt=document.getElementById('fdt'), _fdr=_fdt?_fdt.querySelector('.fdr'):null,
+    _tgt=null, _PAS=360/(11*0.9);
 var _fprev=-1, _pin=-1, _vel=0, _t0=0, _fscr=document.getElementById('fscr'),
     _fsin=document.getElementById('fsin'), _fsh=document.getElementById('fshome'),
     _fsp=_fsin?[_fsin.children[0],_fsin.children[1]]:null, _pan=0, _fsw=0;
@@ -2477,9 +2511,13 @@ function ecran(i,vite){
   _pan=suiv;
 }
 function anneau(){
+  if(_tgt!==null){ var ec=_tgt-oang;
+    if(ec<0.4&&ec>-0.4){ oang=_tgt; _tgt=null; } else oang+=ec*0.17; }
   var n=oit.length, TAU=Math.PI*2, base=oang*RAD*0.9,
       R=Math.min(innerWidth*0.395,154), RX=R, RY=R,
       act=0, best=9;
+  if(_fdr){ var q=-((((oang*2.4)%11)+11)%11);
+    _fdr.style.transform='translateX('+q.toFixed(1)+'px)'; }
   if(_spk){ var da=base*57.2958; if(da-_spa>0.25||_spa-da>0.25){
     _spk.style.transform='translate(-50%,-50%) rotate('+da.toFixed(1)+'deg)'; _spa=da; } }
   for(var i=0;i<n;i++){
@@ -2504,6 +2542,28 @@ function anneau(){
     ecran(act,neuf);
     _fprev=act;
   }
+}
+
+if(MOB && _fdt){
+  var _mx=0, _ma=0, _md=false, _mv=0;
+  function pas(d){ _pin=-1; _vel=0; _tgt=(_tgt===null?oang:_tgt)+d*_PAS; }
+  var _bl=document.getElementById('fdL'), _br=document.getElementById('fdR');
+  if(_bl) _bl.addEventListener('click',function(e){ e.stopPropagation(); pas(1); });
+  if(_br) _br.addEventListener('click',function(e){ e.stopPropagation(); pas(-1); });
+  _fdt.addEventListener('touchstart',function(e){
+    if(e.touches.length!==1) return;
+    e.stopPropagation();
+    _md=true; _mx=e.touches[0].clientX; _ma=oang; _mv=0; _pin=-1; _vel=0; _tgt=null;
+  },{passive:true});
+  _fdt.addEventListener('touchmove',function(e){
+    if(!_md||e.touches.length!==1) return;
+    e.stopPropagation();
+    var na=_ma+(e.touches[0].clientX-_mx)*0.95; _mv=(na-oang)*0.5; oang=na;
+  },{passive:true});
+  _fdt.addEventListener('touchend',function(e){
+    e.stopPropagation(); _md=false;
+    _vel=Math.max(-9,Math.min(9,_mv*2.4));
+  },{passive:true});
 }
 
 var last=0;
