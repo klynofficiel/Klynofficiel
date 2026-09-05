@@ -1550,6 +1550,9 @@ img.scr-cam.lit{filter:brightness(1) saturate(1.08);clip-path:inset(0 0 100% 0)}
   /* --- 3. sur mobile : le mockup au centre, les fonctions en anneau autour --- */
   .feats .c2grid{padding-top:86px}
   .feats .c2grid>div,.featintro,.sdetail{min-width:0}
+  /* le voile noir de la colonne de texte couvrait la roue : plus besoin, le texte
+     est desormais au-dessus et en dessous, sur fond sombre */
+  .feats .c2grid>div:first-child::before{display:none}
   .featintro>h2,.featintro>.fi-p{max-width:calc(100vw - 44px)}
   .feats .fi-list{display:none}
   /* le detail suit la selection : on garde le titre, le paragraphe cede la place */
